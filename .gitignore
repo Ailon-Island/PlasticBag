@@ -1,3 +1,5 @@
-.vscode
+.vscode/*
 .nvimlog
+.DS_Store
+__pycache__/*
 
