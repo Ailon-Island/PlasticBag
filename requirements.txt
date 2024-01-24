@@ -5,3 +5,4 @@ icecream
 pyacvd
 pyvista
 vedo
+pyglet

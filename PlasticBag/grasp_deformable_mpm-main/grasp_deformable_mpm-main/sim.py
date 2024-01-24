@@ -335,11 +335,13 @@ class MpmLagSim:
                  n_grids: int = 128,
                  scale: float = 1.0) -> None:
         self.dt = dt
+        # 128
         self.n_grids = n_grids
         self.scale = scale
         self.dx = 1. / self.n_grids
         self.inv_dx = self.n_grids
         self.origin = origin
+        # 空间范围（超过会回弹）
         self.bound = 30
         self.gravity = 1
         self.bending_p = 0.05
@@ -478,11 +480,13 @@ class MpmLagSim:
             self.rest_bending_soft[bi] = theta
 
     def substep(self):
+        # 网格复原
         self.grid_m.fill(0)
         self.grid_v.fill(0)
         self.energy_soft[None] = 0
         with ti.ad.Tape(self.energy_soft):
             self.compute_energy_soft()  # TODO
+        # 物质点法MPM
         self.P2G()
         self.grid_op()
         self.G2P()
@@ -497,21 +501,28 @@ class MpmLagSim:
         self.grid_op()
         self.G2P_1()
 
+    # 粒子传输信息到网格
     @ti.kernel
     def P2G(self):
         for p in self.x_soft:
+            # games 201 lec 7 19:01
+            # base: 一个三维向量 
             base = ti.cast(self.x_soft[p] * self.inv_dx - 0.5, ti.i32)
             fx = self.x_soft[p] * self.inv_dx - ti.cast(base, float)
+            # 二次衰减函数，权重
             w = [0.5 * (1.5 - fx) ** 2, 0.75 - (fx - 1)
                  ** 2, 0.5 * (fx - 0.5) ** 2]
             affine = self.p_mass * self.C_soft[p]
+            # 求 3 * 3 * 3 范围内节点的坐标
             for i, j, k in ti.static(ti.ndrange(3, 3, 3)):
                 offset = ti.Vector([i, j, k])
                 dpos = (offset.cast(float) - fx) * self.dx
                 weight = w[i][0] * w[j][1] * w[k][2]
                 if not ti.math.isnan(self.x_soft.grad[p]).sum():
+                    # 物理量（速度），带权重
                     self.grid_v[base + offset] += weight * (
                         self.p_mass * self.v_soft[p] - self.dt * self.x_soft.grad[p] + affine @ dpos)
+                    # 权重的和
                     self.grid_m[base + offset] += weight * self.p_mass
 
         # for p in self.x_rigid:
@@ -527,11 +538,14 @@ class MpmLagSim:
         #             self.rp_mass * self.v_rigid[p]
         #         self.grid_m[base + offset] += weight * self.rp_mass
 
+    # grid normalization
     @ti.kernel
     def grid_op(self):
         for i, j, k in self.grid_m:
+            # 对于所有权重大于零的例子（这个 201 lec7 里说的）
             if self.grid_m[i, j, k] > 0:
                 inv_m = 1 / self.grid_m[i, j, k]
+                # 速度加权平均
                 self.grid_v[i, j, k] = inv_m * self.grid_v[i, j, k]
                 self.grid_v[i, j, k].y -= self.dt * self.gravity
                 if i < self.bound and self.grid_v[i, j, k].x < 0:
@@ -551,7 +565,9 @@ class MpmLagSim:
 
     @ti.kernel
     def G2P(self):
+        # 以粒子为主体
         for p in self.x_soft:
+            # 每一个粒子把周围节点上的速度收集一下
             base = ti.cast(self.x_soft[p] * self.inv_dx - 0.5, ti.i32)
             fx = self.x_soft[p] * self.inv_dx - float(base)
             w = [0.5 * (1.5 - fx) ** 2, 0.75 - (fx - 1.0)
@@ -567,6 +583,7 @@ class MpmLagSim:
                 new_C += 4 * self.inv_dx * weight * g_v.outer_product(dpos)
 
             self.v_soft[p], self.C_soft[p] = new_v, new_C
+            # 显式欧拉法
             self.x_soft[p] += self.dt * self.v_soft[p]  # advection
 
         # for p in self.x_rigid:
@@ -630,8 +647,8 @@ class MpmLagSim:
             area = 0.5 * \
                 (self.tris_area_soft[face_inds[0]] +
                  self.tris_area_soft[face_inds[1]])
-            # self.energy_soft[None] += (theta - self.rest_bending_soft[bi]
-            #                            ) ** 2 * area * 0.3 * self.mu * self.bending_p
+            self.energy_soft[None] += (theta - self.rest_bending_soft[bi]
+                                       ) ** 2 * area * 0.3 * self.mu * self.bending_p
 
             theta = self.plastic_yield_bending(theta)
             self.energy_soft[None] += (theta - self.rest_bending_soft[bi]) ** 2 * area * 0.3 * self.mu

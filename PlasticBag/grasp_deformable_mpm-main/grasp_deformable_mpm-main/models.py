@@ -9,7 +9,7 @@ from typing import List, Dict
 import numpy as np
 import trimesh
 from os.path import join as pjoin
-from sim import RigidBody, MpmLagSim
+from sim import RigidBody, MpmLagSim, MpmTetLagSim
 import time 
 from utils import transform_verts
 from icecream import ic 
@@ -116,7 +116,7 @@ if __name__ == '__main__':
     root_tf = np.eye(4)
     root_tf[:3, 3] = [0.03, 0.15, 0.26]
     mano_hand = ManoHand(mano_urdf_path, root_tf)
-    sim = MpmLagSim(origin=np.asarray([-0.5,] * 3))
+    sim = MpmTetLagSim(origin=np.asarray([-0.5,] * 3))
     for rigid in mano_hand.link_rigids:
         sim.add_kinematic_rigid(rigid)
     box_mesh = trimesh.load_mesh(pjoin('./data/object_meshes', 'box.obj'))
