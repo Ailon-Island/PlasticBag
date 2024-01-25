@@ -272,11 +272,11 @@ class MpmSim:
                     self.grid_v[i, j, k].x *= -0.5
                 if j < self.bound and self.grid_v[i, j, k].y < 0:
                     self.grid_v[i, j, k].y *= -0.5
-                if j > self.n_grids - self.bound and self.grid_v[i, j,k].y > 0:
+                if j > self.n_grids - self.bound and self.grid_v[i, j, k].y > 0:
                     self.grid_v[i, j, k].y *= -0.5
                 if k < self.bound and self.grid_v[i, j, k].z < 0:
                     self.grid_v[i, j, k].z *= -0.5
-                if k > self.n_grids - self.bound and self.grid_v[i, j,k].z > 0:
+                if k > self.n_grids - self.bound and self.grid_v[i, j, k].z > 0:
                     self.grid_v[i, j, k].z *= -0.5
 
     @ti.kernel
@@ -337,21 +337,24 @@ class MpmLagSim:
         self.dt = dt
         # 128
         self.n_grids = n_grids
+        # scale = 1m
         self.scale = scale
+        # 1 / 128
         self.dx = 1. / self.n_grids
         self.inv_dx = self.n_grids
         self.origin = origin
         # 空间范围（超过会回弹）
         self.bound = 30
-        self.gravity = 1
+        self.gravity = 9.8
         self.bending_p = 0.05
         self.lift_state = 0
         self.clear_bodies()
 
         # TODO: align these parameters in the future
-        self.p_vol, self.p_rho = (self.dx * 0.5)**2, 1
+        self.p_vol, self.p_rho = (self.dx * 0.5)**2, 0.1
         self.p_mass = self.p_vol * self.p_rho
         self.rp_rho = 10
+        # rigid part
         self.rp_mass = self.p_vol * self.rp_rho
 
         E, nu = 1e1, 0.49
@@ -363,9 +366,9 @@ class MpmLagSim:
         self.canvas = self.window.get_canvas()
         self.scene = ti.ui.Scene()
         self.camera = ti.ui.Camera()
-        self.camera.position(-0.7, 0.7, 0.3)
+        self.camera.position(+0.7, 0.7, 0.3)
         self.camera.lookat(0.5, 0.5, 0.5)
-        self.canvas.set_background_color((1,1,1))
+        self.canvas.set_background_color((1, 1, 1))
 
     def clear_bodies(self):
         self.rigid_bodies: List[RigidBody] = []
@@ -400,7 +403,7 @@ class MpmLagSim:
         self.grid_m = scalars(T, (self.n_grids, self.n_grids, self.n_grids))
 
         self.x_soft.from_numpy(np.asarray(
-            self.soft_mesh.vertices) - self.origin)
+            self.soft_mesh.vertices) - self.origin)  # 这里是减
         self.tris_soft.from_numpy(np.asarray(self.soft_mesh.faces))
         soft_face_adjacency = self.soft_mesh.face_adjacency
         self.n_soft_bends = soft_face_adjacency.shape[0]
@@ -410,9 +413,21 @@ class MpmLagSim:
         self.bending_edges = vecs(2, int, self.n_soft_bends)
         self.bending_edges.from_numpy(self.soft_mesh.face_adjacency_edges)
         # x_rigid = np.concatenate(
-            # [b.rest_pos for b in self.rigid_bodies], axis=0) - self.origin
+        # [b.rest_pos for b in self.rigid_bodies], axis=0) - self.origin
         # self.x_rigid.from_numpy(x_rigid)
         self.init_field()
+
+        self.lines = ti.Vector.field(3, ti.f32, 8)
+        height = 30 / 128
+        size = 1
+        self.lines[0] = [0, height, 0]
+        self.lines[1] = [+size, height, 0]
+        self.lines[2] = [+size, height, 0]
+        self.lines[3] = [+size, height, +size]
+        self.lines[4] = [+size, height, +size]
+        self.lines[5] = [0, height, +size]
+        self.lines[6] = [0, height, +size]
+        self.lines[7] = [0, height, 0]
 
     @ti.func
     def compute_T_soft(self, i):
@@ -445,7 +460,7 @@ class MpmLagSim:
     @ti.kernel
     def init_field(self):
         for i in ti.ndrange(self.n_soft_verts):
-            self.v_soft[i] = ti.Vector([0,0,0],T)
+            self.v_soft[i] = ti.Vector([0, 0, 0], T)
             # self.v_rigid[i] = ti.Vector.zero(T, 3)
             self.C_soft[i] = ti.Matrix.zero(T, 3, 3)
 
@@ -504,10 +519,17 @@ class MpmLagSim:
     # 粒子传输信息到网格
     @ti.kernel
     def P2G(self):
+        # cnt = 0
         for p in self.x_soft:
             # games 201 lec 7 19:01
-            # base: 一个三维向量 
+            # base: 一个三维向量
+            # (-23?) / (1) - 0.5 == -24?
+            # 传递给所属网格和周围网格
             base = ti.cast(self.x_soft[p] * self.inv_dx - 0.5, ti.i32)
+            # if not cnt:
+            #     cnt = 1
+            #     print(base, self.x_soft[p])
+
             fx = self.x_soft[p] * self.inv_dx - ti.cast(base, float)
             # 二次衰减函数，权重
             w = [0.5 * (1.5 - fx) ** 2, 0.75 - (fx - 1)
@@ -543,6 +565,7 @@ class MpmLagSim:
     def grid_op(self):
         for i, j, k in self.grid_m:
             # 对于所有权重大于零的例子（这个 201 lec7 里说的）
+            # 30 / 128 左右的网格会将收到的速度反弹
             if self.grid_m[i, j, k] > 0:
                 inv_m = 1 / self.grid_m[i, j, k]
                 # 速度加权平均
@@ -556,11 +579,11 @@ class MpmLagSim:
                     self.grid_v[i, j, k].y *= -0.001
                     self.grid_v[i, j, k].x *= 0.99
                     self.grid_v[i, j, k].z *= 0.99
-                if j > self.n_grids - self.bound and self.grid_v[i, j,k].y > 0:
+                if j > self.n_grids - self.bound and self.grid_v[i, j, k].y > 0:
                     self.grid_v[i, j, k].y *= -0.5
                 if k < self.bound and self.grid_v[i, j, k].z < 0:
                     self.grid_v[i, j, k].z *= -0.5
-                if k > self.n_grids - self.bound and self.grid_v[i, j,k].z > 0:
+                if k > self.n_grids - self.bound and self.grid_v[i, j, k].z > 0:
                     self.grid_v[i, j, k].z *= -0.5
 
     @ti.kernel
@@ -608,7 +631,7 @@ class MpmLagSim:
 
             self.v_soft[p], self.C_soft[p] = new_v, new_C
             self.x_soft[p] += self.dt * self.v_soft[p]  # advection
-        lift_up = [0.0,0.3,0.0]
+        lift_up = [0.0, 0.3, 0.0]
         self.v_soft[100] += lift_up
         self.v_soft[90] += lift_up
         self.v_soft[91] += lift_up
@@ -616,9 +639,8 @@ class MpmLagSim:
         self.v_soft[103] += lift_up
         self.v_soft[104] += lift_up
 
-
-    
     # reference: https://github.com/zenustech/zeno/blob/master/projects/CuLagrange/fem/Generation.cpp
+
     @ti.kernel
     def compute_energy_soft(self):
         for i in range(self.n_soft_tris):
@@ -651,8 +673,9 @@ class MpmLagSim:
                                        ) ** 2 * area * 0.3 * self.mu * self.bending_p
 
             theta = self.plastic_yield_bending(theta)
-            self.energy_soft[None] += (theta - self.rest_bending_soft[bi]) ** 2 * area * 0.3 * self.mu
-    
+            self.energy_soft[None] += (theta - self.rest_bending_soft[bi]
+                                       ) ** 2 * area * 0.3 * self.mu
+
     def plastic_yield_bending(self, theta):
         yield_angle = 0.001  # to be adjusted
         if abs(theta) > yield_angle:
@@ -660,7 +683,6 @@ class MpmLagSim:
         else:
             theta_plastic = theta
         return theta_plastic
-
 
     # def add_kinematic_rigid(self, body: RigidBody):
     #     self.rigid_bodies.append(body)
@@ -698,6 +720,7 @@ class MpmLagSim:
             0.68, 0.26, 0.19), radius=0.0005)
         # self.scene.particles(self.x_rigid, color=(
         #     0.19, 0.26, 0.68), radius=0.002)
+        self.scene.lines(self.lines, 2)
 
     def show(self):
         self.canvas.scene(self.scene)
@@ -966,7 +989,8 @@ class MpmTetLagSim:
         self.n_soft_tets = body_mesh.n_tets
         self.is_surface_soft = scalars(bool, (self.n_soft_verts))
         self.is_surface_soft.fill(False)
-        self.soft_surf_vinds = scalars(int, (self.soft_mesh.surf_vert_inds.shape[0]))
+        self.soft_surf_vinds = scalars(
+            int, (self.soft_mesh.surf_vert_inds.shape[0]))
         self.soft_surf_vinds.from_numpy(self.soft_mesh.surf_vert_inds)
         self.compute_is_surface_soft()
         pos_mask = (self.soft_mesh.verts - self.origin) < 0
