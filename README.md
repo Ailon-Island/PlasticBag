@@ -1,4 +1,11 @@
+https://www.zhihu.com/question/26857155/answer/34302189
+
+## Todo
+
+- 显示受力。
+
 # PlasticBag
+
 Just a Plastic Bag Simulator
 
 ## MPM vs FEM: 为什么使用 MPM（我也不知道）

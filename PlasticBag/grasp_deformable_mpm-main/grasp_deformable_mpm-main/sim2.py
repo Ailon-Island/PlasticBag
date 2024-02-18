@@ -93,11 +93,13 @@ class MpmLagSim:
         # 空间范围（超过会回弹）
         self.bound = 30
         self.gravity = 9.8
-        self.bending_p = 0.05
+        # 弹性系数吧
+        self.bending_p = 0.1
         self.lift_state = 0
         self.clear_bodies()
 
         # TODO: align these parameters in the future
+        # what is p? oh particle
         self.p_vol, self.p_rho = (self.dx * 0.5)**2, 0.1
         self.p_mass = self.p_vol * self.p_rho
         self.rp_rho = 10
@@ -137,11 +139,15 @@ class MpmLagSim:
     def init_sim(self):
         self.x_soft = vecs(3, T, self.n_soft_verts, needs_grad=True)
         self.v_soft = vecs(3, T, self.n_soft_verts)
+        # 好像是上一帧求出来的什么玩意
+        # ref: lec7 29:42
         self.C_soft = mats(3, 3, T, self.n_soft_verts)
-        self.restInvT_soft = mats(2, 2, T, self.n_soft_tris)
+        # i 号三角形专属的神奇矩阵
+        self.restInvT_soft = mats(2, 2, T, self.n_soft_tris)  # 数量 = 三角形数量
         self.energy_soft = scalars(T, shape=(), needs_grad=True)
         self.tris_soft = scalars(int, (self.n_soft_tris, 3))
         self.nrm_soft = vecs(3, T, self.n_soft_tris)
+        # i 号三角形的面积
         self.tris_area_soft = scalars(float, (self.n_soft_tris,))
         # self.x_rigid = vecs(3, T, self.n_rigid_pars)
         # self.v_rigid = vecs(3, T, self.n_rigid_pars)
@@ -152,36 +158,77 @@ class MpmLagSim:
         self.x_soft.from_numpy(np.asarray(
             self.soft_mesh.vertices) - self.origin)  # 这里是减
         self.tris_soft.from_numpy(np.asarray(self.soft_mesh.faces))
+        self.tris_soft_expanded = scalars(ti.i32, self.n_soft_tris * 3)
+        for i, j in ti.ndrange(self.n_soft_tris, 3):
+            self.tris_soft_expanded[i * 3 + j] = self.tris_soft[i, j]
         soft_face_adjacency = self.soft_mesh.face_adjacency
         self.n_soft_bends = soft_face_adjacency.shape[0]
         self.bending_faces = vecs(2, int, self.n_soft_bends)
+        # 原始情况下的弯角度
         self.rest_bending_soft = scalars(T, shape=(self.n_soft_bends,))
+        # 类似于 (序号 1, 序号 2) 表示这两个下表的三角形相邻（估计） 三角形.下标.tuple
         self.bending_faces.from_numpy(soft_face_adjacency)
         self.bending_edges = vecs(2, int, self.n_soft_bends)
+        # soft_mesh 用 trimesh 库加载的一个文件，加载时属性都有了
+        # 这里是点.下标.tuple
         self.bending_edges.from_numpy(self.soft_mesh.face_adjacency_edges)
         # x_rigid = np.concatenate(
         # [b.rest_pos for b in self.rigid_bodies], axis=0) - self.origin
         # self.x_rigid.from_numpy(x_rigid)
         self.init_field()
 
-        self.lines = ti.Vector.field(3, ti.f32, 8)
-        height = 30 / 128
+        # 地面显示
+        # self.lines = ti.Vector.field(3, ti.f32, 8)
+        height = 29 / 128
         size = 1
-        self.lines[0] = [0, height, 0]
-        self.lines[1] = [+size, height, 0]
-        self.lines[2] = [+size, height, 0]
-        self.lines[3] = [+size, height, +size]
-        self.lines[4] = [+size, height, +size]
-        self.lines[5] = [0, height, +size]
-        self.lines[6] = [0, height, +size]
-        self.lines[7] = [0, height, 0]
+        # self.lines[0] = [0, height, 0]
+        # self.lines[1] = [+size, height, 0]
+        # self.lines[2] = [+size, height, 0]
+        # self.lines[3] = [+size, height, +size]
+        # self.lines[4] = [+size, height, +size]
+        # self.lines[5] = [0, height, +size]
+        # self.lines[6] = [0, height, +size]
+        # self.lines[7] = [0, height, 0]
+
+        self.plane = vecs(3, ti.f32, 4)
+        self.plane.from_numpy(np.array(
+            [
+                [0, height, 0],
+                [size, height, 0],
+                [size, height, size],
+                [0, height, size]
+            ]
+        ))
+        self.plane_vertices_color = vecs(3, ti.f32, 4)
+        self.plane_vertices_color.from_numpy(np.array(
+            [
+                [1, 0, 0],
+                [0, 1, 0],
+                [0, 0, 1],
+                [1, 0, 1],
+            ]
+        ))
+
+        self.plane_triangles = vecs(1, ti.i32, 6)
+        self.plane_triangles.from_numpy(np.array(
+            [
+                [0],
+                [1],
+                [2],
+                [0],
+                [3],
+                [2],
+            ]
+        ))
 
     @ti.func
     def compute_T_soft(self, i):
-        a, b, c = self.tris_soft[i,
-                                 0], self.tris_soft[i, 1], self.tris_soft[i, 2]
+        # what's this 三角..
+        a, b, c = \
+            self.tris_soft[i, 0], self.tris_soft[i, 1], self.tris_soft[i, 2]
         xab = self.x_soft[b] - self.x_soft[a]
         xac = self.x_soft[c] - self.x_soft[a]
+        # 第一列是 a -> b 这条边
         return ti.Matrix([
             [xab[0], xac[0]],
             [xab[1], xac[1]],
@@ -196,10 +243,11 @@ class MpmLagSim:
         xac = self.x_soft[c] - self.x_soft[a]
         return 0.5 * xab.cross(xac).norm()
 
+    # i 号三角形的法线向量
     @ti.func
     def compute_normal_soft(self, i):
-        a, b, c = self.tris_soft[i,
-                                 0], self.tris_soft[i, 1], self.tris_soft[i, 2]
+        a, b, c = \
+            self.tris_soft[i, 0], self.tris_soft[i, 1], self.tris_soft[i, 2]
         xab = self.x_soft[b] - self.x_soft[a]
         xac = self.x_soft[c] - self.x_soft[a]
         return xab.cross(xac).normalized()
@@ -212,10 +260,11 @@ class MpmLagSim:
             self.C_soft[i] = ti.Matrix.zero(T, 3, 3)
 
         for i in range(self.n_soft_tris):
-            ds = self.compute_T_soft(i)
+            ds = self.compute_T_soft(i)  # i 号三角形的各条边
             ds0 = ti.Vector([ds[0, 0], ds[1, 0], ds[2, 0]])
             ds1 = ti.Vector([ds[0, 1], ds[1, 1], ds[2, 1]])
             ds0_norm = ds0.norm()
+            # 神奇矩阵的逆
             IB = ti.Matrix([
                 [ds0_norm, ds0.dot(ds1) / ds0_norm],
                 [0, ds0.cross(ds1).norm() / ds0_norm]
@@ -223,22 +272,30 @@ class MpmLagSim:
             if ti.math.isnan(IB).sum():
                 print('[nan detected during IB computation]')
                 IB = ti.Matrix.zero(T, 2, 2)
+            # i 号三角形专属的神奇矩阵
             self.restInvT_soft[i] = IB
             self.tris_area_soft[i] = self.compute_area_soft(i)
+            # i 号三角形的朝向 (ab 为 x 轴，ac 为 y 轴情况下的 z 轴方向)
             self.nrm_soft[i] = self.compute_normal_soft(i)
 
+        # 对折线
         for bi in range(self.n_soft_bends):
+            # 果然是相邻三角形的下表吼
             face_inds = self.bending_faces[bi]
             n0 = self.compute_normal_soft(face_inds[0])
             n1 = self.compute_normal_soft(face_inds[1])
             theta = ti.acos(n0.dot(n1))
             theta = ti.max(theta, ti.abs(self.eps))
             edge_inds = self.bending_edges[bi]
+            # 边向量
             edge = (self.x_soft[edge_inds[1]] -
                     self.x_soft[edge_inds[0]]).normalized()
             sin_theta = n0.cross(n1).dot(edge)
             if sin_theta < 0:
                 theta = - theta
+            # 存了一个 ((n0 cross n1) dot edge).abs
+            # 这里 n0 cross n1 和 edge 总是平行的
+            # 韧性系数呢？
             self.rest_bending_soft[bi] = theta
 
     def substep(self):
@@ -249,46 +306,61 @@ class MpmLagSim:
         with ti.ad.Tape(self.energy_soft):
             self.compute_energy_soft()  # TODO
         # 物质点法MPM
-        self.P2G()
+        self.p2g()
         self.grid_op()
-        self.G2P()
+        self.g2p()
 
     def substep_1(self):
         self.grid_m.fill(0)
         self.grid_v.fill(0)
         self.energy_soft[None] = 0
         with ti.ad.Tape(self.energy_soft):
+            # 猜猜这是干啥用的
             self.compute_energy_soft()  # TODO
-        self.P2G()
+        self.p2g()
         self.grid_op()
         self.G2P_1()
 
     # 粒子传输信息到网格
     @ti.kernel
-    def P2G(self):
+    def p2g(self):
         # cnt = 0
         for p in self.x_soft:
-            # games 201 lec 7 19:01
-            # base: 一个三维向量
-            # (-23?) / (1) - 0.5 == -24?
+            # ref: games 201 lec 7 19:01
+            # base: 一个三维向量表示下标，全是正的
             # 传递给所属网格和周围网格
+            # x_soft: 50.1, 50.5, 50.8
+            # dx = inv_dx = 1.0
+            # base = 49, 50, 50
             base = ti.cast(self.x_soft[p] * self.inv_dx - 0.5, ti.i32)
             # if not cnt:
             #     cnt = 1
             #     print(base, self.x_soft[p])
 
+            # fx = 1.1, 0.5, 0.8
             fx = self.x_soft[p] * self.inv_dx - ti.cast(base, float)
             # 二次衰减函数，权重
+            # 50.1 - 49, 50, 51: w = [[x: 0.08..], [x: 0.74], [x: 0.18] ]
+            # 50.5 - 50, 51, 52: w = [[x: 0.5..], [x: 0.5], [x: 0] ] 神奇
             w = [0.5 * (1.5 - fx) ** 2, 0.75 - (fx - 1)
                  ** 2, 0.5 * (fx - 0.5) ** 2]
+            # lec 7 也有这个
+            # 这是用来解决 g (27 dof) -> p (3 dof) 信息丢失问题的
+            # pic 对速度场进行平均化，dilation 运动由于 grid 速度不一样（比如一正一反），所以会趋于 0
+            # affine 速度场
             affine = self.p_mass * self.C_soft[p]
             # 求 3 * 3 * 3 范围内节点的坐标
             for i, j, k in ti.static(ti.ndrange(3, 3, 3)):
                 offset = ti.Vector([i, j, k])
-                dpos = (offset.cast(float) - fx) * self.dx
+                # (1, 1, 1) - (1.1, 0.5, 0.8) =  (-0.1, 0.5, 0.2)
+                dpos = (offset.cast(float) - fx) * \
+                    self.dx  # ijk 格点相对 x_soft 的坐标
+                # x, y, z 分量上的权重乘起来
+                # i: 0, 1, 2  j: 0, 1, 2
                 weight = w[i][0] * w[j][1] * w[k][2]
                 if not ti.math.isnan(self.x_soft.grad[p]).sum():
                     # 物理量（速度），带权重
+                    # wt hell is x_soft.grad?
                     self.grid_v[base + offset] += weight * (
                         self.p_mass * self.v_soft[p] - self.dt * self.x_soft.grad[p] + affine @ dpos)
                     # 权重的和
@@ -334,7 +406,7 @@ class MpmLagSim:
                     self.grid_v[i, j, k].z *= -0.5
 
     @ti.kernel
-    def G2P(self):
+    def g2p(self):
         # 以粒子为主体
         for p in self.x_soft:
             # 每一个粒子把周围节点上的速度收集一下
@@ -350,11 +422,14 @@ class MpmLagSim:
                 g_v = self.grid_v[base + ti.Vector([i, j, k])]
                 weight = w[i][0] * w[j][1] * w[k][2]
                 new_v += weight * g_v
+                # ref: lec 7 35:42
+                # C: 速度的梯度
                 new_C += 4 * self.inv_dx * weight * g_v.outer_product(dpos)
 
             self.v_soft[p], self.C_soft[p] = new_v, new_C
             # 显式欧拉法
             self.x_soft[p] += self.dt * self.v_soft[p]  # advection
+            # J[p] *= 1 + dt * new_C.trace()
 
         # for p in self.x_rigid:
         #     self.x_rigid[p] += self.dt * self.v_rigid[p]
@@ -378,7 +453,7 @@ class MpmLagSim:
 
             self.v_soft[p], self.C_soft[p] = new_v, new_C
             self.x_soft[p] += self.dt * self.v_soft[p]  # advection
-        lift_up = [0.0, 0.3, 0.0]
+        lift_up = [0.0, 1.0, 0.0]
         self.v_soft[100] += lift_up
         self.v_soft[90] += lift_up
         self.v_soft[91] += lift_up
@@ -386,11 +461,12 @@ class MpmLagSim:
         self.v_soft[103] += lift_up
         self.v_soft[104] += lift_up
 
-    # reference: https://github.com/zenustech/zeno/blob/master/projects/CuLagrange/fem/Generation.cpp
-
     @ti.kernel
     def compute_energy_soft(self):
+        # get deformation gradient?
+        # 求了一个 grad
         for i in range(self.n_soft_tris):
+            # i 号三角形的各条边
             Ds = self.compute_T_soft(i)
             F = Ds @ self.restInvT_soft[i]
             f0 = ti.Vector([F[0, 0], F[1, 0], F[2, 0]])
@@ -398,6 +474,7 @@ class MpmLagSim:
             Estretch = self.mu * self.tris_area_soft[i] * \
                 ((f0.norm() - 1) ** 2 + (f1.norm() - 1) ** 2)
             Eshear = self.mu * 0.3 * self.tris_area_soft[i] * f0.dot(f1) ** 2
+            # 抗面积变化
             self.energy_soft[None] += Eshear + Estretch
 
         # bending
@@ -416,10 +493,13 @@ class MpmLagSim:
             area = 0.5 * \
                 (self.tris_area_soft[face_inds[0]] +
                  self.tris_area_soft[face_inds[1]])
+            # bending, 抗弯折
+            # 放松状态下
             self.energy_soft[None] += (theta - self.rest_bending_soft[bi]
                                        ) ** 2 * area * 0.3 * self.mu * self.bending_p
 
             theta = self.plastic_yield_bending(theta)
+            #
             self.energy_soft[None] += (theta - self.rest_bending_soft[bi]
                                        ) ** 2 * area * 0.3 * self.mu
 
@@ -441,7 +521,9 @@ class MpmLagSim:
     #         print(
     #             'MpmLagSim: kinematic rigid body trying to be added is out of the bounding box!')
 
+    # 主函数中调用
     def set_soft(self, body_mesh: trimesh.Trimesh):
+        # 来自这里
         self.soft_mesh = body_mesh
         self.n_soft_verts = body_mesh.vertices.shape[0]
         self.n_soft_tris = body_mesh.faces.shape[0]
@@ -467,7 +549,10 @@ class MpmLagSim:
             0.68, 0.26, 0.19), radius=0.0005)
         # self.scene.particles(self.x_rigid, color=(
         #     0.19, 0.26, 0.68), radius=0.002)
-        self.scene.lines(self.lines, 2)
+        # self.scene.lines(self.lines, 2)
+        self.scene.mesh(self.x_soft, self.tris_soft_expanded)
+        self.scene.mesh(self.plane, self.plane_triangles)
+        # per_vertex_color=self.plane_vertices_color)
 
     def show(self):
         self.canvas.scene(self.scene)
