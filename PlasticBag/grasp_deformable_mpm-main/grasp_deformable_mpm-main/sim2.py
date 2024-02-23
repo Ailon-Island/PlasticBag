@@ -93,10 +93,12 @@ class MpmLagSim:
         # 空间范围（超过会回弹）
         self.bound = 30
         self.gravity = 9.8
-        # 弹性系数吧
-        self.bending_p = 0.1
+        # 韧劲系数
+        self.bending_p = 3.0
         self.lift_state = 0
         self.clear_bodies()
+
+        # interface param
 
         # TODO: align these parameters in the future
         # what is p? oh particle
@@ -106,7 +108,10 @@ class MpmLagSim:
         # rigid part
         self.rp_mass = self.p_vol * self.rp_rho
 
-        E, nu = 1e1, 0.49
+        # E 早先采用 1e1，很软
+        # 调大 E 可以变硬
+        E, nu = 3e1, 0.49
+        # 这什么系数啊
         self.mu, self.lam = E / (2 * (1 + nu)), E * \
             nu / ((1 + nu) * (1 - 2 * nu))
         self.eps = 1e-6
@@ -145,7 +150,6 @@ class MpmLagSim:
         # i 号三角形专属的神奇矩阵
         self.restInvT_soft = mats(2, 2, T, self.n_soft_tris)  # 数量 = 三角形数量
         self.energy_soft = scalars(T, shape=(), needs_grad=True)
-        self.tris_soft = scalars(int, (self.n_soft_tris, 3))
         self.nrm_soft = vecs(3, T, self.n_soft_tris)
         # i 号三角形的面积
         self.tris_area_soft = scalars(float, (self.n_soft_tris,))
@@ -157,10 +161,14 @@ class MpmLagSim:
 
         self.x_soft.from_numpy(np.asarray(
             self.soft_mesh.vertices) - self.origin)  # 这里是减
+
+        self.tris_soft = scalars(int, (self.n_soft_tris, 3))
         self.tris_soft.from_numpy(np.asarray(self.soft_mesh.faces))
+
         self.tris_soft_expanded = scalars(ti.i32, self.n_soft_tris * 3)
         for i, j in ti.ndrange(self.n_soft_tris, 3):
             self.tris_soft_expanded[i * 3 + j] = self.tris_soft[i, j]
+
         soft_face_adjacency = self.soft_mesh.face_adjacency
         self.n_soft_bends = soft_face_adjacency.shape[0]
         self.bending_faces = vecs(2, int, self.n_soft_bends)
@@ -168,10 +176,20 @@ class MpmLagSim:
         self.rest_bending_soft = scalars(T, shape=(self.n_soft_bends,))
         # 类似于 (序号 1, 序号 2) 表示这两个下表的三角形相邻（估计） 三角形.下标.tuple
         self.bending_faces.from_numpy(soft_face_adjacency)
-        self.bending_edges = vecs(2, int, self.n_soft_bends)
         # soft_mesh 用 trimesh 库加载的一个文件，加载时属性都有了
         # 这里是点.下标.tuple
+        self.bending_edges = vecs(2, int, self.n_soft_bends)
         self.bending_edges.from_numpy(self.soft_mesh.face_adjacency_edges)
+        self.bending_edges_expanded = scalars(ti.i32, self.n_soft_bends * 2)
+        for i, j in ti.ndrange(self.n_soft_bends, 2):
+            self.bending_edges_expanded[i * 2 + j] = self.bending_edges[i][j]
+
+        self.soft_verts_color = vecs(3, ti.f32, self.n_soft_verts)
+        self.verts_linked_to_how_many_tris = scalars(int, self.n_soft_verts)
+        for i, j in ti.ndrange(self.n_soft_tris, 3):
+            self.verts_linked_to_how_many_tris[self.tris_soft[i, j]] += 1
+        # print('#1', self.n_soft_verts, self.x_soft.shape, self.tris_soft.shape)
+        # #1 4997 (4997,) (9997, 3)
         # x_rigid = np.concatenate(
         # [b.rest_pos for b in self.rigid_bodies], axis=0) - self.origin
         # self.x_rigid.from_numpy(x_rigid)
@@ -303,29 +321,26 @@ class MpmLagSim:
         self.grid_m.fill(0)
         self.grid_v.fill(0)
         self.energy_soft[None] = 0
+        self.soft_verts_color.fill(0.5)
         with ti.ad.Tape(self.energy_soft):
-            self.compute_energy_soft()  # TODO
-        # 物质点法MPM
+            # 这玩意为什么执行了两次
+            self.compute_tris_energy()  # TODO
+            print('Energy:')
+            print(self.energy_soft[None])
+            self.compute_bending_energy()  # TODO
+            print(self.energy_soft[None])
+        self.compute_color()
+        # 物质点
         self.p2g()
         self.grid_op()
         self.g2p()
-
-    def substep_1(self):
-        self.grid_m.fill(0)
-        self.grid_v.fill(0)
-        self.energy_soft[None] = 0
-        with ti.ad.Tape(self.energy_soft):
-            # 猜猜这是干啥用的
-            self.compute_energy_soft()  # TODO
-        self.p2g()
-        self.grid_op()
-        self.G2P_1()
 
     # 粒子传输信息到网格
     @ti.kernel
     def p2g(self):
         # cnt = 0
         for p in self.x_soft:
+            # p 是一个下标...
             # ref: games 201 lec 7 19:01
             # base: 一个三维向量表示下标，全是正的
             # 传递给所属网格和周围网格
@@ -349,7 +364,9 @@ class MpmLagSim:
             # pic 对速度场进行平均化，dilation 运动由于 grid 速度不一样（比如一正一反），所以会趋于 0
             # affine 速度场
             affine = self.p_mass * self.C_soft[p]
-            # 求 3 * 3 * 3 范围内节点的坐标
+            # for j in ti.static(ti.ndrange(3)):
+            #     self.soft_verts_color[p][j] += max(-0.5, min(
+            #         0.5, self.x_soft.grad[p][j] / 0.003 * 0.5))
             for i, j, k in ti.static(ti.ndrange(3, 3, 3)):
                 offset = ti.Vector([i, j, k])
                 # (1, 1, 1) - (1.1, 0.5, 0.8) =  (-0.1, 0.5, 0.2)
@@ -462,7 +479,7 @@ class MpmLagSim:
         self.v_soft[104] += lift_up
 
     @ti.kernel
-    def compute_energy_soft(self):
+    def compute_tris_energy(self):
         # get deformation gradient?
         # 求了一个 grad
         for i in range(self.n_soft_tris):
@@ -473,10 +490,18 @@ class MpmLagSim:
             f1 = ti.Vector([F[0, 1], F[1, 1], F[2, 1]])
             Estretch = self.mu * self.tris_area_soft[i] * \
                 ((f0.norm() - 1) ** 2 + (f1.norm() - 1) ** 2)
+            # 压力红色，张力蓝色，默认灰色
+            # 剪切力，断裂力
             Eshear = self.mu * 0.3 * self.tris_area_soft[i] * f0.dot(f1) ** 2
+
+            # if i == 0:
+            #     print('#2', Estretch, Eshear)
+            # 通常是 0 并且不是 0 也很小
             # 抗面积变化
             self.energy_soft[None] += Eshear + Estretch
 
+    @ti.kernel
+    def compute_bending_energy(self):
         # bending
         for bi in range(self.n_soft_bends):
             face_inds = self.bending_faces[bi]
@@ -495,14 +520,34 @@ class MpmLagSim:
                  self.tris_area_soft[face_inds[1]])
             # bending, 抗弯折
             # 放松状态下
+            # 这是带 bending_p 的
+            # 可以改变舒服角度
             self.energy_soft[None] += (theta - self.rest_bending_soft[bi]
                                        ) ** 2 * area * 0.3 * self.mu * self.bending_p
+            # if bi < self.n_soft_bends // 2:
+            #     self.rest_bending_soft[bi] = theta
 
-            theta = self.plastic_yield_bending(theta)
+            # theta = self.plastic_yield_bending(theta)
             #
-            self.energy_soft[None] += (theta - self.rest_bending_soft[bi]
-                                       ) ** 2 * area * 0.3 * self.mu
+            # self.energy_soft[None] += (theta - self.rest_bending_soft[bi]
+            #                            ) ** 2 * area * 0.3 * self.mu
 
+    @ti.kernel
+    def compute_color(self):
+        for i in range(self.n_soft_tris):
+            area_coeff = (self.compute_area_soft(
+                i) / self.tris_area_soft[i] - 1) / 2.0 * 10
+            area_coeff = max(-0.5, min(0.5, area_coeff))
+            # if i == 9:
+            #     print('#1', area_coeff)
+            # max_coe = max(max_coe, area_coeff)
+            for j in range(3):
+                self.soft_verts_color[self.tris_soft[i, j]
+                                      ][0] += max(-area_coeff, 0) / self.verts_linked_to_how_many_tris[self.tris_soft[i, j]]
+                self.soft_verts_color[self.tris_soft[i, j]
+                                      ][2] += max(area_coeff, 0) / self.verts_linked_to_how_many_tris[self.tris_soft[i, j]]
+
+    # 将输入角度的绝对值限制在一个范围内
     def plastic_yield_bending(self, theta):
         yield_angle = 0.001  # to be adjusted
         if abs(theta) > yield_angle:
@@ -545,12 +590,16 @@ class MpmLagSim:
         self.scene.ambient_light((0.8, 0.8, 0.8))
         self.scene.point_light(pos=(0.5, 1.5, 1.5), color=(1, 1, 1))
 
-        self.scene.particles(self.x_soft, color=(
-            0.68, 0.26, 0.19), radius=0.0005)
+        # self.scene.particles(self.x_soft, color=(
+        #     0.68, 0.26, 0.19), radius=0.0005)
         # self.scene.particles(self.x_rigid, color=(
         #     0.19, 0.26, 0.68), radius=0.002)
-        # self.scene.lines(self.lines, 2)
-        self.scene.mesh(self.x_soft, self.tris_soft_expanded)
+        # print(self.x_soft.shape, self.bending_edges_expanded.shape)
+        # self.scene.lines(self.x_soft, width=1,
+        #                  indices=self.bending_edges_expanded)
+        # print("#4", self.soft_verts_color[9])
+        self.scene.mesh(self.x_soft, self.tris_soft_expanded,
+                        per_vertex_color=self.soft_verts_color)
         self.scene.mesh(self.plane, self.plane_triangles)
         # per_vertex_color=self.plane_vertices_color)
 

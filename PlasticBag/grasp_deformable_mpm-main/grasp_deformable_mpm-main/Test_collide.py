@@ -24,8 +24,8 @@ def test_lag_mpm():
         sim.camera.track_user_inputs(sim.window, 0.01 / 2, hold_key="h")
 
         if sim.window.is_pressed(ti.GUI.UP):
-            # print("hehe")
-            sim.substep_1()
+            print("hehe")
+
         else:
             sim.substep()
         if sim.window.is_pressed("r"):
