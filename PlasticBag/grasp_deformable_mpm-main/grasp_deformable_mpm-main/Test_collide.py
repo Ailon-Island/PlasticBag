@@ -15,7 +15,7 @@ def test_lag_mpm():
     # plastic_mesh = read_tet('./data/object_meshes/dumpling1_.vtk')
     sim.set_soft(plastic_mesh)
     sim.init_sim()
-    sim.bending_p = 0.5
+    sim.BENDING_P = 0.5
 
     while not sim.window.is_pressed(ti.GUI.ESCAPE):
         # if sim.window.is_pressed("w"):
@@ -23,11 +23,7 @@ def test_lag_mpm():
         # 老规矩 y 轴正方向朝上
         sim.camera.track_user_inputs(sim.window, 0.01 / 2, hold_key="h")
 
-        if sim.window.is_pressed(ti.GUI.UP):
-            print("hehe")
-
-        else:
-            sim.substep()
+        sim.substep()
         if sim.window.is_pressed("r"):
             sim.camera.position(-0.7, 0.7, 0.3)
             sim.camera.lookat(0.5, 0.5, 0.5)

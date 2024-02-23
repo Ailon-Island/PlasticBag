@@ -3,7 +3,7 @@ import time
 import trimesh
 import taichi as ti
 import numpy as np
-from utils import mat3, scalars, vecs, mats, T, TetMesh
+from utils import mat3, scalars, vecs, mats, T, TetMesh, deg2rad, rad2deg
 from typing import Optional, List
 from vedo import show
 from icecream import ic
@@ -81,6 +81,8 @@ class MpmLagSim:
                  origin: np.ndarray = np.zeros((3,), float),
                  n_grids: int = 128,
                  scale: float = 1.0) -> None:
+        self.compress_force = scalars(ti.i32, shape=())
+        # [init param]
         self.dt = dt
         # 128
         self.n_grids = n_grids
@@ -91,14 +93,17 @@ class MpmLagSim:
         self.inv_dx = self.n_grids
         self.origin = origin
         # 空间范围（超过会回弹）
+        # 这些在 taichi 中都是常数
         self.bound = 30
-        self.gravity = 9.8
+        self.GRAVITY = 9.8
+        self.COMPRESS_ACC = 200
         # 韧劲系数
-        self.bending_p = 3.0
+        self.BENDING_P = 9.0
         self.lift_state = 0
         self.clear_bodies()
-
-        # interface param
+        self.frame_cnt = 0
+        self.theta_cnt = scalars(ti.i32, ())
+        self.MAX_FOLD_ANGLE = 160
 
         # TODO: align these parameters in the future
         # what is p? oh particle
@@ -116,8 +121,9 @@ class MpmLagSim:
             nu / ((1 + nu) * (1 - 2 * nu))
         self.eps = 1e-6
 
-        self.window = ti.ui.Window("CPIC-Scene", (768, 768))
+        self.window = ti.ui.Window("CPIC-Scene", (1800, 1200))
         self.canvas = self.window.get_canvas()
+        self.gui = self.window.get_gui()
         self.scene = ti.ui.Scene()
         self.camera = ti.ui.Camera()
         self.camera.position(+0.7, 0.7, 0.3)
@@ -149,7 +155,7 @@ class MpmLagSim:
         self.C_soft = mats(3, 3, T, self.n_soft_verts)
         # i 号三角形专属的神奇矩阵
         self.restInvT_soft = mats(2, 2, T, self.n_soft_tris)  # 数量 = 三角形数量
-        self.energy_soft = scalars(T, shape=(), needs_grad=True)
+        self.soft_energy = scalars(T, shape=(), needs_grad=True)
         self.nrm_soft = vecs(3, T, self.n_soft_tris)
         # i 号三角形的面积
         self.tris_area_soft = scalars(float, (self.n_soft_tris,))
@@ -160,7 +166,9 @@ class MpmLagSim:
         self.grid_m = scalars(T, (self.n_grids, self.n_grids, self.n_grids))
 
         self.x_soft.from_numpy(np.asarray(
-            self.soft_mesh.vertices) - self.origin)  # 这里是减
+            self.soft_mesh.vertices) - self.origin)  # 这里是减 origin
+
+        self.init_center_x = ti.Vector.field(3, ti.f32, ())
 
         self.tris_soft = scalars(int, (self.n_soft_tris, 3))
         self.tris_soft.from_numpy(np.asarray(self.soft_mesh.faces))
@@ -174,12 +182,20 @@ class MpmLagSim:
         self.bending_faces = vecs(2, int, self.n_soft_bends)
         # 原始情况下的弯角度
         self.rest_bending_soft = scalars(T, shape=(self.n_soft_bends,))
+        self.rest_bending_sheared = scalars(T, shape=(self.n_soft_bends,))
         # 类似于 (序号 1, 序号 2) 表示这两个下表的三角形相邻（估计） 三角形.下标.tuple
         self.bending_faces.from_numpy(soft_face_adjacency)
         # soft_mesh 用 trimesh 库加载的一个文件，加载时属性都有了
         # 这里是点.下标.tuple
         self.bending_edges = vecs(2, int, self.n_soft_bends)
         self.bending_edges.from_numpy(self.soft_mesh.face_adjacency_edges)
+
+        self.edge_fold_coef = scalars(ti.f32, shape=(self.n_soft_bends,))
+
+        self.verts_linked_edges = [[] for _ in range(self.n_soft_verts)]
+        for i, j in ti.ndrange(self.n_soft_bends, 2):
+            self.verts_linked_edges[self.bending_edges[i][j]].append(i)
+
         self.bending_edges_expanded = scalars(ti.i32, self.n_soft_bends * 2)
         for i, j in ti.ndrange(self.n_soft_bends, 2):
             self.bending_edges_expanded[i * 2 + j] = self.bending_edges[i][j]
@@ -272,6 +288,10 @@ class MpmLagSim:
 
     @ti.kernel
     def init_field(self):
+        self.rest_bending_sheared.fill(1)
+        for i in self.x_soft:
+            self.init_center_x[None] += self.x_soft[i]
+        self.init_center_x[None] /= self.n_soft_verts
         for i in ti.ndrange(self.n_soft_verts):
             self.v_soft[i] = ti.Vector([0, 0, 0], T)
             # self.v_rigid[i] = ti.Vector.zero(T, 3)
@@ -320,15 +340,14 @@ class MpmLagSim:
         # 网格复原
         self.grid_m.fill(0)
         self.grid_v.fill(0)
-        self.energy_soft[None] = 0
+        self.edge_fold_coef.fill(0)
+        self.soft_energy[None] = 0
         self.soft_verts_color.fill(0.5)
-        with ti.ad.Tape(self.energy_soft):
+        self.ui_check()
+        with ti.ad.Tape(self.soft_energy):
             # 这玩意为什么执行了两次
-            self.compute_tris_energy()  # TODO
-            print('Energy:')
-            print(self.energy_soft[None])
-            self.compute_bending_energy()  # TODO
-            print(self.energy_soft[None])
+            self.compute_tris_energy()
+            self.compute_bending_energy()
         self.compute_color()
         # 物质点
         self.p2g()
@@ -395,10 +414,24 @@ class MpmLagSim:
         #         self.grid_v[base + offset] += weight * \
         #             self.rp_mass * self.v_rigid[p]
         #         self.grid_m[base + offset] += weight * self.rp_mass
+    def ui_check(self):
+        if self.window.is_pressed(ti.GUI.UP):
+            self.compress_force[None] = 1
+        elif self.window.is_pressed(ti.GUI.DOWN):
+            self.compress_force[None] = -1
+        else:
+            self.compress_force[None] = 0
 
     # grid normalization
     @ti.kernel
     def grid_op(self):
+        center_x = ti.Vector.zero(T, 3)
+        for i in self.x_soft:
+            center_x += self.x_soft[i]
+        center_x /= self.n_soft_verts
+        # print(2, self.compress_force[None])
+        # center_x = self.init_center_x[None]
+
         for i, j, k in self.grid_m:
             # 对于所有权重大于零的例子（这个 201 lec7 里说的）
             # 30 / 128 左右的网格会将收到的速度反弹
@@ -406,7 +439,15 @@ class MpmLagSim:
                 inv_m = 1 / self.grid_m[i, j, k]
                 # 速度加权平均
                 self.grid_v[i, j, k] = inv_m * self.grid_v[i, j, k]
-                self.grid_v[i, j, k].y -= self.dt * self.gravity
+                self.grid_v[i, j, k].y -= self.dt * self.GRAVITY
+                # 猜的
+                if self.compress_force[None] != 0:
+                    grid_x = ti.Vector([i, j, k]) * self.dx
+                    # 最终目标是有折叠性（没有什么延展性，类似于折叠门！）
+                    compress_dir = (center_x - grid_x).normalized() * \
+                        self.compress_force[None]
+                    self.grid_v[i, j, k] += self.COMPRESS_ACC * \
+                        self.dt * compress_dir
                 if i < self.bound and self.grid_v[i, j, k].x < 0:
                     self.grid_v[i, j, k].x *= -0.5
                 if i > self.n_grids - self.bound and self.grid_v[i, j, k].x > 0:
@@ -452,33 +493,6 @@ class MpmLagSim:
         #     self.x_rigid[p] += self.dt * self.v_rigid[p]
 
     @ti.kernel
-    def G2P_1(self):
-        for p in self.x_soft:
-            base = ti.cast(self.x_soft[p] * self.inv_dx - 0.5, ti.i32)
-            fx = self.x_soft[p] * self.inv_dx - float(base)
-            w = [0.5 * (1.5 - fx) ** 2, 0.75 - (fx - 1.0)
-                 ** 2, 0.5 * (fx - 0.5) ** 2]
-            new_v = ti.Vector.zero(T, 3)
-            new_C = ti.Matrix.zero(T, 3, 3)
-
-            for i, j, k in ti.static(ti.ndrange(3, 3, 3)):
-                dpos = ti.Vector([i, j, k]).cast(float) - fx
-                g_v = self.grid_v[base + ti.Vector([i, j, k])]
-                weight = w[i][0] * w[j][1] * w[k][2]
-                new_v += weight * g_v
-                new_C += 4 * self.inv_dx * weight * g_v.outer_product(dpos)
-
-            self.v_soft[p], self.C_soft[p] = new_v, new_C
-            self.x_soft[p] += self.dt * self.v_soft[p]  # advection
-        lift_up = [0.0, 1.0, 0.0]
-        self.v_soft[100] += lift_up
-        self.v_soft[90] += lift_up
-        self.v_soft[91] += lift_up
-        self.v_soft[92] += lift_up
-        self.v_soft[103] += lift_up
-        self.v_soft[104] += lift_up
-
-    @ti.kernel
     def compute_tris_energy(self):
         # get deformation gradient?
         # 求了一个 grad
@@ -498,7 +512,7 @@ class MpmLagSim:
             #     print('#2', Estretch, Eshear)
             # 通常是 0 并且不是 0 也很小
             # 抗面积变化
-            self.energy_soft[None] += Eshear + Estretch
+            self.soft_energy[None] += Eshear + Estretch
 
     @ti.kernel
     def compute_bending_energy(self):
@@ -522,8 +536,44 @@ class MpmLagSim:
             # 放松状态下
             # 这是带 bending_p 的
             # 可以改变舒服角度
-            self.energy_soft[None] += (theta - self.rest_bending_soft[bi]
-                                       ) ** 2 * area * 0.3 * self.mu * self.bending_p
+            self.soft_energy[None] += (theta - self.rest_bending_soft[bi]
+                                       ) ** 2 * area * 0.3 * self.mu * self.BENDING_P * self.rest_bending_sheared[bi]
+            # if abs(edge_inds[0] - edge_inds[1]) == 1 and abs(theta) > abs(self.rest_bending_soft[bi]) and abs(theta) < deg2rad(160):
+            # todo 实验中 参数调整
+            if abs(theta) > abs(self.rest_bending_soft[bi]) and abs(theta) < deg2rad(self.MAX_FOLD_ANGLE):
+                # 降低相邻折痕难度（向量方向相近者更可能）
+                # 对于 edge_inds[0] [1] 的相邻边...
+                # for i in range(2):
+                #     for j in self.verts_linked_edges[edge_inds[i]]:
+                #         edge_inds = self.bending_edges[j]
+                #         edge = (self.x_soft[edge_inds[1]] -
+                #                 self.x_soft[edge_inds[0]]).normalized()
+                #         self.edge_fold_coef[j] += () ** 2
+                # 最后使用加成 1 - exp(-x)
+
+                self.rest_bending_soft[bi] += (theta -
+                                               self.rest_bending_soft[bi]) * 0.5
+                self.rest_bending_sheared[bi] = 1 + \
+                    self.rest_bending_soft[bi] / deg2rad(60)
+                self.theta_cnt[None] += 1
+
+            if abs(theta) < abs(self.rest_bending_soft[bi]) and abs(theta) < deg2rad(self.MAX_FOLD_ANGLE):
+                self.rest_bending_soft[bi] += (theta -
+                                               self.rest_bending_soft[bi]) * 0.1
+                self.rest_bending_sheared[bi] = 1 + \
+                    self.rest_bending_soft[bi] / deg2rad(60)
+                self.theta_cnt[None] += 1
+
+            # if 2000 <= edge_inds[0] <= 2500 and abs(edge_inds[0] - edge_inds[1]) == 1:
+            #     self.rest_bending_soft[bi] = deg2rad(45)
+            #     self.theta_cnt[None] += 1
+            #     self.soft_energy[None] += (theta - self.rest_bending_soft[bi]
+            #                                ) ** 2 * area * 0.3 * self.mu * self.bending_p * 10
+            # else:
+            #     self.soft_energy[None] += (theta - self.rest_bending_soft[bi]
+            #                                ) ** 2 * area * 0.3 * self.mu * self.bending_p
+            # print('bi:', bi, 'theta:', rad2deg(theta))
+
             # if bi < self.n_soft_bends // 2:
             #     self.rest_bending_soft[bi] = theta
 
@@ -597,10 +647,15 @@ class MpmLagSim:
         # print(self.x_soft.shape, self.bending_edges_expanded.shape)
         # self.scene.lines(self.x_soft, width=1,
         #                  indices=self.bending_edges_expanded)
-        # print("#4", self.soft_verts_color[9])
+        self.frame_cnt += 1
+        self.soft_verts_color[self.frame_cnt % self.n_soft_verts][1] = 1.0
         self.scene.mesh(self.x_soft, self.tris_soft_expanded,
                         per_vertex_color=self.soft_verts_color)
         self.scene.mesh(self.plane, self.plane_triangles)
+        with self.gui.sub_window("Debug", 0.05, 0.1, 0.2, 0.15) as w:
+            w.text(
+                text=f'Highlight vertex: {self.frame_cnt % self.n_soft_verts}')
+            w.text(text=f'Theta cnt: {self.theta_cnt[None]}')
         # per_vertex_color=self.plane_vertices_color)
 
     def show(self):

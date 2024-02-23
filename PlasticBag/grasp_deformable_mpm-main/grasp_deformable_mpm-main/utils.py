@@ -13,6 +13,16 @@ mats = ti.Matrix.field
 scalars = ti.field
 
 
+@ti.func
+def deg2rad(x):
+    return x * 0.017453292519943295
+
+
+@ti.func
+def rad2deg(x):
+    return x * 57.29577951308232
+
+
 def trimesh_show(geoms):
     scene = trimesh.Scene()
     for g in geoms:
@@ -42,7 +52,7 @@ def fix_unity_urdf_tf(tf):
 class TetMesh:
     def __init__(self, verts: np.ndarray,
                  surf_tris: np.ndarray,
-                 surf_vert_inds: np.ndarray, 
+                 surf_vert_inds: np.ndarray,
                  tets: np.ndarray) -> None:
         self.verts = verts
         self.surf_tris = surf_tris
