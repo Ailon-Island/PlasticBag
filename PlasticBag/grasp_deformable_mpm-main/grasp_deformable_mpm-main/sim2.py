@@ -3,7 +3,8 @@ import time
 import trimesh
 import taichi as ti
 import numpy as np
-from utils import mat3, scalars, vecs, mats, T, TetMesh, deg2rad, rad2deg
+from utils import mat3, scalars, vecs, mats, T, TetMesh
+import utils
 from typing import Optional, List
 from vedo import show
 from icecream import ic
@@ -82,6 +83,7 @@ class MpmLagSim:
                  n_grids: int = 128,
                  scale: float = 1.0) -> None:
         self.compress_force = scalars(ti.i32, shape=())
+        self.lift_up_is_on = scalars(ti.i32, shape=())
         # [init param]
         self.dt = dt
         # 128
@@ -121,7 +123,7 @@ class MpmLagSim:
             nu / ((1 + nu) * (1 - 2 * nu))
         self.eps = 1e-6
 
-        self.window = ti.ui.Window("CPIC-Scene", (1800, 1200))
+        self.window = ti.ui.Window("CPIC-Scene", (900, 1200))
         self.canvas = self.window.get_canvas()
         self.gui = self.window.get_gui()
         self.scene = ti.ui.Scene()
@@ -415,12 +417,16 @@ class MpmLagSim:
         #             self.rp_mass * self.v_rigid[p]
         #         self.grid_m[base + offset] += weight * self.rp_mass
     def ui_check(self):
-        if self.window.is_pressed(ti.GUI.UP):
+        if self.window.is_pressed("z"):
             self.compress_force[None] = 1
-        elif self.window.is_pressed(ti.GUI.DOWN):
+        elif self.window.is_pressed("x"):
             self.compress_force[None] = -1
         else:
             self.compress_force[None] = 0
+        if self.window.is_pressed(ti.GUI.UP):
+            self.lift_up_is_on[None] = 1
+        else:
+            self.lift_up_is_on[None] = 0
 
     # grid normalization
     @ti.kernel
@@ -489,6 +495,14 @@ class MpmLagSim:
             self.x_soft[p] += self.dt * self.v_soft[p]  # advection
             # J[p] *= 1 + dt * new_C.trace()
 
+        if self.lift_up_is_on[None] == 1:
+            lift_up = [0.0, 50.0, 0.0]
+            to_lift = ti.ndarray([100, 90, 91, 92, 103, 104])
+            for i in to_lift:
+                self.v_soft[i][1] = max(0, self.v_soft[i][1])
+                self.v_soft[i] += lift_up * self.dt
+                self.highlight_vertex(i)
+
         # for p in self.x_rigid:
         #     self.x_rigid[p] += self.dt * self.v_rigid[p]
 
@@ -540,7 +554,7 @@ class MpmLagSim:
                                        ) ** 2 * area * 0.3 * self.mu * self.BENDING_P * self.rest_bending_sheared[bi]
             # if abs(edge_inds[0] - edge_inds[1]) == 1 and abs(theta) > abs(self.rest_bending_soft[bi]) and abs(theta) < deg2rad(160):
             # todo 实验中 参数调整
-            if abs(theta) > abs(self.rest_bending_soft[bi]) and abs(theta) < deg2rad(self.MAX_FOLD_ANGLE):
+            if abs(theta) > abs(self.rest_bending_soft[bi]) and abs(theta) < utils.deg2rad(self.MAX_FOLD_ANGLE):
                 # 降低相邻折痕难度（向量方向相近者更可能）
                 # 对于 edge_inds[0] [1] 的相邻边...
                 # for i in range(2):
@@ -554,14 +568,14 @@ class MpmLagSim:
                 self.rest_bending_soft[bi] += (theta -
                                                self.rest_bending_soft[bi]) * 0.5
                 self.rest_bending_sheared[bi] = 1 + \
-                    self.rest_bending_soft[bi] / deg2rad(60)
+                    self.rest_bending_soft[bi] / utils.deg2rad(60)
                 self.theta_cnt[None] += 1
 
-            if abs(theta) < abs(self.rest_bending_soft[bi]) and abs(theta) < deg2rad(self.MAX_FOLD_ANGLE):
+            if abs(theta) < abs(self.rest_bending_soft[bi]) and abs(theta) < utils.deg2rad(self.MAX_FOLD_ANGLE):
                 self.rest_bending_soft[bi] += (theta -
                                                self.rest_bending_soft[bi]) * 0.1
                 self.rest_bending_sheared[bi] = 1 + \
-                    self.rest_bending_soft[bi] / deg2rad(60)
+                    self.rest_bending_soft[bi] / utils.deg2rad(60)
                 self.theta_cnt[None] += 1
 
             # if 2000 <= edge_inds[0] <= 2500 and abs(edge_inds[0] - edge_inds[1]) == 1:
@@ -606,6 +620,10 @@ class MpmLagSim:
             theta_plastic = theta
         return theta_plastic
 
+    @ti.func
+    def highlight_vertex(self, i):
+        self.soft_verts_color[i][1] = 1.0
+
     # def add_kinematic_rigid(self, body: RigidBody):
     #     self.rigid_bodies.append(body)
     #     self.n_rigid_pars += body.n_pars
@@ -617,6 +635,7 @@ class MpmLagSim:
     #             'MpmLagSim: kinematic rigid body trying to be added is out of the bounding box!')
 
     # 主函数中调用
+
     def set_soft(self, body_mesh: trimesh.Trimesh):
         # 来自这里
         self.soft_mesh = body_mesh
