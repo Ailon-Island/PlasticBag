@@ -1,0 +1,4563 @@
+{
+  "$type": "System.Collections.Generic.Dictionary`2[[UnityEngine.Vector2Int, UnityEngine.CoreModule],[System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib]], mscorlib",
+  "(0, 0)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[0,0]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.08663405,
+      "y": -0.0199229009,
+      "z": 0.0251443572
+    }
+  },
+  "(0, 1)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[0,1]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0860699862,
+      "y": -0.02003249,
+      "z": 0.022132555
+    }
+  },
+  "(0, 2)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[0,2]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0854479745,
+      "y": -0.019732615,
+      "z": 0.019212069
+    }
+  },
+  "(0, 3)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[0,3]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.08484379,
+      "y": -0.0195587333,
+      "z": 0.0162634887
+    }
+  },
+  "(0, 4)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[0,4]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.08423962,
+      "y": -0.0193848535,
+      "z": 0.0133149084
+    }
+  },
+  "(0, 5)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[0,5]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.08363543,
+      "y": -0.01921097,
+      "z": 0.0103663225
+    }
+  },
+  "(0, 7)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[0,7]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.08311394,
+      "y": -0.0190521833,
+      "z": 0.00767287565
+    }
+  },
+  "(0, 9)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[0,9]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.08234543,
+      "y": -0.01893857,
+      "z": 0.003819839
+    }
+  },
+  "(0, 11)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[0,11]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0815739557,
+      "y": -0.0188039858,
+      "z": -2.85182614E-05
+    }
+  },
+  "(0, 13)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[0,13]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.080868654,
+      "y": -0.019136956,
+      "z": -0.003981149
+    }
+  },
+  "(0, 15)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[0,15]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.08018032,
+      "y": -0.0195897669,
+      "z": -0.007960506
+    }
+  },
+  "(0, 17)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[0,17]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0795928761,
+      "y": -0.0202985723,
+      "z": -0.0117620546
+    }
+  },
+  "(0, 18)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[0,18]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.07898629,
+      "y": -0.02114001,
+      "z": -0.0156903584
+    }
+  },
+  "(0, 19)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[0,19]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.07839307,
+      "y": -0.02207597,
+      "z": -0.0196397416
+    }
+  },
+  "(0, 20)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[0,20]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.07777431,
+      "y": -0.0228314549,
+      "z": -0.0235488787
+    }
+  },
+  "(0, 21)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[0,21]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.07718302,
+      "y": -0.0237810425,
+      "z": -0.0275013
+    }
+  },
+  "(0, 22)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[0,22]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0765561461,
+      "y": -0.0244791768,
+      "z": -0.03139765
+    }
+  },
+  "(0, 23)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[0,23]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.07590902,
+      "y": -0.02503435,
+      "z": -0.0352621041
+    }
+  },
+  "(0, 28)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[0,28]",
+    "Item2": "m_avg_rindex0",
+    "Item3": {
+      "x": 0.004759088,
+      "y": -0.00915247,
+      "z": 0.00359537825
+    }
+  },
+  "(0, 29)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[0,29]",
+    "Item2": "m_avg_rindex0",
+    "Item3": {
+      "x": 0.00474157929,
+      "y": -0.009221001,
+      "z": -0.0005757138
+    }
+  },
+  "(0, 30)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[0,30]",
+    "Item2": "m_avg_rindex0",
+    "Item3": {
+      "x": 0.005288519,
+      "y": -0.007994914,
+      "z": -0.00471415557
+    }
+  },
+  "(0, 32)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[0,32]",
+    "Item2": "m_avg_rmiddle0",
+    "Item3": {
+      "x": -0.00332006067,
+      "y": -0.0075195916,
+      "z": -0.004892734
+    }
+  },
+  "(0, 33)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[0,33]",
+    "Item2": "m_avg_rmiddle0",
+    "Item3": {
+      "x": -0.0026428923,
+      "y": -0.007821342,
+      "z": -0.000373910181
+    }
+  },
+  "(0, 34)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[0,34]",
+    "Item2": "m_avg_rmiddle0",
+    "Item3": {
+      "x": -0.00166714936,
+      "y": -0.00723046437,
+      "z": 0.004124549
+    }
+  },
+  "(0, 36)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[0,36]",
+    "Item2": "m_avg_rring0",
+    "Item3": {
+      "x": 0.00136370957,
+      "y": -0.005071868,
+      "z": 0.008426037
+    }
+  },
+  "(0, 37)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[0,37]",
+    "Item2": "m_avg_rring0",
+    "Item3": {
+      "x": -0.0006187111,
+      "y": -0.006694299,
+      "z": 0.00442455336
+    }
+  },
+  "(0, 38)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[0,38]",
+    "Item2": "m_avg_rring0",
+    "Item3": {
+      "x": -0.00220555067,
+      "y": -0.00753318239,
+      "z": 0.000198751688
+    }
+  },
+  "(0, 40)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[0,40]",
+    "Item2": "m_avg_rpinky0",
+    "Item3": {
+      "x": -0.005222358,
+      "y": -0.007402681,
+      "z": -0.0021234937
+    }
+  },
+  "(0, 41)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[0,41]",
+    "Item2": "m_avg_rpinky0",
+    "Item3": {
+      "x": -0.00347419083,
+      "y": -0.007628316,
+      "z": 0.00206922367
+    }
+  },
+  "(0, 42)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[0,42]",
+    "Item2": "m_avg_rpinky0",
+    "Item3": {
+      "x": -0.00129164755,
+      "y": -0.005913034,
+      "z": 0.004964877
+    }
+  },
+  "(1, 0)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[1,0]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.08308228,
+      "y": -0.0208832379,
+      "z": 0.0257755127
+    }
+  },
+  "(1, 1)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[1,1]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0824556947,
+      "y": -0.020551037,
+      "z": 0.0228622388
+    }
+  },
+  "(1, 2)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[1,2]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0818152055,
+      "y": -0.02012072,
+      "z": 0.0199708454
+    }
+  },
+  "(1, 3)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[1,3]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0811778754,
+      "y": -0.0197126549,
+      "z": 0.0170744918
+    }
+  },
+  "(1, 4)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[1,4]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.08055804,
+      "y": -0.01942819,
+      "z": 0.0141505767
+    }
+  },
+  "(1, 5)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[1,5]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.07995386,
+      "y": -0.0192543063,
+      "z": 0.0112019945
+    }
+  },
+  "(1, 7)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[1,7]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.07943237,
+      "y": -0.0190955158,
+      "z": 0.008508543
+    }
+  },
+  "(1, 9)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[1,9]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.07866283,
+      "y": -0.01897465,
+      "z": 0.004657125
+    }
+  },
+  "(1, 11)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[1,11]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0779010057,
+      "y": -0.01890827,
+      "z": 0.0007935576
+    }
+  },
+  "(1, 13)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[1,13]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.07719939,
+      "y": -0.019267302,
+      "z": -0.003164888
+    }
+  },
+  "(1, 15)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[1,15]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.07651516,
+      "y": -0.01974905,
+      "z": -0.007150699
+    }
+  },
+  "(1, 17)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[1,17]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.07594322,
+      "y": -0.0205673315,
+      "z": -0.0109766591
+    }
+  },
+  "(1, 18)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[1,18]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0753437653,
+      "y": -0.0214592032,
+      "z": -0.0149162132
+    }
+  },
+  "(1, 19)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[1,19]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.07475476,
+      "y": -0.0224248953,
+      "z": -0.0188722275
+    }
+  },
+  "(1, 20)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[1,20]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.07414317,
+      "y": -0.0232310668,
+      "z": -0.0227926634
+    }
+  },
+  "(1, 21)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[1,21]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.07351166,
+      "y": -0.02389653,
+      "z": -0.0266817231
+    }
+  },
+  "(1, 22)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[1,22]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0728758648,
+      "y": -0.0245316811,
+      "z": -0.0305640213
+    }
+  },
+  "(1, 23)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[1,23]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.072214365,
+      "y": -0.0249852762,
+      "z": -0.03440583
+    }
+  },
+  "(2, 28)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[2,28]",
+    "Item2": "m_avg_rindex0",
+    "Item3": {
+      "x": 0.0104648471,
+      "y": -0.011562055,
+      "z": 0.003613893
+    }
+  },
+  "(2, 29)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[2,29]",
+    "Item2": "m_avg_rindex0",
+    "Item3": {
+      "x": 0.0104462057,
+      "y": -0.0116331857,
+      "z": -0.0005572606
+    }
+  },
+  "(2, 30)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[2,30]",
+    "Item2": "m_avg_rindex0",
+    "Item3": {
+      "x": 0.0110045373,
+      "y": -0.0103809647,
+      "z": -0.00469504856
+    }
+  },
+  "(2, 32)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[2,32]",
+    "Item2": "m_avg_rmiddle0",
+    "Item3": {
+      "x": 0.003139414,
+      "y": -0.009158239,
+      "z": -0.005989535
+    }
+  },
+  "(2, 33)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[2,33]",
+    "Item2": "m_avg_rmiddle0",
+    "Item3": {
+      "x": 0.003744021,
+      "y": -0.009676926,
+      "z": -0.001465761
+    }
+  },
+  "(2, 34)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[2,34]",
+    "Item2": "m_avg_rmiddle0",
+    "Item3": {
+      "x": 0.00478293,
+      "y": -0.00889712,
+      "z": 0.00302838883
+    }
+  },
+  "(2, 36)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[2,36]",
+    "Item2": "m_avg_rring0",
+    "Item3": {
+      "x": 0.007707648,
+      "y": -0.007089759,
+      "z": 0.006574981
+    }
+  },
+  "(2, 37)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[2,37]",
+    "Item2": "m_avg_rring0",
+    "Item3": {
+      "x": 0.005567245,
+      "y": -0.009025096,
+      "z": 0.00266308524
+    }
+  },
+  "(2, 38)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[2,38]",
+    "Item2": "m_avg_rring0",
+    "Item3": {
+      "x": 0.00415680557,
+      "y": -0.009514592,
+      "z": -0.00166274607
+    }
+  },
+  "(2, 40)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[2,40]",
+    "Item2": "m_avg_rpinky0",
+    "Item3": {
+      "x": -0.0011594072,
+      "y": -0.0098882895,
+      "z": -0.00374405459
+    }
+  },
+  "(2, 41)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[2,41]",
+    "Item2": "m_avg_rpinky0",
+    "Item3": {
+      "x": 0.0006987229,
+      "y": -0.009622565,
+      "z": 0.0001202859
+    }
+  },
+  "(2, 42)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[2,42]",
+    "Item2": "m_avg_rpinky0",
+    "Item3": {
+      "x": 0.0029084906,
+      "y": -0.007785633,
+      "z": 0.00293466449
+    }
+  },
+  "(3, 0)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[3,0]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.07922141,
+      "y": -0.0214878619,
+      "z": 0.026547119
+    }
+  },
+  "(3, 1)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[3,1]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.07857988,
+      "y": -0.0210501067,
+      "z": 0.023657389
+    }
+  },
+  "(3, 2)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[3,2]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.07793833,
+      "y": -0.0206123479,
+      "z": 0.0207676552
+    }
+  },
+  "(3, 3)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[3,3]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.07730043,
+      "y": -0.0202002451,
+      "z": 0.0178722
+    }
+  },
+  "(3, 4)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[3,4]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0766631,
+      "y": -0.01979218,
+      "z": 0.0149758477
+    }
+  },
+  "(3, 5)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[3,5]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0760257542,
+      "y": -0.0193841122,
+      "z": 0.01207949
+    }
+  },
+  "(3, 7)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[3,7]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.07551008,
+      "y": -0.0191372987,
+      "z": 0.009324081
+    }
+  },
+  "(3, 9)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[3,9]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0747379,
+      "y": -0.0189977381,
+      "z": 0.005476834
+    }
+  },
+  "(3, 11)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[3,11]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0739911944,
+      "y": -0.019038232,
+      "z": 0.0015894305
+    }
+  },
+  "(3, 13)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[3,13]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.07327825,
+      "y": -0.0193171743,
+      "z": -0.00235115015
+    }
+  },
+  "(3, 15)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[3,15]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.072613,
+      "y": -0.01993301,
+      "z": -0.006366867
+    }
+  },
+  "(3, 17)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[3,17]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0720119253,
+      "y": -0.0206940453,
+      "z": -0.00999786
+    }
+  },
+  "(3, 18)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[3,18]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.07144331,
+      "y": -0.021803759,
+      "z": -0.0139859915
+    }
+  },
+  "(3, 19)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[3,19]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.07085438,
+      "y": -0.0227699466,
+      "z": -0.0179421175
+    }
+  },
+  "(3, 20)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[3,20]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.07028806,
+      "y": -0.0238958783,
+      "z": -0.0219338667
+    }
+  },
+  "(3, 21)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[3,21]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.06966547,
+      "y": -0.0246243626,
+      "z": -0.02583698
+    }
+  },
+  "(3, 22)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[3,22]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0690028146,
+      "y": -0.02506978,
+      "z": -0.0296769664
+    }
+  },
+  "(3, 23)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[3,23]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.06832087,
+      "y": -0.025378935,
+      "z": -0.0334865563
+    }
+  },
+  "(4, 28)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[4,28]",
+    "Item2": "m_avg_rindex0",
+    "Item3": {
+      "x": 0.0161235482,
+      "y": -0.0140795913,
+      "z": 0.00362968817
+    }
+  },
+  "(4, 29)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[4,29]",
+    "Item2": "m_avg_rindex0",
+    "Item3": {
+      "x": 0.0161409974,
+      "y": -0.0140679348,
+      "z": -0.000539386645
+    }
+  },
+  "(4, 30)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[4,30]",
+    "Item2": "m_avg_rindex0",
+    "Item3": {
+      "x": 0.0167243928,
+      "y": -0.0127582122,
+      "z": -0.00467572
+    }
+  },
+  "(4, 32)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[4,32]",
+    "Item2": "m_avg_rmiddle0",
+    "Item3": {
+      "x": 0.00946703553,
+      "y": -0.0111910738,
+      "z": -0.007077342
+    }
+  },
+  "(4, 33)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[4,33]",
+    "Item2": "m_avg_rmiddle0",
+    "Item3": {
+      "x": 0.0100380257,
+      "y": -0.011810204,
+      "z": -0.0025512767
+    }
+  },
+  "(4, 34)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[4,34]",
+    "Item2": "m_avg_rmiddle0",
+    "Item3": {
+      "x": 0.0111348405,
+      "y": -0.010857325,
+      "z": 0.001938924
+    }
+  },
+  "(4, 36)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[4,36]",
+    "Item2": "m_avg_rring0",
+    "Item3": {
+      "x": 0.0132991448,
+      "y": -0.0105980271,
+      "z": 0.00515061244
+    }
+  },
+  "(4, 37)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[4,37]",
+    "Item2": "m_avg_rring0",
+    "Item3": {
+      "x": 0.0109881461,
+      "y": -0.0128712887,
+      "z": 0.001335457
+    }
+  },
+  "(4, 38)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[4,38]",
+    "Item2": "m_avg_rring0",
+    "Item3": {
+      "x": 0.009848043,
+      "y": -0.0128253037,
+      "z": -0.00314367563
+    }
+  },
+  "(4, 40)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[4,40]",
+    "Item2": "m_avg_rpinky0",
+    "Item3": {
+      "x": 0.00300795585,
+      "y": -0.0119073559,
+      "z": -0.00567638874
+    }
+  },
+  "(4, 41)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[4,41]",
+    "Item2": "m_avg_rpinky0",
+    "Item3": {
+      "x": 0.00488542,
+      "y": -0.0115552377,
+      "z": -0.0018697679
+    }
+  },
+  "(4, 42)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[4,42]",
+    "Item2": "m_avg_rpinky0",
+    "Item3": {
+      "x": 0.00708011538,
+      "y": -0.009785725,
+      "z": 0.0009896345
+    }
+  },
+  "(5, 0)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[5,0]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.07596026,
+      "y": -0.0225567259,
+      "z": 0.02709098
+    }
+  },
+  "(5, 1)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[5,1]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0752932653,
+      "y": -0.0219391584,
+      "z": 0.0242413469
+    }
+  },
+  "(5, 2)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[5,2]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0746262744,
+      "y": -0.021321591,
+      "z": 0.0213917159
+    }
+  },
+  "(5, 3)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[5,3]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0739404559,
+      "y": -0.020570999,
+      "z": 0.01857175
+    }
+  },
+  "(5, 4)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[5,4]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.07330251,
+      "y": -0.0201586541,
+      "z": 0.0156763531
+    }
+  },
+  "(5, 5)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[5,5]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.07266521,
+      "y": -0.0197508018,
+      "z": 0.0127799511
+    }
+  },
+  "(5, 7)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[5,7]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.07212987,
+      "y": -0.019365089,
+      "z": 0.0100555178
+    }
+  },
+  "(5, 9)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[5,9]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0713431761,
+      "y": -0.0191230644,
+      "z": 0.00623112125
+    }
+  },
+  "(5, 11)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[5,11]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.07059468,
+      "y": -0.01915088,
+      "z": 0.002346546
+    }
+  },
+  "(5, 13)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[5,13]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.06987472,
+      "y": -0.0193802379,
+      "z": -0.00158298085
+    }
+  },
+  "(5, 15)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[5,15]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.06922163,
+      "y": -0.02008197,
+      "z": -0.005617854
+    }
+  },
+  "(5, 17)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[5,17]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.06863037,
+      "y": -0.0209123082,
+      "z": -0.0092643
+    }
+  },
+  "(5, 18)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[5,18]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0680758655,
+      "y": -0.02212171,
+      "z": -0.0132746622
+    }
+  },
+  "(5, 19)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[5,19]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.06750459,
+      "y": -0.0232126638,
+      "z": -0.0172586143
+    }
+  },
+  "(5, 20)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[5,20]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.06694093,
+      "y": -0.02435739,
+      "z": -0.0212545581
+    }
+  },
+  "(5, 21)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[5,21]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0663532838,
+      "y": -0.0253326558,
+      "z": -0.025212707
+    }
+  },
+  "(5, 22)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[5,22]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0656909,
+      "y": -0.025780037,
+      "z": -0.029053133
+    }
+  },
+  "(5, 23)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[5,23]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0650078356,
+      "y": -0.02608126,
+      "z": -0.0328609571
+    }
+  },
+  "(6, 28)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[6,28]",
+    "Item2": "m_avg_rindex0",
+    "Item3": {
+      "x": 0.0216811746,
+      "y": -0.01682894,
+      "z": 0.003639631
+    }
+  },
+  "(6, 29)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[6,29]",
+    "Item2": "m_avg_rindex0",
+    "Item3": {
+      "x": 0.0216613263,
+      "y": -0.01690287,
+      "z": -0.0005315952
+    }
+  },
+  "(6, 30)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[6,30]",
+    "Item2": "m_avg_rindex0",
+    "Item3": {
+      "x": 0.0222952813,
+      "y": -0.0154771768,
+      "z": -0.004665004
+    }
+  },
+  "(6, 32)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[6,32]",
+    "Item2": "m_avg_rmiddle0",
+    "Item3": {
+      "x": 0.0156948715,
+      "y": -0.0135221779,
+      "z": -0.008158345
+    }
+  },
+  "(6, 33)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[6,33]",
+    "Item2": "m_avg_rmiddle0",
+    "Item3": {
+      "x": 0.0161717385,
+      "y": -0.0144228078,
+      "z": -0.00362585648
+    }
+  },
+  "(6, 34)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[6,34]",
+    "Item2": "m_avg_rmiddle0",
+    "Item3": {
+      "x": 0.0173181146,
+      "y": -0.0133216828,
+      "z": 0.0008609628
+    }
+  },
+  "(6, 36)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[6,36]",
+    "Item2": "m_avg_rring0",
+    "Item3": {
+      "x": 0.0187451318,
+      "y": -0.0143945152,
+      "z": 0.00380875915
+    }
+  },
+  "(6, 37)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[6,37]",
+    "Item2": "m_avg_rring0",
+    "Item3": {
+      "x": 0.0164440051,
+      "y": -0.016648218,
+      "z": -1.19972974E-05
+    }
+  },
+  "(6, 38)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[6,38]",
+    "Item2": "m_avg_rring0",
+    "Item3": {
+      "x": 0.0152331665,
+      "y": -0.0167423114,
+      "z": -0.00445102528
+    }
+  },
+  "(6, 40)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[6,40]",
+    "Item2": "m_avg_rpinky0",
+    "Item3": {
+      "x": 0.007224217,
+      "y": -0.0137079563,
+      "z": -0.007754717
+    }
+  },
+  "(6, 41)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[6,41]",
+    "Item2": "m_avg_rpinky0",
+    "Item3": {
+      "x": 0.009075791,
+      "y": -0.0134715531,
+      "z": -0.003870774
+    }
+  },
+  "(6, 42)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[6,42]",
+    "Item2": "m_avg_rpinky0",
+    "Item3": {
+      "x": 0.011264503,
+      "y": -0.011728676,
+      "z": -0.000993561
+    }
+  },
+  "(7, 0)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[7,0]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.07271811,
+      "y": -0.0237598345,
+      "z": 0.0276048966
+    }
+  },
+  "(7, 1)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[7,1]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0720499,
+      "y": -0.02313361,
+      "z": 0.0247571971
+    }
+  },
+  "(7, 2)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[7,2]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.07132271,
+      "y": -0.0220908318,
+      "z": 0.022002399
+    }
+  },
+  "(7, 3)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[7,3]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.07061014,
+      "y": -0.0211513,
+      "z": 0.0192245711
+    }
+  },
+  "(7, 4)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[7,4]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0699514151,
+      "y": -0.0205921531,
+      "z": 0.016361909
+    }
+  },
+  "(7, 5)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[7,5]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0692926943,
+      "y": -0.0200330038,
+      "z": 0.0134992525
+    }
+  },
+  "(7, 7)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[7,7]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.06875396,
+      "y": -0.0196233355,
+      "z": 0.0107801612
+    }
+  },
+  "(7, 9)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[7,9]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.067968294,
+      "y": -0.0193884727,
+      "z": 0.00695416657
+    }
+  },
+  "(7, 11)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[7,11]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0672147349,
+      "y": -0.0193805248,
+      "z": 0.00307756569
+    }
+  },
+  "(7, 13)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[7,13]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.06649749,
+      "y": -0.01962903,
+      "z": -0.000856227358
+    }
+  },
+  "(7, 15)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[7,15]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0658388659,
+      "y": -0.0202917568,
+      "z": -0.004882401
+    }
+  },
+  "(7, 17)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[7,17]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.06526431,
+      "y": -0.0212400649,
+      "z": -0.008555157
+    }
+  },
+  "(7, 18)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[7,18]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0647093,
+      "y": -0.022445919,
+      "z": -0.0125647318
+    }
+  },
+  "(7, 19)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[7,19]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0641642362,
+      "y": -0.0237220526,
+      "z": -0.0165899824
+    }
+  },
+  "(7, 20)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[7,20]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.06360517,
+      "y": -0.0248991363,
+      "z": -0.0205931421
+    }
+  },
+  "(7, 21)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[7,21]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0630198345,
+      "y": -0.025890857,
+      "z": -0.0245549623
+    }
+  },
+  "(7, 22)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[7,22]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0623763427,
+      "y": -0.0264716111,
+      "z": -0.02842513
+    }
+  },
+  "(7, 23)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[7,23]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0616938919,
+      "y": -0.026777152,
+      "z": -0.0322339162
+    }
+  },
+  "(8, 24)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[8,24]",
+    "Item2": "m_avg_rthumb1",
+    "Item3": {
+      "x": 0.0125647113,
+      "y": -0.0136585589,
+      "z": -0.006731281
+    }
+  },
+  "(8, 25)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[8,25]",
+    "Item2": "m_avg_rthumb1",
+    "Item3": {
+      "x": 0.0150584355,
+      "y": -0.008862389,
+      "z": -0.00764706172
+    }
+  },
+  "(8, 26)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[8,26]",
+    "Item2": "m_avg_rthumb1",
+    "Item3": {
+      "x": 0.017254591,
+      "y": -0.004140554,
+      "z": -0.006420711
+    }
+  },
+  "(8, 28)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[8,28]",
+    "Item2": "m_avg_rindex1",
+    "Item3": {
+      "x": -0.002415996,
+      "y": -0.008357216,
+      "z": 0.00272229314
+    }
+  },
+  "(8, 29)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[8,29]",
+    "Item2": "m_avg_rindex1",
+    "Item3": {
+      "x": -0.003393706,
+      "y": -0.008287668,
+      "z": -0.0014555864
+    }
+  },
+  "(8, 30)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[8,30]",
+    "Item2": "m_avg_rindex1",
+    "Item3": {
+      "x": -0.00239653513,
+      "y": -0.007379584,
+      "z": -0.005364258
+    }
+  },
+  "(8, 32)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[8,32]",
+    "Item2": "m_avg_rmiddle1",
+    "Item3": {
+      "x": -0.00426241755,
+      "y": -0.00515508652,
+      "z": -0.00462757424
+    }
+  },
+  "(8, 33)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[8,33]",
+    "Item2": "m_avg_rmiddle1",
+    "Item3": {
+      "x": -0.00414273143,
+      "y": -0.005266849,
+      "z": -0.000382538885
+    }
+  },
+  "(8, 34)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[8,34]",
+    "Item2": "m_avg_rmiddle1",
+    "Item3": {
+      "x": -0.002579853,
+      "y": -0.004838243,
+      "z": 0.003730221
+    }
+  },
+  "(8, 36)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[8,36]",
+    "Item2": "m_avg_rring1",
+    "Item3": {
+      "x": -0.000468835235,
+      "y": -0.00414884463,
+      "z": 0.00517509133
+    }
+  },
+  "(8, 37)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[8,37]",
+    "Item2": "m_avg_rring1",
+    "Item3": {
+      "x": -0.003228262,
+      "y": -0.00510109961,
+      "z": 0.00183586217
+    }
+  },
+  "(8, 38)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[8,38]",
+    "Item2": "m_avg_rring1",
+    "Item3": {
+      "x": -0.00465054065,
+      "y": -0.0058340393,
+      "z": -0.00214776583
+    }
+  },
+  "(8, 40)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[8,40]",
+    "Item2": "m_avg_rpinky1",
+    "Item3": {
+      "x": -0.003938973,
+      "y": -0.005133232,
+      "z": -0.0015578717
+    }
+  },
+  "(8, 41)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[8,41]",
+    "Item2": "m_avg_rpinky1",
+    "Item3": {
+      "x": -0.00199860334,
+      "y": -0.00406158529,
+      "z": 0.0017436184
+    }
+  },
+  "(8, 42)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[8,42]",
+    "Item2": "m_avg_rpinky1",
+    "Item3": {
+      "x": 0.00102669746,
+      "y": -0.003059661,
+      "z": 0.00420457125
+    }
+  },
+  "(9, 0)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[9,0]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0699649,
+      "y": -0.0255632177,
+      "z": 0.0279861763
+    }
+  },
+  "(9, 1)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[9,1]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.06913813,
+      "y": -0.0238169432,
+      "z": 0.0253882725
+    }
+  },
+  "(9, 2)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[9,2]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.06841095,
+      "y": -0.0227741674,
+      "z": 0.02263347
+    }
+  },
+  "(9, 3)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[9,3]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.06768376,
+      "y": -0.0217313953,
+      "z": 0.0198786687
+    }
+  },
+  "(9, 4)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[9,4]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.06701815,
+      "y": -0.0211235378,
+      "z": 0.0170268714
+    }
+  },
+  "(9, 5)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[9,5]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0663453341,
+      "y": -0.0204648376,
+      "z": 0.0141864121
+    }
+  },
+  "(9, 7)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[9,7]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.06578112,
+      "y": -0.0198937282,
+      "z": 0.011603944
+    }
+  },
+  "(9, 9)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[9,9]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.06499459,
+      "y": -0.0196528826,
+      "z": 0.007779285
+    }
+  },
+  "(9, 11)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[9,11]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.06423712,
+      "y": -0.0196172968,
+      "z": 0.00390884746
+    }
+  },
+  "(9, 13)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[9,13]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0635270849,
+      "y": -0.0199168026,
+      "z": -3.63213476E-05
+    }
+  },
+  "(9, 15)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[9,15]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0628676862,
+      "y": -0.0205739923,
+      "z": -0.00406125933
+    }
+  },
+  "(9, 17)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[9,17]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0622280538,
+      "y": -0.021637829,
+      "z": -0.007837948
+    }
+  },
+  "(9, 18)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[9,18]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0616797656,
+      "y": -0.022891134,
+      "z": -0.0118581094
+    }
+  },
+  "(9, 19)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[9,19]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0611482263,
+      "y": -0.0242627636,
+      "z": -0.0159046538
+    }
+  },
+  "(9, 20)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[9,20]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0605969429,
+      "y": -0.0254949,
+      "z": -0.0199200921
+    }
+  },
+  "(9, 21)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[9,21]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0600138381,
+      "y": -0.0265023,
+      "z": -0.02388541
+    }
+  },
+  "(9, 22)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[9,22]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.05936811,
+      "y": -0.0270673558,
+      "z": -0.0277520716
+    }
+  },
+  "(9, 23)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[9,23]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0586650446,
+      "y": -0.0272272751,
+      "z": -0.0315283872
+    }
+  },
+  "(10, 0)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[10,0]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.06699734,
+      "y": -0.0280882046,
+      "z": 0.0281852446
+    }
+  },
+  "(10, 1)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[10,1]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.06609283,
+      "y": -0.0257927775,
+      "z": 0.02570981
+    }
+  },
+  "(10, 2)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[10,2]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.06531093,
+      "y": -0.0243635662,
+      "z": 0.0230411887
+    }
+  },
+  "(10, 3)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[10,3]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0645290539,
+      "y": -0.0229343623,
+      "z": 0.0203725733
+    }
+  },
+  "(10, 4)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[10,4]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.06376132,
+      "y": -0.0216052271,
+      "z": 0.0176816359
+    }
+  },
+  "(10, 5)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[10,5]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0630804,
+      "y": -0.0208891854,
+      "z": 0.0148539636
+    }
+  },
+  "(10, 7)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[10,7]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.06250939,
+      "y": -0.0202701222,
+      "z": 0.0122821908
+    }
+  },
+  "(10, 9)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[10,9]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0617098957,
+      "y": -0.019937681,
+      "z": 0.008477958
+    }
+  },
+  "(10, 11)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[10,11]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0609486252,
+      "y": -0.0198752768,
+      "z": 0.00461350242
+    }
+  },
+  "(10, 13)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[10,13]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.06025461,
+      "y": -0.0202878863,
+      "z": 0.000643109437
+    }
+  },
+  "(10, 15)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[10,15]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0596102551,
+      "y": -0.0210513156,
+      "z": -0.00340552256
+    }
+  },
+  "(10, 17)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[10,17]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.05896777,
+      "y": -0.0220950153,
+      "z": -0.00717772264
+    }
+  },
+  "(10, 18)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[10,18]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0584275126,
+      "y": -0.0234050378,
+      "z": -0.011210531
+    }
+  },
+  "(10, 19)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[10,19]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.05789475,
+      "y": -0.0247680955,
+      "z": -0.0152551644
+    }
+  },
+  "(10, 20)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[10,20]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0573567152,
+      "y": -0.0260937661,
+      "z": -0.0192914642
+    }
+  },
+  "(10, 21)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[10,21]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0567859039,
+      "y": -0.0271879844,
+      "z": -0.0232761428
+    }
+  },
+  "(10, 22)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[10,22]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.05611959,
+      "y": -0.02760762,
+      "z": -0.02711037
+    }
+  },
+  "(10, 23)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[10,23]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.05540164,
+      "y": -0.0276624,
+      "z": -0.0308632348
+    }
+  },
+  "(10, 24)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[10,24]",
+    "Item2": "m_avg_rthumb1",
+    "Item3": {
+      "x": 0.01775191,
+      "y": -0.0162771214,
+      "z": -0.00568787567
+    }
+  },
+  "(10, 25)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[10,25]",
+    "Item2": "m_avg_rthumb1",
+    "Item3": {
+      "x": 0.0202312917,
+      "y": -0.0114845429,
+      "z": -0.006500369
+    }
+  },
+  "(10, 26)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[10,26]",
+    "Item2": "m_avg_rthumb1",
+    "Item3": {
+      "x": 0.0223930776,
+      "y": -0.006771298,
+      "z": -0.00502655841
+    }
+  },
+  "(10, 28)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[10,28]",
+    "Item2": "m_avg_rindex1",
+    "Item3": {
+      "x": 0.000104967505,
+      "y": -0.0136758164,
+      "z": 0.00209759
+    }
+  },
+  "(10, 29)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[10,29]",
+    "Item2": "m_avg_rindex1",
+    "Item3": {
+      "x": -0.0003557615,
+      "y": -0.01338676,
+      "z": -0.00200981274
+    }
+  },
+  "(10, 30)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[10,30]",
+    "Item2": "m_avg_rindex1",
+    "Item3": {
+      "x": 0.00029303506,
+      "y": -0.0126265995,
+      "z": -0.005965974
+    }
+  },
+  "(10, 32)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[10,32]",
+    "Item2": "m_avg_rmiddle1",
+    "Item3": {
+      "x": -0.00260579586,
+      "y": -0.0102918,
+      "z": -0.004793456
+    }
+  },
+  "(10, 33)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[10,33]",
+    "Item2": "m_avg_rmiddle1",
+    "Item3": {
+      "x": -0.00225490332,
+      "y": -0.0103169829,
+      "z": -0.00056961365
+    }
+  },
+  "(10, 34)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[10,34]",
+    "Item2": "m_avg_rmiddle1",
+    "Item3": {
+      "x": -0.000709936,
+      "y": -0.009895086,
+      "z": 0.00354478834
+    }
+  },
+  "(10, 36)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[10,36]",
+    "Item2": "m_avg_rring1",
+    "Item3": {
+      "x": 0.0003940165,
+      "y": -0.009596631,
+      "z": 0.00589786656
+    }
+  },
+  "(10, 37)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[10,37]",
+    "Item2": "m_avg_rring1",
+    "Item3": {
+      "x": -0.00248827785,
+      "y": -0.010569036,
+      "z": 0.00261784345
+    }
+  },
+  "(10, 38)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[10,38]",
+    "Item2": "m_avg_rring1",
+    "Item3": {
+      "x": -0.00401299447,
+      "y": -0.0113187805,
+      "z": -0.00131641515
+    }
+  },
+  "(10, 40)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[10,40]",
+    "Item2": "m_avg_rpinky1",
+    "Item3": {
+      "x": -0.00350058079,
+      "y": -0.009286137,
+      "z": -0.000447433442
+    }
+  },
+  "(10, 41)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[10,41]",
+    "Item2": "m_avg_rpinky1",
+    "Item3": {
+      "x": -0.00136240572,
+      "y": -0.008227201,
+      "z": 0.00270082429
+    }
+  },
+  "(10, 42)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[10,42]",
+    "Item2": "m_avg_rpinky1",
+    "Item3": {
+      "x": 0.00188396126,
+      "y": -0.0072395,
+      "z": 0.00499051064
+    }
+  },
+  "(11, 0)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[11,0]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.06401845,
+      "y": -0.030533243,
+      "z": 0.02840214
+    }
+  },
+  "(11, 1)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[11,1]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.06305573,
+      "y": -0.027826611,
+      "z": 0.0260184146
+    }
+  },
+  "(11, 2)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[11,2]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0622642562,
+      "y": -0.0263297148,
+      "z": 0.02336489
+    }
+  },
+  "(11, 3)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[11,3]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.06135191,
+      "y": -0.0239789113,
+      "z": 0.0209018048
+    }
+  },
+  "(11, 4)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[11,4]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0605355725,
+      "y": -0.022306351,
+      "z": 0.01828746
+    }
+  },
+  "(11, 5)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[11,5]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0598512739,
+      "y": -0.0215665363,
+      "z": 0.0154650938
+    }
+  },
+  "(11, 7)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[11,7]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0592674538,
+      "y": -0.02085692,
+      "z": 0.0129135121
+    }
+  },
+  "(11, 9)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[11,9]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0584162772,
+      "y": -0.020159388,
+      "z": 0.009190705
+    }
+  },
+  "(11, 11)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[11,11]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0576579869,
+      "y": -0.02011798,
+      "z": 0.005321565
+    }
+  },
+  "(11, 13)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[11,13]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0569741428,
+      "y": -0.0206025057,
+      "z": 0.00133513287
+    }
+  },
+  "(11, 15)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[11,15]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0563499779,
+      "y": -0.0215086173,
+      "z": -0.00274531986
+    }
+  },
+  "(11, 17)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[11,17]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.05571091,
+      "y": -0.02257637,
+      "z": -0.00652288459
+    }
+  },
+  "(11, 18)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[11,18]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0551752523,
+      "y": -0.0239189453,
+      "z": -0.0105629526
+    }
+  },
+  "(11, 19)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[11,19]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0546385944,
+      "y": -0.0252543986,
+      "z": -0.01460143
+    }
+  },
+  "(11, 20)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[11,20]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.05409488,
+      "y": -0.02654006,
+      "z": -0.0186288022
+    }
+  },
+  "(11, 21)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[11,21]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0535583422,
+      "y": -0.0278763175,
+      "z": -0.02266746
+    }
+  },
+  "(11, 22)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[11,22]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.05287105,
+      "y": -0.0281478018,
+      "z": -0.0264686551
+    }
+  },
+  "(11, 23)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[11,23]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.05214896,
+      "y": -0.02817339,
+      "z": -0.0302150082
+    }
+  },
+  "(12, 0)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[12,0]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0613717,
+      "y": -0.0353245065,
+      "z": 0.0280957855
+    }
+  },
+  "(12, 1)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[12,1]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0602195561,
+      "y": -0.031279806,
+      "z": 0.0260104723
+    }
+  },
+  "(12, 2)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[12,2]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0590895563,
+      "y": -0.0273914337,
+      "z": 0.023890296
+    }
+  },
+  "(12, 3)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[12,3]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0581713468,
+      "y": -0.0249992944,
+      "z": 0.02143643
+    }
+  },
+  "(12, 4)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[12,4]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.05730982,
+      "y": -0.0230074711,
+      "z": 0.0188932847
+    }
+  },
+  "(12, 5)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[12,5]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.056614697,
+      "y": -0.0221912134,
+      "z": 0.016087966
+    }
+  },
+  "(12, 7)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[12,7]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0559917837,
+      "y": -0.0212054681,
+      "z": 0.0135979708
+    }
+  },
+  "(12, 9)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[12,9]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0551151335,
+      "y": -0.0203279648,
+      "z": 0.009915298
+    }
+  },
+  "(12, 11)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[12,11]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.05436887,
+      "y": -0.0203715358,
+      "z": 0.00602720724
+    }
+  },
+  "(12, 13)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[12,13]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.053674534,
+      "y": -0.0207819827,
+      "z": 0.00205729716
+    }
+  },
+  "(12, 15)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[12,15]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0530659035,
+      "y": -0.0217977837,
+      "z": -0.00204762025
+    }
+  },
+  "(12, 17)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[12,17]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0524498671,
+      "y": -0.023028262,
+      "z": -0.00586147746
+    }
+  },
+  "(12, 18)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[12,18]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.05191502,
+      "y": -0.02437653,
+      "z": -0.009902814
+    }
+  },
+  "(12, 19)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[12,19]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0514117777,
+      "y": -0.0259480551,
+      "z": -0.0139939375
+    }
+  },
+  "(12, 20)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[12,20]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.050887242,
+      "y": -0.0273691081,
+      "z": -0.0180515051
+    }
+  },
+  "(12, 21)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[12,21]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.05035068,
+      "y": -0.02870537,
+      "z": -0.0220901687
+    }
+  },
+  "(12, 22)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[12,22]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0496231169,
+      "y": -0.028692361,
+      "z": -0.025827907
+    }
+  },
+  "(12, 23)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[12,23]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0488498062,
+      "y": -0.0283560157,
+      "z": -0.0294935517
+    }
+  },
+  "(12, 24)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[12,24]",
+    "Item2": "m_avg_rthumb1",
+    "Item3": {
+      "x": 0.02302277,
+      "y": -0.0188747887,
+      "z": -0.00524674542
+    }
+  },
+  "(12, 25)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[12,25]",
+    "Item2": "m_avg_rthumb1",
+    "Item3": {
+      "x": 0.0254502147,
+      "y": -0.0140951779,
+      "z": -0.00568535738
+    }
+  },
+  "(12, 26)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[12,26]",
+    "Item2": "m_avg_rthumb1",
+    "Item3": {
+      "x": 0.0275855213,
+      "y": -0.00938856,
+      "z": -0.004020991
+    }
+  },
+  "(12, 28)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[12,28]",
+    "Item2": "m_avg_rindex1",
+    "Item3": {
+      "x": 0.00249475613,
+      "y": -0.0190501064,
+      "z": 0.00145500712
+    }
+  },
+  "(12, 29)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[12,29]",
+    "Item2": "m_avg_rindex1",
+    "Item3": {
+      "x": 0.00228931382,
+      "y": -0.0186526664,
+      "z": -0.00261759385
+    }
+  },
+  "(12, 30)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[12,30]",
+    "Item2": "m_avg_rindex1",
+    "Item3": {
+      "x": 0.00281551853,
+      "y": -0.0179445781,
+      "z": -0.00659047253
+    }
+  },
+  "(12, 32)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[12,32]",
+    "Item2": "m_avg_rmiddle1",
+    "Item3": {
+      "x": -0.0008729845,
+      "y": -0.015399985,
+      "z": -0.004966326
+    }
+  },
+  "(12, 33)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[12,33]",
+    "Item2": "m_avg_rmiddle1",
+    "Item3": {
+      "x": -0.00051677227,
+      "y": -0.0154231787,
+      "z": -0.0007429682
+    }
+  },
+  "(12, 34)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[12,34]",
+    "Item2": "m_avg_rmiddle1",
+    "Item3": {
+      "x": 0.000928640366,
+      "y": -0.01503855,
+      "z": 0.00338055776
+    }
+  },
+  "(12, 36)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[12,36]",
+    "Item2": "m_avg_rring1",
+    "Item3": {
+      "x": 0.00123786181,
+      "y": -0.0150475539,
+      "z": 0.00662980042
+    }
+  },
+  "(12, 37)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[12,37]",
+    "Item2": "m_avg_rring1",
+    "Item3": {
+      "x": -0.00148890167,
+      "y": -0.0159944445,
+      "z": 0.00327482447
+    }
+  },
+  "(12, 38)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[12,38]",
+    "Item2": "m_avg_rring1",
+    "Item3": {
+      "x": -0.00277223438,
+      "y": -0.0167046,
+      "z": -0.00077576004
+    }
+  },
+  "(12, 40)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[12,40]",
+    "Item2": "m_avg_rpinky1",
+    "Item3": {
+      "x": -0.00269975513,
+      "y": -0.01346234,
+      "z": 0.0003822334
+    }
+  },
+  "(12, 41)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[12,41]",
+    "Item2": "m_avg_rpinky1",
+    "Item3": {
+      "x": -0.0005586222,
+      "y": -0.0124035906,
+      "z": 0.00352818519
+    }
+  },
+  "(12, 42)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[12,42]",
+    "Item2": "m_avg_rpinky1",
+    "Item3": {
+      "x": 0.00275807828,
+      "y": -0.0114204045,
+      "z": 0.005763378
+    }
+  },
+  "(13, 0)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[13,0]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.05868803,
+      "y": -0.0398548879,
+      "z": 0.0278476067
+    }
+  },
+  "(13, 1)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[13,1]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.05746054,
+      "y": -0.03527793,
+      "z": 0.0258810017
+    }
+  },
+  "(13, 2)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[13,2]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0562783256,
+      "y": -0.0310208425,
+      "z": 0.0238430537
+    }
+  },
+  "(13, 3)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[13,3]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0552063137,
+      "y": -0.0275421441,
+      "z": 0.0216315147
+    }
+  },
+  "(13, 4)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[13,4]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0541140959,
+      "y": -0.0239207521,
+      "z": 0.0194517951
+    }
+  },
+  "(13, 5)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[13,5]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.05333902,
+      "y": -0.0225397572,
+      "z": 0.0167724229
+    }
+  },
+  "(13, 7)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[13,7]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0527161136,
+      "y": -0.0215540081,
+      "z": 0.0142824277
+    }
+  },
+  "(13, 9)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[13,9]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.05181399,
+      "y": -0.0204965416,
+      "z": 0.0106398929
+    }
+  },
+  "(13, 11)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[13,11]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0510797575,
+      "y": -0.020625094,
+      "z": 0.006732849
+    }
+  },
+  "(13, 13)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[13,13]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0503850132,
+      "y": -0.0210326556,
+      "z": 0.00276358146
+    }
+  },
+  "(13, 15)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[13,15]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.04978183,
+      "y": -0.0220869519,
+      "z": -0.00134991878
+    }
+  },
+  "(13, 17)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[13,17]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.04918866,
+      "y": -0.023478929,
+      "z": -0.00519979466
+    }
+  },
+  "(13, 18)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[13,18]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0486713648,
+      "y": -0.0249511451,
+      "z": -0.009268772
+    }
+  },
+  "(13, 19)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[13,19]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.04818605,
+      "y": -0.02664939,
+      "z": -0.0133881625
+    }
+  },
+  "(13, 20)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[13,20]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0476617664,
+      "y": -0.0280722268,
+      "z": -0.0174461268
+    }
+  },
+  "(13, 21)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[13,21]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0471111238,
+      "y": -0.0293089263,
+      "z": -0.02146258
+    }
+  },
+  "(13, 22)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[13,22]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0463315547,
+      "y": -0.02892857,
+      "z": -0.0251183975
+    }
+  },
+  "(13, 23)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[13,23]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.045552,
+      "y": -0.02854821,
+      "z": -0.02877422
+    }
+  },
+  "(14, 0)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[14,0]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0556722,
+      "y": -0.04203891,
+      "z": 0.0281227175
+    }
+  },
+  "(14, 1)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[14,1]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.05463799,
+      "y": -0.0388273,
+      "z": 0.025851611
+    }
+  },
+  "(14, 2)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[14,2]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0534740239,
+      "y": -0.0346990749,
+      "z": 0.0237849262
+    }
+  },
+  "(14, 3)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[14,3]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0523659438,
+      "y": -0.0309657082,
+      "z": 0.021630181
+    }
+  },
+  "(14, 4)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[14,4]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0511763543,
+      "y": -0.0266564339,
+      "z": 0.0196038727
+    }
+  },
+  "(14, 5)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[14,5]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.05030091,
+      "y": -0.0245663747,
+      "z": 0.0170826316
+    }
+  },
+  "(14, 7)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[14,7]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0496198833,
+      "y": -0.0231701285,
+      "z": 0.0146841928
+    }
+  },
+  "(14, 9)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[14,9]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.04858996,
+      "y": -0.0212098584,
+      "z": 0.0112429969
+    }
+  },
+  "(14, 11)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[14,11]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.04783863,
+      "y": -0.0212176684,
+      "z": 0.007362883
+    }
+  },
+  "(14, 13)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[14,13]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0471159667,
+      "y": -0.0214278717,
+      "z": 0.00343763083
+    }
+  },
+  "(14, 15)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[14,15]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.04650742,
+      "y": -0.0224443153,
+      "z": -0.000667429063
+    }
+  },
+  "(14, 17)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[14,17]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.04592535,
+      "y": -0.0239148289,
+      "z": -0.0045348173
+    }
+  },
+  "(14, 18)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[14,18]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.04544945,
+      "y": -0.0256794766,
+      "z": -0.008669015
+    }
+  },
+  "(14, 19)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[14,19]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.04496032,
+      "y": -0.0273507312,
+      "z": -0.0127823837
+    }
+  },
+  "(14, 20)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[14,20]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.04443194,
+      "y": -0.02874459,
+      "z": -0.0168338884
+    }
+  },
+  "(14, 21)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[14,21]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0438555777,
+      "y": -0.0297996439,
+      "z": -0.0208098348
+    }
+  },
+  "(14, 22)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[14,22]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0430760235,
+      "y": -0.0294192843,
+      "z": -0.0244656485
+    }
+  },
+  "(14, 23)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[14,23]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0422726423,
+      "y": -0.0288706459,
+      "z": -0.02808394
+    }
+  },
+  "(14, 24)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[14,24]",
+    "Item2": "m_avg_rthumb1",
+    "Item3": {
+      "x": 0.02832421,
+      "y": -0.0214648172,
+      "z": -0.0050257165
+    }
+  },
+  "(14, 25)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[14,25]",
+    "Item2": "m_avg_rthumb1",
+    "Item3": {
+      "x": 0.0307137445,
+      "y": -0.016694678,
+      "z": -0.005191462
+    }
+  },
+  "(14, 26)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[14,26]",
+    "Item2": "m_avg_rthumb1",
+    "Item3": {
+      "x": 0.03282404,
+      "y": -0.0119943041,
+      "z": -0.00334694423
+    }
+  },
+  "(14, 28)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[14,28]",
+    "Item2": "m_avg_rindex1",
+    "Item3": {
+      "x": 0.004538227,
+      "y": -0.02457146,
+      "z": 0.0007652212
+    }
+  },
+  "(14, 29)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[14,29]",
+    "Item2": "m_avg_rindex1",
+    "Item3": {
+      "x": 0.00409222,
+      "y": -0.02427617,
+      "z": -0.00334017724
+    }
+  },
+  "(14, 30)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[14,30]",
+    "Item2": "m_avg_rindex1",
+    "Item3": {
+      "x": 0.004781861,
+      "y": -0.0234986544,
+      "z": -0.00729076937
+    }
+  },
+  "(14, 32)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[14,32]",
+    "Item2": "m_avg_rmiddle1",
+    "Item3": {
+      "x": 0.00115503371,
+      "y": -0.0203976445,
+      "z": -0.00516624842
+    }
+  },
+  "(14, 33)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[14,33]",
+    "Item2": "m_avg_rmiddle1",
+    "Item3": {
+      "x": 0.001551494,
+      "y": -0.0204057619,
+      "z": -0.0009465823
+    }
+  },
+  "(14, 34)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[14,34]",
+    "Item2": "m_avg_rmiddle1",
+    "Item3": {
+      "x": 0.003015384,
+      "y": -0.02001423,
+      "z": 0.003175252
+    }
+  },
+  "(14, 36)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[14,36]",
+    "Item2": "m_avg_rring1",
+    "Item3": {
+      "x": 0.003080003,
+      "y": -0.0203347281,
+      "z": 0.00688063167
+    }
+  },
+  "(14, 37)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[14,37]",
+    "Item2": "m_avg_rring1",
+    "Item3": {
+      "x": -0.0001584813,
+      "y": -0.0213655569,
+      "z": 0.00377227925
+    }
+  },
+  "(14, 38)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[14,38]",
+    "Item2": "m_avg_rring1",
+    "Item3": {
+      "x": -0.00125776976,
+      "y": -0.0220455267,
+      "z": -0.000367019325
+    }
+  },
+  "(14, 40)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[14,40]",
+    "Item2": "m_avg_rpinky1",
+    "Item3": {
+      "x": -0.00202847272,
+      "y": -0.0176302139,
+      "z": 0.00131225213
+    }
+  },
+  "(14, 41)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[14,41]",
+    "Item2": "m_avg_rpinky1",
+    "Item3": {
+      "x": 0.00025948137,
+      "y": -0.0165809,
+      "z": 0.004344456
+    }
+  },
+  "(14, 42)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[14,42]",
+    "Item2": "m_avg_rpinky1",
+    "Item3": {
+      "x": 0.00370693952,
+      "y": -0.0156061221,
+      "z": 0.006478343
+    }
+  },
+  "(16, 0)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[16,0]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0521367341,
+      "y": -0.04386882,
+      "z": 0.028502943
+    }
+  },
+  "(16, 1)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[16,1]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.051103346,
+      "y": -0.040663,
+      "z": 0.026230542
+    }
+  },
+  "(16, 2)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[16,2]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.050069958,
+      "y": -0.0374571644,
+      "z": 0.0239581466
+    }
+  },
+  "(16, 3)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[16,3]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.04899092,
+      "y": -0.0339288227,
+      "z": 0.0217576791
+    }
+  },
+  "(16, 4)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[16,4]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0478150249,
+      "y": -0.02971635,
+      "z": 0.01970978
+    }
+  },
+  "(16, 5)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[16,5]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0468485355,
+      "y": -0.0269831158,
+      "z": 0.0173319858
+    }
+  },
+  "(16, 7)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[16,7]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0461225957,
+      "y": -0.0252506249,
+      "z": 0.0149079114
+    }
+  },
+  "(16, 9)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[16,9]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0450144559,
+      "y": -0.022737924,
+      "z": 0.011589922
+    }
+  },
+  "(16, 11)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[16,11]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.04425846,
+      "y": -0.0227127075,
+      "z": 0.007717171
+    }
+  },
+  "(16, 13)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[16,13]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0434665829,
+      "y": -0.0224340484,
+      "z": 0.00390094565
+    }
+  },
+  "(16, 15)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[16,15]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.04283835,
+      "y": -0.02331132,
+      "z": -0.000173076754
+    }
+  },
+  "(16, 17)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[16,17]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0423587263,
+      "y": -0.0247099064,
+      "z": -0.003908218
+    }
+  },
+  "(16, 18)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[16,18]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.04189162,
+      "y": -0.0265366957,
+      "z": -0.008056274
+    }
+  },
+  "(16, 19)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[16,19]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.04138702,
+      "y": -0.0280985832,
+      "z": -0.0121452529
+    }
+  },
+  "(16, 20)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[16,20]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0408576876,
+      "y": -0.0294858962,
+      "z": -0.0161952972
+    }
+  },
+  "(16, 21)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[16,21]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.04023844,
+      "y": -0.0302378424,
+      "z": -0.0201036446
+    }
+  },
+  "(16, 22)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[16,22]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.03942199,
+      "y": -0.02959685,
+      "z": -0.02370133
+    }
+  },
+  "(16, 23)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[16,23]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0386057645,
+      "y": -0.0289575085,
+      "z": -0.02729939
+    }
+  },
+  "(16, 24)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[16,24]",
+    "Item2": "m_avg_rthumb2",
+    "Item3": {
+      "x": 0.009434424,
+      "y": -0.009716008,
+      "z": -0.008164836
+    }
+  },
+  "(16, 25)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[16,25]",
+    "Item2": "m_avg_rthumb2",
+    "Item3": {
+      "x": 0.0122270659,
+      "y": -0.00513961539,
+      "z": -0.008082105
+    }
+  },
+  "(16, 26)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[16,26]",
+    "Item2": "m_avg_rthumb2",
+    "Item3": {
+      "x": 0.0144387633,
+      "y": -0.000585733,
+      "z": -0.006191479
+    }
+  },
+  "(16, 28)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[16,28]",
+    "Item2": "m_avg_rindex2",
+    "Item3": {
+      "x": -0.00465689227,
+      "y": -0.009866649,
+      "z": 0.00245436281
+    }
+  },
+  "(16, 29)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[16,29]",
+    "Item2": "m_avg_rindex2",
+    "Item3": {
+      "x": -0.005456727,
+      "y": -0.009544937,
+      "z": -0.00160334259
+    }
+  },
+  "(16, 30)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[16,30]",
+    "Item2": "m_avg_rindex2",
+    "Item3": {
+      "x": -0.0051038675,
+      "y": -0.008896345,
+      "z": -0.005441658
+    }
+  },
+  "(16, 32)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[16,32]",
+    "Item2": "m_avg_rmiddle2",
+    "Item3": {
+      "x": -0.006384477,
+      "y": -0.004654499,
+      "z": -0.00298283
+    }
+  },
+  "(16, 33)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[16,33]",
+    "Item2": "m_avg_rmiddle2",
+    "Item3": {
+      "x": -0.00584998727,
+      "y": -0.00452795438,
+      "z": 0.00119187846
+    }
+  },
+  "(16, 34)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[16,34]",
+    "Item2": "m_avg_rmiddle2",
+    "Item3": {
+      "x": -0.00390301645,
+      "y": -0.004385175,
+      "z": 0.00508310925
+    }
+  },
+  "(16, 36)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[16,36]",
+    "Item2": "m_avg_rring2",
+    "Item3": {
+      "x": -0.003020078,
+      "y": -0.00331231952,
+      "z": 0.00631907955
+    }
+  },
+  "(16, 37)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[16,37]",
+    "Item2": "m_avg_rring2",
+    "Item3": {
+      "x": -0.00587800145,
+      "y": -0.003825616,
+      "z": 0.003471529
+    }
+  },
+  "(16, 38)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[16,38]",
+    "Item2": "m_avg_rring2",
+    "Item3": {
+      "x": -0.007025644,
+      "y": -0.00451329,
+      "z": -0.000165939331
+    }
+  },
+  "(16, 40)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[16,40]",
+    "Item2": "m_avg_rpinky2",
+    "Item3": {
+      "x": -0.006347306,
+      "y": -0.004401006,
+      "z": 0.00182888657
+    }
+  },
+  "(16, 41)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[16,41]",
+    "Item2": "m_avg_rpinky2",
+    "Item3": {
+      "x": -0.0038594678,
+      "y": -0.00304358453,
+      "z": 0.004745502
+    }
+  },
+  "(16, 42)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[16,42]",
+    "Item2": "m_avg_rpinky2",
+    "Item3": {
+      "x": -6.222725E-05,
+      "y": -0.00192081742,
+      "z": 0.00642664731
+    }
+  },
+  "(18, 0)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[18,0]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.04848157,
+      "y": -0.045890864,
+      "z": 0.0289554745
+    }
+  },
+  "(18, 1)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[18,1]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0474481732,
+      "y": -0.0426850431,
+      "z": 0.0266830754
+    }
+  },
+  "(18, 2)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[18,2]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0464062542,
+      "y": -0.0394189842,
+      "z": 0.0244241152
+    }
+  },
+  "(18, 3)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[18,3]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.04532379,
+      "y": -0.0358665,
+      "z": 0.022229027
+    }
+  },
+  "(18, 4)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[18,4]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0442413241,
+      "y": -0.0323140137,
+      "z": 0.0200339444
+    }
+  },
+  "(18, 5)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[18,5]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0432215631,
+      "y": -0.0292043835,
+      "z": 0.0177400876
+    }
+  },
+  "(18, 7)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[18,7]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0424387455,
+      "y": -0.0270701014,
+      "z": 0.0154056195
+    }
+  },
+  "(18, 9)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[18,9]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0412998646,
+      "y": -0.0243401639,
+      "z": 0.0121360775
+    }
+  },
+  "(18, 11)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[18,11]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0404739529,
+      "y": -0.02382113,
+      "z": 0.00837346353
+    }
+  },
+  "(18, 13)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[18,13]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0396682471,
+      "y": -0.02344482,
+      "z": 0.00457901042
+    }
+  },
+  "(18, 15)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[18,15]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.039015457,
+      "y": -0.02414862,
+      "z": 0.0005436782
+    }
+  },
+  "(18, 17)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[18,17]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.03854771,
+      "y": -0.02563104,
+      "z": -0.00321015855
+    }
+  },
+  "(18, 18)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[18,18]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0380724519,
+      "y": -0.0274003148,
+      "z": -0.00734538771
+    }
+  },
+  "(18, 19)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[18,19]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0375570953,
+      "y": -0.02888621,
+      "z": -0.0114174187
+    }
+  },
+  "(18, 20)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[18,20]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.03700681,
+      "y": -0.03012545,
+      "z": -0.015434444
+    }
+  },
+  "(18, 21)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[18,21]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.03632672,
+      "y": -0.0304477736,
+      "z": -0.01924697
+    }
+  },
+  "(18, 22)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[18,22]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0355086327,
+      "y": -0.0297951028,
+      "z": -0.0228420533
+    }
+  },
+  "(18, 23)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[18,23]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0346860439,
+      "y": -0.0291107744,
+      "z": -0.0264300872
+    }
+  },
+  "(18, 24)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[18,24]",
+    "Item2": "m_avg_rthumb2",
+    "Item3": {
+      "x": 0.0140026361,
+      "y": -0.0124983154,
+      "z": -0.006895447
+    }
+  },
+  "(18, 25)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[18,25]",
+    "Item2": "m_avg_rthumb2",
+    "Item3": {
+      "x": 0.0168909952,
+      "y": -0.00791822,
+      "z": -0.007110594
+    }
+  },
+  "(18, 26)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[18,26]",
+    "Item2": "m_avg_rthumb2",
+    "Item3": {
+      "x": 0.0191122144,
+      "y": -0.0033639688,
+      "z": -0.00524960272
+    }
+  },
+  "(18, 28)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[18,28]",
+    "Item2": "m_avg_rindex2",
+    "Item3": {
+      "x": -0.00368898734,
+      "y": -0.0136008319,
+      "z": 0.00190349668
+    }
+  },
+  "(18, 29)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[18,29]",
+    "Item2": "m_avg_rindex2",
+    "Item3": {
+      "x": -0.004761588,
+      "y": -0.013356464,
+      "z": -0.00220613
+    }
+  },
+  "(18, 30)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[18,30]",
+    "Item2": "m_avg_rindex2",
+    "Item3": {
+      "x": -0.004235532,
+      "y": -0.0126587655,
+      "z": -0.00601148047
+    }
+  },
+  "(18, 32)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[18,32]",
+    "Item2": "m_avg_rmiddle2",
+    "Item3": {
+      "x": -0.0067269057,
+      "y": -0.0096547585,
+      "z": -0.00275646267
+    }
+  },
+  "(18, 33)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[18,33]",
+    "Item2": "m_avg_rmiddle2",
+    "Item3": {
+      "x": -0.006360948,
+      "y": -0.009530151,
+      "z": 0.00145206158
+    }
+  },
+  "(18, 34)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[18,34]",
+    "Item2": "m_avg_rmiddle2",
+    "Item3": {
+      "x": -0.004426509,
+      "y": -0.009387514,
+      "z": 0.005345814
+    }
+  },
+  "(18, 36)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[18,36]",
+    "Item2": "m_avg_rring2",
+    "Item3": {
+      "x": -0.00410188735,
+      "y": -0.007847622,
+      "z": 0.00768716261
+    }
+  },
+  "(18, 37)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[18,37]",
+    "Item2": "m_avg_rring2",
+    "Item3": {
+      "x": -0.006853178,
+      "y": -0.008371789,
+      "z": 0.00479036
+    }
+  },
+  "(18, 38)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[18,38]",
+    "Item2": "m_avg_rring2",
+    "Item3": {
+      "x": -0.007891238,
+      "y": -0.009070624,
+      "z": 0.001102291
+    }
+  },
+  "(18, 40)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[18,40]",
+    "Item2": "m_avg_rpinky2",
+    "Item3": {
+      "x": -0.005973533,
+      "y": -0.00772996247,
+      "z": 0.00307825953
+    }
+  },
+  "(18, 41)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[18,41]",
+    "Item2": "m_avg_rpinky2",
+    "Item3": {
+      "x": -0.00353542715,
+      "y": -0.00636363029,
+      "z": 0.00604179874
+    }
+  },
+  "(18, 42)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[18,42]",
+    "Item2": "m_avg_rpinky2",
+    "Item3": {
+      "x": 0.000394433737,
+      "y": -0.005264625,
+      "z": 0.007597808
+    }
+  },
+  "(20, 0)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[20,0]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0446072519,
+      "y": -0.0463650078,
+      "z": 0.0297532231
+    }
+  },
+  "(20, 1)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[20,1]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0437929928,
+      "y": -0.0447070859,
+      "z": 0.0271356087
+    }
+  },
+  "(20, 2)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[20,2]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.042739138,
+      "y": -0.0413566642,
+      "z": 0.02489546
+    }
+  },
+  "(20, 3)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[20,3]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0416582972,
+      "y": -0.0378157,
+      "z": 0.0226978026
+    }
+  },
+  "(20, 4)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[20,4]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0405783057,
+      "y": -0.0342806131,
+      "z": 0.020498842
+    }
+  },
+  "(20, 5)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[20,5]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0395882577,
+      "y": -0.0313809961,
+      "z": 0.01815815
+    }
+  },
+  "(20, 7)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[20,7]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0387914628,
+      "y": -0.0291480049,
+      "z": 0.0158456974
+    }
+  },
+  "(20, 9)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[20,9]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0376027077,
+      "y": -0.026065696,
+      "z": 0.0126547422
+    }
+  },
+  "(20, 11)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[20,11]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.03670025,
+      "y": -0.0250058621,
+      "z": 0.009012733
+    }
+  },
+  "(20, 13)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[20,13]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.035862565,
+      "y": -0.0244036429,
+      "z": 0.005268666
+    }
+  },
+  "(20, 15)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[20,15]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.03520246,
+      "y": -0.0250559,
+      "z": 0.00124482671
+    }
+  },
+  "(20, 17)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[20,17]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.034736678,
+      "y": -0.02655217,
+      "z": -0.00251209922
+    }
+  },
+  "(20, 18)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[20,18]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0342418253,
+      "y": -0.0281829685,
+      "z": -0.00661644526
+    }
+  },
+  "(20, 19)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[20,19]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0337083042,
+      "y": -0.02954064,
+      "z": -0.0106598791
+    }
+  },
+  "(20, 20)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[20,20]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.03311242,
+      "y": -0.03045763,
+      "z": -0.0146050341
+    }
+  },
+  "(20, 21)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[20,21]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0324150175,
+      "y": -0.0306577049,
+      "z": -0.0183903
+    }
+  },
+  "(20, 22)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[20,22]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.03156829,
+      "y": -0.0298027545,
+      "z": -0.0219402723
+    }
+  },
+  "(20, 23)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[20,23]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.030714795,
+      "y": -0.0289001539,
+      "z": -0.02547962
+    }
+  },
+  "(20, 24)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[20,24]",
+    "Item2": "m_avg_rthumb2",
+    "Item3": {
+      "x": 0.01846768,
+      "y": -0.0152846165,
+      "z": -0.005304979
+    }
+  },
+  "(20, 25)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[20,25]",
+    "Item2": "m_avg_rthumb2",
+    "Item3": {
+      "x": 0.0213738382,
+      "y": -0.0107038282,
+      "z": -0.00557552837
+    }
+  },
+  "(20, 26)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[20,26]",
+    "Item2": "m_avg_rthumb2",
+    "Item3": {
+      "x": 0.0235708728,
+      "y": -0.00615051761,
+      "z": -0.00363924168
+    }
+  },
+  "(20, 28)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[20,28]",
+    "Item2": "m_avg_rindex2",
+    "Item3": {
+      "x": -0.00244642422,
+      "y": -0.0172571223,
+      "z": 0.00140491128
+    }
+  },
+  "(20, 29)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[20,29]",
+    "Item2": "m_avg_rindex2",
+    "Item3": {
+      "x": -0.00346056744,
+      "y": -0.0169961769,
+      "z": -0.0026935935
+    }
+  },
+  "(20, 30)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[20,30]",
+    "Item2": "m_avg_rindex2",
+    "Item3": {
+      "x": -0.00252587721,
+      "y": -0.0161826,
+      "z": -0.00642116
+    }
+  },
+  "(20, 32)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[20,32]",
+    "Item2": "m_avg_rmiddle2",
+    "Item3": {
+      "x": -0.00645104051,
+      "y": -0.0146479141,
+      "z": -0.00265419413
+    }
+  },
+  "(20, 33)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[20,33]",
+    "Item2": "m_avg_rmiddle2",
+    "Item3": {
+      "x": -0.006338984,
+      "y": -0.0145262238,
+      "z": 0.0016052979
+    }
+  },
+  "(20, 34)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[20,34]",
+    "Item2": "m_avg_rmiddle2",
+    "Item3": {
+      "x": -0.00444895029,
+      "y": -0.0143840965,
+      "z": 0.0055079544
+    }
+  },
+  "(20, 36)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[20,36]",
+    "Item2": "m_avg_rring2",
+    "Item3": {
+      "x": -0.00436162949,
+      "y": -0.0124667324,
+      "z": 0.008675568
+    }
+  },
+  "(20, 37)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[20,37]",
+    "Item2": "m_avg_rring2",
+    "Item3": {
+      "x": -0.00711639225,
+      "y": -0.0129905343,
+      "z": 0.005780373
+    }
+  },
+  "(20, 38)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[20,38]",
+    "Item2": "m_avg_rring2",
+    "Item3": {
+      "x": -0.00808545947,
+      "y": -0.0136964135,
+      "z": 0.002060432
+    }
+  },
+  "(20, 40)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[20,40]",
+    "Item2": "m_avg_rpinky2",
+    "Item3": {
+      "x": -0.005063191,
+      "y": -0.0111550763,
+      "z": 0.003821358
+    }
+  },
+  "(20, 41)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[20,41]",
+    "Item2": "m_avg_rpinky2",
+    "Item3": {
+      "x": -0.00289840251,
+      "y": -0.009739757,
+      "z": 0.00704278424
+    }
+  },
+  "(20, 42)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[20,42]",
+    "Item2": "m_avg_rpinky2",
+    "Item3": {
+      "x": 0.0010759905,
+      "y": -0.008648746,
+      "z": 0.008556765
+    }
+  },
+  "(22, 0)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[22,0]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.04107724,
+      "y": -0.045776125,
+      "z": 0.030799035
+    }
+  },
+  "(22, 1)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[22,1]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.04030402,
+      "y": -0.0444081165,
+      "z": 0.0281167664
+    }
+  },
+  "(22, 2)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[22,2]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0395038873,
+      "y": -0.042850066,
+      "z": 0.02547688
+    }
+  },
+  "(22, 3)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[22,3]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.03847745,
+      "y": -0.0396933332,
+      "z": 0.0231935326
+    }
+  },
+  "(22, 4)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[22,4]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.03739746,
+      "y": -0.0361582451,
+      "z": 0.0209945682
+    }
+  },
+  "(22, 5)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[22,5]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0364261121,
+      "y": -0.0333908,
+      "z": 0.0186244044
+    }
+  },
+  "(22, 7)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[22,7]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0357172638,
+      "y": -0.03107458,
+      "z": 0.016327085
+    }
+  },
+  "(22, 9)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[22,9]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0345069468,
+      "y": -0.027839914,
+      "z": 0.01317011
+    }
+  },
+  "(22, 11)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[22,11]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0336044878,
+      "y": -0.02678008,
+      "z": 0.00952810049
+    }
+  },
+  "(22, 13)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[22,13]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0326896161,
+      "y": -0.0256325789,
+      "z": 0.0059056445
+    }
+  },
+  "(22, 15)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[22,15]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0319871455,
+      "y": -0.0259855241,
+      "z": 0.001948555
+    }
+  },
+  "(22, 17)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[22,17]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0314583331,
+      "y": -0.0271089859,
+      "z": -0.00194547873
+    }
+  },
+  "(22, 18)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[22,18]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0309061557,
+      "y": -0.0283347219,
+      "z": -0.00595948566
+    }
+  },
+  "(22, 19)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[22,19]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0303815,
+      "y": -0.0297549888,
+      "z": -0.0100168828
+    }
+  },
+  "(22, 20)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[22,20]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.029788509,
+      "y": -0.0306926444,
+      "z": -0.013966646
+    }
+  },
+  "(22, 21)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[22,21]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0290151089,
+      "y": -0.0303557627,
+      "z": -0.01763216
+    }
+  },
+  "(22, 22)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[22,22]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0281683654,
+      "y": -0.0295006633,
+      "z": -0.0211821
+    }
+  },
+  "(22, 23)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[22,23]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.027321592,
+      "y": -0.0286455564,
+      "z": -0.02473204
+    }
+  },
+  "(22, 24)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[22,24]",
+    "Item2": "m_avg_rthumb2",
+    "Item3": {
+      "x": 0.0223418921,
+      "y": -0.0180938058,
+      "z": -0.00187590159
+    }
+  },
+  "(22, 25)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[22,25]",
+    "Item2": "m_avg_rthumb2",
+    "Item3": {
+      "x": 0.0253559276,
+      "y": -0.0135088377,
+      "z": -0.00248215534
+    }
+  },
+  "(22, 26)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[22,26]",
+    "Item2": "m_avg_rthumb2",
+    "Item3": {
+      "x": 0.0272476971,
+      "y": -0.008967366,
+      "z": 0.000404091552
+    }
+  },
+  "(22, 28)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[22,28]",
+    "Item2": "m_avg_rindex2",
+    "Item3": {
+      "x": -0.000458773226,
+      "y": -0.0207021218,
+      "z": 0.00104813278
+    }
+  },
+  "(22, 29)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[22,29]",
+    "Item2": "m_avg_rindex2",
+    "Item3": {
+      "x": -0.0016082786,
+      "y": -0.0204795729,
+      "z": -0.00307613052
+    }
+  },
+  "(22, 30)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[22,30]",
+    "Item2": "m_avg_rindex2",
+    "Item3": {
+      "x": -0.000790145248,
+      "y": -0.0196990538,
+      "z": -0.00682588667
+    }
+  },
+  "(22, 32)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[22,32]",
+    "Item2": "m_avg_rmiddle2",
+    "Item3": {
+      "x": -0.00548899174,
+      "y": -0.01963318,
+      "z": -0.00268962816
+    }
+  },
+  "(22, 33)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[22,33]",
+    "Item2": "m_avg_rmiddle2",
+    "Item3": {
+      "x": -0.00553046167,
+      "y": -0.019513255,
+      "z": 0.00160067528
+    }
+  },
+  "(22, 34)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[22,34]",
+    "Item2": "m_avg_rmiddle2",
+    "Item3": {
+      "x": -0.003415227,
+      "y": -0.0193685275,
+      "z": 0.005458136
+    }
+  },
+  "(22, 36)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[22,36]",
+    "Item2": "m_avg_rring2",
+    "Item3": {
+      "x": -0.003988445,
+      "y": -0.0171503685,
+      "z": 0.009371646
+    }
+  },
+  "(22, 37)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[22,37]",
+    "Item2": "m_avg_rring2",
+    "Item3": {
+      "x": -0.00655774772,
+      "y": -0.0176930912,
+      "z": 0.006390795
+    }
+  },
+  "(22, 38)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[22,38]",
+    "Item2": "m_avg_rring2",
+    "Item3": {
+      "x": -0.007340491,
+      "y": -0.0184179656,
+      "z": 0.002584789
+    }
+  },
+  "(22, 40)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[22,40]",
+    "Item2": "m_avg_rpinky2",
+    "Item3": {
+      "x": -0.00399449468,
+      "y": -0.0146085545,
+      "z": 0.004415039
+    }
+  },
+  "(22, 41)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[22,41]",
+    "Item2": "m_avg_rpinky2",
+    "Item3": {
+      "x": -0.00207993388,
+      "y": -0.0131484121,
+      "z": 0.007872555
+    }
+  },
+  "(22, 42)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[22,42]",
+    "Item2": "m_avg_rpinky2",
+    "Item3": {
+      "x": 0.00172030181,
+      "y": -0.0120261833,
+      "z": 0.009550884
+    }
+  },
+  "(23, 0)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[23,0]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0373784453,
+      "y": -0.0451037921,
+      "z": 0.031775035
+    }
+  },
+  "(23, 1)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[23,1]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.03657919,
+      "y": -0.0435518846,
+      "z": 0.0291337781
+    }
+  },
+  "(23, 2)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[23,2]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0357788056,
+      "y": -0.04199193,
+      "z": 0.026494313
+    }
+  },
+  "(23, 3)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[23,3]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.03497745,
+      "y": -0.0404251739,
+      "z": 0.0238563735
+    }
+  },
+  "(23, 4)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[23,4]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.03404917,
+      "y": -0.03796193,
+      "z": 0.0214183629
+    }
+  },
+  "(23, 5)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[23,5]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.03308338,
+      "y": -0.03523362,
+      "z": 0.0190394744
+    }
+  },
+  "(23, 7)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[23,7]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0323324949,
+      "y": -0.0326204263,
+      "z": 0.016808385
+    }
+  },
+  "(23, 9)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[23,9]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0311659127,
+      "y": -0.029694885,
+      "z": 0.01358247
+    }
+  },
+  "(23, 11)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[23,11]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.03019905,
+      "y": -0.02818007,
+      "z": 0.01004193
+    }
+  },
+  "(23, 13)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[23,13]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.029285267,
+      "y": -0.0270403363,
+      "z": 0.00641773967
+    }
+  },
+  "(23, 15)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[23,15]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0285015255,
+      "y": -0.02681905,
+      "z": 0.0025887182
+    }
+  },
+  "(23, 17)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[23,17]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0279237926,
+      "y": -0.0275968313,
+      "z": -0.00122822216
+    }
+  },
+  "(23, 18)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[23,18]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0273582339,
+      "y": -0.0287282057,
+      "z": -0.005221188
+    }
+  },
+  "(23, 19)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[23,19]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.02679351,
+      "y": -0.0298653468,
+      "z": -0.009215439
+    }
+  },
+  "(23, 20)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[23,20]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.026203528,
+      "y": -0.0308241658,
+      "z": -0.01316992
+    }
+  },
+  "(23, 21)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[23,21]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0253433585,
+      "y": -0.02987437,
+      "z": -0.0166987423
+    }
+  },
+  "(23, 22)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[23,22]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0244859755,
+      "y": -0.0289443061,
+      "z": -0.0202319622
+    }
+  },
+  "(23, 23)": {
+    "$type": "System.Tuple`3[[System.String, mscorlib],[System.String, mscorlib],[UnityEngine.Vector3, UnityEngine.CoreModule]], mscorlib",
+    "Item1": "[23,23]",
+    "Item2": "m_avg_R_Wrist",
+    "Item3": {
+      "x": 0.0236392319,
+      "y": -0.0280892029,
+      "z": -0.0237819068
+    }
+  }
+}

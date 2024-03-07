@@ -1,0 +1,446 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<robot name="mano_urdf">
+  <material name="Default-Material">
+    <color rgba="1 1 1 1" />
+  </material>
+  <link name="m_avg_R_Wrist">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.0044 -0.047022 -0.008366" />
+      <mass value="1" />
+      <inertia ixx="0.00109904038254172" ixy="0" ixz="0" iyy="0.000653819763101637" iyz="0" izz="0.00139977678190917" />
+    </inertial>
+    <visual>
+      <geometry>
+        <mesh filename="meshes/m_avg_R_Wrist.stl" scale="1 1 1" />
+      </geometry>
+      <material name="Default-Material">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="meshes/m_avg_R_Wrist.stl" scale="1 1 1" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="m_avg_rthumb0">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.01383 -0.013966 -0.001634" />
+      <mass value="1" />
+      <inertia ixx="0.000241358589846641" ixy="0" ixz="0" iyy="0.00012638556654565" iyz="0" izz="0.00018645211821422" />
+    </inertial>
+    <visual>
+      <geometry>
+        <mesh filename="meshes/m_avg_rthumb0.stl" scale="1 1 1" />
+      </geometry>
+      <material name="Default-Material">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="meshes/m_avg_rthumb0.stl" scale="1 1 1" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="m_avg_rthumb1">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.002409 -0.010191 -0.004398" />
+      <mass value="1" />
+      <inertia ixx="0.000137705457746051" ixy="0" ixz="0" iyy="0.000112540466943756" iyz="0" izz="7.85393785918131E-05" />
+    </inertial>
+    <visual>
+      <geometry>
+        <mesh filename="meshes/m_avg_rthumb1.stl" scale="1 1 1" />
+      </geometry>
+      <material name="Default-Material">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="meshes/m_avg_rthumb1.stl" scale="1 1 1" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="m_avg_rthumb2">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.002052 -0.011633 -0.00699" />
+      <mass value="1" />
+      <inertia ixx="9.85564183793031E-05" ixy="0" ixz="0" iyy="4.4836586312158E-05" iyz="0" izz="9.20520178624429E-05" />
+    </inertial>
+    <visual>
+      <geometry>
+        <mesh filename="meshes/m_avg_rthumb2.stl" scale="1 1 1" />
+      </geometry>
+      <material name="Default-Material">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="meshes/m_avg_rthumb2.stl" scale="1 1 1" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="m_avg_rring0">
+    <inertial>
+      <origin rpy="0 0 0" xyz="-0.000819 -0.014707 -0.004464" />
+      <mass value="1" />
+      <inertia ixx="9.30240930756554E-05" ixy="0" ixz="0" iyy="4.54689288744703E-05" iyz="0" izz="8.2652026321739E-05" />
+    </inertial>
+    <visual>
+      <geometry>
+        <mesh filename="meshes/m_avg_rring0.stl" scale="1 1 1" />
+      </geometry>
+      <material name="Default-Material">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="meshes/m_avg_rring0.stl" scale="1 1 1" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="m_avg_rring1">
+    <inertial>
+      <origin rpy="0 0 0" xyz="-0.000764 -0.005685 -0.010056" />
+      <mass value="1" />
+      <inertia ixx="6.83954713167623E-05" ixy="0" ixz="0" iyy="6.08930240559857E-05" iyz="0" izz="3.08715061692055E-05" />
+    </inertial>
+    <visual>
+      <geometry>
+        <mesh filename="meshes/m_avg_rring1.stl" scale="1 1 1" />
+      </geometry>
+      <material name="Default-Material">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="meshes/m_avg_rring1.stl" scale="1 1 1" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="m_avg_rring2">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.002121 -0.00055 -0.010244" />
+      <mass value="1" />
+      <inertia ixx="5.40007531526498E-05" ixy="0" ixz="0" iyy="5.00703827128746E-05" iyz="0" izz="2.35556544794235E-05" />
+    </inertial>
+    <visual>
+      <geometry>
+        <mesh filename="meshes/m_avg_rring2.stl" scale="1 1 1" />
+      </geometry>
+      <material name="Default-Material">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="meshes/m_avg_rring2.stl" scale="1 1 1" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="m_avg_rpinky0">
+    <inertial>
+      <origin rpy="0 0 0" xyz="-0.003922 -0.006802 -0.001855" />
+      <mass value="1" />
+      <inertia ixx="8.77590209711343E-05" ixy="0" ixz="0" iyy="4.28525345341768E-05" iyz="0" izz="8.02722643129528E-05" />
+    </inertial>
+    <visual>
+      <geometry>
+        <mesh filename="meshes/m_avg_rpinky0.stl" scale="1 1 1" />
+      </geometry>
+      <material name="Default-Material">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="meshes/m_avg_rpinky0.stl" scale="1 1 1" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="m_avg_rpinky1">
+    <inertial>
+      <origin rpy="0 0 0" xyz="-0.001573 -0.00505 -0.007603" />
+      <mass value="1" />
+      <inertia ixx="4.5438835513778E-05" ixy="0" ixz="0" iyy="3.80012206733227E-05" iyz="0" izz="2.45332994381897E-05" />
+    </inertial>
+    <visual>
+      <geometry>
+        <mesh filename="meshes/m_avg_rpinky1.stl" scale="1 1 1" />
+      </geometry>
+      <material name="Default-Material">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="meshes/m_avg_rpinky1.stl" scale="1 1 1" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="m_avg_rpinky2">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.001694 -0.001632 -0.008199" />
+      <mass value="1" />
+      <inertia ixx="4.12534209317528E-05" ixy="0" ixz="0" iyy="3.72840113413986E-05" iyz="0" izz="1.83869724423857E-05" />
+    </inertial>
+    <visual>
+      <geometry>
+        <mesh filename="meshes/m_avg_rpinky2.stl" scale="1 1 1" />
+      </geometry>
+      <material name="Default-Material">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="meshes/m_avg_rpinky2.stl" scale="1 1 1" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="m_avg_rmiddle0">
+    <inertial>
+      <origin rpy="0 0 0" xyz="-0.00245 -0.012013 -0.002032" />
+      <mass value="1" />
+      <inertia ixx="0.000124484547995962" ixy="0" ixz="0" iyy="5.67652714380529E-05" iyz="0" izz="0.000130325250211172" />
+    </inertial>
+    <visual>
+      <geometry>
+        <mesh filename="meshes/m_avg_rmiddle0.stl" scale="1 1 1" />
+      </geometry>
+      <material name="Default-Material">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="meshes/m_avg_rmiddle0.stl" scale="1 1 1" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="m_avg_rmiddle1">
+    <inertial>
+      <origin rpy="0 0 0" xyz="-0.001143 -0.006532 -0.007041" />
+      <mass value="1" />
+      <inertia ixx="7.1596892667003E-05" ixy="0" ixz="0" iyy="8.00169218564406E-05" iyz="0" izz="3.95673523598816E-05" />
+    </inertial>
+    <visual>
+      <geometry>
+        <mesh filename="meshes/m_avg_rmiddle1.stl" scale="1 1 1" />
+      </geometry>
+      <material name="Default-Material">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="meshes/m_avg_rmiddle1.stl" scale="1 1 1" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="m_avg_rmiddle2">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.00041 -0.001951 -0.010689" />
+      <mass value="1" />
+      <inertia ixx="6.24742242507637E-05" ixy="0" ixz="0" iyy="6.7607601522468E-05" iyz="0" izz="2.90013704216108E-05" />
+    </inertial>
+    <visual>
+      <geometry>
+        <mesh filename="meshes/m_avg_rmiddle2.stl" scale="1 1 1" />
+      </geometry>
+      <material name="Default-Material">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="meshes/m_avg_rmiddle2.stl" scale="1 1 1" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="m_avg_rindex0">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.001131 -0.017672 -0.002629" />
+      <mass value="1" />
+      <inertia ixx="0.000103983998997137" ixy="0" ixz="0" iyy="5.81014610361308E-05" iyz="0" izz="0.000109463297121692" />
+    </inertial>
+    <visual>
+      <geometry>
+        <mesh filename="meshes/m_avg_rindex0.stl" scale="1 1 1" />
+      </geometry>
+      <material name="Default-Material">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="meshes/m_avg_rindex0.stl" scale="1 1 1" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="m_avg_rindex1">
+    <inertial>
+      <origin rpy="0 0 0" xyz="-0.001141 -0.007378 -0.008323" />
+      <mass value="1" />
+      <inertia ixx="5.5038934078766E-05" ixy="0" ixz="0" iyy="6.18516714894213E-05" iyz="0" izz="4.1143339331029E-05" />
+    </inertial>
+    <visual>
+      <geometry>
+        <mesh filename="meshes/m_avg_rindex1.stl" scale="1 1 1" />
+      </geometry>
+      <material name="Default-Material">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="meshes/m_avg_rindex1.stl" scale="1 1 1" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="m_avg_rindex2">
+    <inertial>
+      <origin rpy="0 0 0" xyz="-0.001025 -0.002633 -0.009251" />
+      <mass value="1" />
+      <inertia ixx="5.64061010663863E-05" ixy="0" ixz="0" iyy="6.13567608525045E-05" iyz="0" izz="3.02133448712993E-05" />
+    </inertial>
+    <visual>
+      <geometry>
+        <mesh filename="meshes/m_avg_rindex2.stl" scale="1 1 1" />
+      </geometry>
+      <material name="Default-Material">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="meshes/m_avg_rindex2.stl" scale="1 1 1" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="m_avg_R_Wrist_m_avg_rthumb0_joint" type="revolute">
+    <origin xyz="0.02754 -0.040965 -0.026681" />
+    <parent link="m_avg_R_Wrist" />
+    <child link="m_avg_rthumb0" />
+    <axis xyz="0.3954 0.612075 -0.684853" />
+    <dynamics damping="0.0500000007450581" friction="0.0500000007450581" />
+    <limit lower="-0.523598771542311" upper="0.698131695389748" effort="3.40282346638529E+38" velocity="7" />
+  </joint>
+  <joint name="m_avg_rthumb0_m_avg_rthumb1_joint" type="revolute">
+    <origin xyz="0.018149 -0.0216 -0.011903" />
+    <parent link="m_avg_rthumb0" />
+    <child link="m_avg_rthumb1" />
+    <axis xyz="0 0.604241 -0.796801" />
+    <dynamics damping="0.0500000007450581" friction="0.0500000007450581" />
+    <limit lower="-0.872664619237185" upper="0.523598771542311" effort="3.40282346638529E+38" velocity="7" />
+  </joint>
+  <joint name="m_avg_rthumb1_m_avg_rthumb2_joint" type="revolute">
+    <origin xyz="0.003384 -0.023355 -0.014209" />
+    <parent link="m_avg_rthumb1" />
+    <child link="m_avg_rthumb2" />
+    <axis xyz="0 0.491766 -0.870728" />
+    <dynamics damping="0.0500000007450581" friction="0.0500000007450581" />
+    <limit lower="-0.349065847694874" upper="1.04719754308462" effort="3.40282346638529E+38" velocity="7" />
+  </joint>
+  <joint name="m_avg_R_Wrist_m_avg_rring0_joint" type="revolute">
+    <origin xyz="-0.023867 -0.10021 -0.013006" />
+    <parent link="m_avg_R_Wrist" />
+    <child link="m_avg_rring0" />
+    <axis xyz="0.923866 -0.291056 0.248511" />
+    <dynamics damping="0.0500000007450581" friction="0.0500000007450581" />
+    <limit lower="-0.523598771542311" upper="1.04719754308462" effort="3.40282346638529E+38" velocity="7" />
+  </joint>
+  <joint name="m_avg_rring0_m_avg_rring1_joint" type="revolute">
+    <origin xyz="-0.001146 -0.022404 -0.013868" />
+    <parent link="m_avg_rring0" />
+    <child link="m_avg_rring1" />
+    <axis xyz="0.929116 -0.332569 0.161681" />
+    <dynamics damping="0.0500000007450581" friction="0.0500000007450581" />
+    <limit lower="-0.698131695389748" upper="0.872664619237185" effort="3.40282346638529E+38" velocity="7" />
+  </joint>
+  <joint name="m_avg_rring1_m_avg_rring2_joint" type="revolute">
+    <origin xyz="0.001506 -0.005525 -0.021117" />
+    <parent link="m_avg_rring1" />
+    <child link="m_avg_rring2" />
+    <axis xyz="0.934743 -0.276618 0.22302" />
+    <dynamics damping="0.0500000007450581" friction="0.0500000007450581" />
+    <limit lower="-0.349065847694874" upper="1.22173046693206" effort="3.40282346638529E+38" velocity="7" />
+  </joint>
+  <joint name="m_avg_R_Wrist_m_avg_rpinky0_joint" type="revolute">
+    <origin xyz="-0.040315 -0.086954 -0.019786" />
+    <parent link="m_avg_R_Wrist" />
+    <child link="m_avg_rpinky0" />
+    <axis xyz="0.843373 -0.503991 0.186319" />
+    <dynamics damping="0.0500000007450581" friction="0.0500000007450581" />
+    <limit lower="-0.523598771542311" upper="1.04719754308462" effort="3.40282346638529E+38" velocity="7" />
+  </joint>
+  <joint name="m_avg_rpinky0_m_avg_rpinky1_joint" type="revolute">
+    <origin xyz="-0.005514 -0.013287 -0.012501" />
+    <parent link="m_avg_rpinky0" />
+    <child link="m_avg_rpinky1" />
+    <axis xyz="0.886401 -0.438349 0.148806" />
+    <dynamics damping="0.0500000007450581" friction="0.0500000007450581" />
+    <limit lower="-0.698131695389748" upper="0.872664619237185" effort="3.40282346638529E+38" velocity="7" />
+  </joint>
+  <joint name="m_avg_rpinky1_m_avg_rpinky2_joint" type="revolute">
+    <origin xyz="0.000954 -0.004849 -0.016267" />
+    <parent link="m_avg_rpinky1" />
+    <child link="m_avg_rpinky2" />
+    <axis xyz="0.756234 -0.620593 0.207303" />
+    <dynamics damping="0.0500000007450581" friction="0.0500000007450581" />
+    <limit lower="-0.349065847694874" upper="1.22173046693206" effort="3.40282346638529E+38" velocity="7" />
+  </joint>
+  <joint name="m_avg_R_Wrist_m_avg_rmiddle0_joint" type="revolute">
+    <origin xyz="0.0006 -0.111371 -0.010032" />
+    <parent link="m_avg_R_Wrist" />
+    <child link="m_avg_rmiddle0" />
+    <axis xyz="0.987468 -0.15683 0.017671" />
+    <dynamics damping="0.0500000007450581" friction="0.0500000007450581" />
+    <limit lower="-0.523598771542311" upper="1.04719754308462" effort="3.40282346638529E+38" velocity="7" />
+  </joint>
+  <joint name="m_avg_rmiddle0_m_avg_rmiddle1_joint" type="revolute">
+    <origin xyz="-0.004007 -0.02478 -0.013997" />
+    <parent link="m_avg_rmiddle0" />
+    <child link="m_avg_rmiddle1" />
+    <axis xyz="0.977355 -0.191788 0.089411" />
+    <dynamics damping="0.0500000007450581" friction="0.0500000007450581" />
+    <limit lower="-0.698131695389748" upper="0.872664619237185" effort="3.40282346638529E+38" velocity="7" />
+  </joint>
+  <joint name="m_avg_rmiddle1_m_avg_rmiddle2_joint" type="revolute">
+    <origin xyz="-0.001247 -0.007788 -0.020519" />
+    <parent link="m_avg_rmiddle1" />
+    <child link="m_avg_rmiddle2" />
+    <axis xyz="0.927807 -0.345264 0.141302" />
+    <dynamics damping="0.0500000007450581" friction="0.0500000007450581" />
+    <limit lower="-0.349065847694874" upper="1.22173046693206" effort="3.40282346638529E+38" velocity="7" />
+  </joint>
+  <joint name="m_avg_R_Wrist_m_avg_rindex0_joint" type="revolute">
+    <origin xyz="0.025301 -0.102809 -0.012384" />
+    <parent link="m_avg_R_Wrist" />
+    <child link="m_avg_rindex0" />
+    <axis xyz="1 0 0" />
+    <dynamics damping="0.0500000007450581" friction="0.0500000007450581" />
+    <limit lower="-0.523598771542311" upper="1.04719754308462" effort="3.40282346638529E+38" velocity="7" />
+  </joint>
+  <joint name="m_avg_rindex0_m_avg_rindex1_joint" type="revolute">
+    <origin xyz="0.001124 -0.027963 -0.011452" />
+    <parent link="m_avg_rindex0" />
+    <child link="m_avg_rindex1" />
+    <axis xyz="0.993586 -0.019563 -0.11137" />
+    <dynamics damping="0.0500000007450581" friction="0.0500000007450581" />
+    <limit lower="-0.698131695389748" upper="0.872664619237185" effort="3.40282346638529E+38" velocity="7" />
+  </joint>
+  <joint name="m_avg_rindex1_m_avg_rindex2_joint" type="revolute">
+    <origin xyz="-0.002104 -0.010287 -0.018698" />
+    <parent link="m_avg_rindex1" />
+    <child link="m_avg_rindex2" />
+    <axis xyz="0.991225 0.048492 -0.12297" />
+    <dynamics damping="0.0500000007450581" friction="0.0500000007450581" />
+    <limit lower="-0.349065847694874" upper="1.22173046693206" effort="3.40282346638529E+38" velocity="7" />
+  </joint>
+</robot>

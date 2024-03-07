@@ -6,3 +6,4 @@ pyacvd
 pyvista
 vedo
 pyglet
+meshio
