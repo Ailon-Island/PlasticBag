@@ -8,6 +8,7 @@ import utils
 from typing import Optional, List
 from vedo import show
 from icecream import ic
+import ball
 # current: only neo-hookean + rigid body
 
 
@@ -74,14 +75,20 @@ class RigidBody(Body):
                            target_faces_verts).sum(axis=1)
 
 
-# NOTE: now soft only one support mesh
+@ti.data_oriented
+class DraggableBall:
+    def __init__():
+        pass
+
 # reference: https://github.com/taichi-dev/taichi/blob/master/python/taichi/examples/simulation/mpm_lagrangian_forces.py
+
+
 @ti.data_oriented
 class MpmLagSim:
     def __init__(self, dt: float = 8e-5,
                  origin: np.ndarray = np.asarray([-0.5, -0.4, -0.5]),
                  n_grids: int = 180,
-                 scale: float = 1.0) -> None:
+                 scale: float = 0.3) -> None:
         # 压缩按键
         self.compress_force = scalars(ti.i32, shape=())
         # 抬升按键
@@ -98,6 +105,7 @@ class MpmLagSim:
         self.origin = origin
         # 空间范围（超过会回弹）
         # 这些在 taichi 中都是常数
+        self.FLOOR_RESTI = 0.5
         self.BOUND = 30
         self.GRAVITY = 9.8
         self.COMPRESS_ACC = 200
@@ -105,22 +113,24 @@ class MpmLagSim:
         self.BENDING_P = 9.0
         self.lift_state = 0
         self.frame_cnt = 0
+        self.time_elapsed = 0.0
         self.theta_cnt = scalars(ti.i32, ())
         self.MAX_FOLD_ANGLE = 160
         self.clear_bodies()
 
-        self.TO_LIFT = scalars(ti.i32, shape=(6))
-        self.TO_LIFT.from_numpy(np.array([1155, 1156, 1157, 2500, 2501, 2502]))
+        self.TO_LIFT = scalars(ti.i32, shape=(12))
+        self.TO_LIFT.from_numpy(np.array(
+            [1155, 1156, 1157, 2500, 2501, 2502, 1037, 1033, 1034, 1035, 1036, 1038]))
 
         # E 早先采用 1e1，很软
         # 调大 E 可以变硬
-        E, nu = 3e1, 0.49
+        E, nu = 30, 0.49
         # 这什么系数啊
         self.mu, self.lam = E / (2 * (1 + nu)), E * \
             nu / ((1 + nu) * (1 - 2 * nu))
         self.eps = 1e-6
 
-        self.window = ti.ui.Window("CPIC-Scene", (900, 1200))
+        self.window = ti.ui.Window("cpic-plastic", (900, 1200))
         self.canvas = self.window.get_canvas()
         self.gui = self.window.get_gui()
         self.scene = ti.ui.Scene()
@@ -128,6 +138,8 @@ class MpmLagSim:
         self.camera.position(+0.7, 0.7, 0.3)
         self.camera.lookat(0.5, 0.5, 0.5)
         self.canvas.set_background_color((1, 1, 1))
+
+        self.ball2 = ball.Ball(0.03)
 
     def clear_bodies(self):
         self.rigid_bodies: List[RigidBody] = []
@@ -157,6 +169,8 @@ class MpmLagSim:
         # rigid part
         self.rp_rho = 1
         self.rp_mass = self.p_vol * self.rp_rho
+
+        self.ball2_particles = vecs(3, T, 1)
 
         self.axis_particles = vecs(3, T, 4)
         self.axis_particles.from_numpy(
@@ -193,12 +207,13 @@ class MpmLagSim:
         self.balls_v = vecs(3, T, self.balls_cnt)
         self.balls_v.from_numpy(np.array(
             [
-                [-1.0, 0.0, 0.0],
+                [-2.0, 0.0, 0.0],
                 [0.0, 0.0, 0.0],
             ]
         )
         )
         self.ball_radius = 0.03
+        self.balls_selected = scalars(ti.i32, shape=(self.balls_cnt))
 
         self.x_soft = vecs(3, T, self.n_soft_verts, needs_grad=True)
         self.v_soft = vecs(3, T, self.n_soft_verts)
@@ -265,7 +280,7 @@ class MpmLagSim:
 
         # 地面显示
         # self.lines = ti.Vector.field(3, ti.f32, 8)
-        height = 29 / self.n_grids
+        height = (self.BOUND - 1) / self.n_grids
         size = 1
         # self.lines[0] = [0, height, 0]
         # self.lines[1] = [+size, height, 0]
@@ -388,14 +403,20 @@ class MpmLagSim:
             # 韧性系数呢？
             self.rest_bending_soft[bi] = theta
 
+    @ti.kernel
+    def sync_ti_py_data(self):
+        ...
+
     def substep(self):
         # 网格复原
+        self.time_elapsed += self.dt
         self.grid_m.fill(0)
         self.grid_v.fill(0)
         self.edge_fold_coef.fill(0)
         self.soft_energy[None] = 0
         self.soft_verts_color.fill(0.5)
         self.ui_check()
+        self.ball2.update(self.window, self.camera)
         with ti.ad.Tape(self.soft_energy):
             # 这玩意为什么执行了两次
             self.compute_tris_energy()
@@ -405,12 +426,28 @@ class MpmLagSim:
         self.p2g()
         self.grid_op()
         self.g2p()
+        self.sync_ti_py_data()
 
     # 粒子传输信息到网格
     @ti.kernel
     def p2g(self):
-
         # cnt = 0
+        # for p in self.x_soft:
+        #     for ball in range(self.balls_cnt):
+        #         arrow = self.x_soft[p] - self.balls_x[ball]
+        #         di = arrow.normalized()
+        #         dis = arrow.norm()
+        #         if dis < self.ball_radius:
+        #             hit_normal = di
+        #             rel_v = self.grid_v[i, j, k] - self.balls_v[ball]
+        #             v_ni = rel_v.dot(hit_normal) * hit_normal
+        #             v_ti = rel_v - v_ni
+        #             a = max(0, 1 - self.FLOOR_RESTI * (1 + self.FLOOR_RESTI) *
+        #                     (v_ni.norm() ** 0.5) / (v_ti.norm() ** 0.5))
+        #             v_ni_new = -min(1, self.FLOOR_RESTI) * v_ni
+        #             v_ti_new = a * v_ti
+        #             self.grid_v[i, j, k] = v_ni_new + v_ti_new
+        #         pass
         for p in self.x_soft:
             # p 是一个下标...
             # ref: games 201 lec 7 19:01
@@ -489,8 +526,10 @@ class MpmLagSim:
         # center_x = self.init_center_x[None]
 
         for i, j, k in self.grid_m:
+            grid_x = ti.Vector([i, j, k]) * self.dx
             # 对于所有权重大于零的例子（这个 201 lec7 里说的）
             # 30 / 128 左右的网格会将收到的速度反弹
+            # 先算一个坐标吧！
             if self.grid_m[i, j, k] > 0:
                 inv_m = 1 / self.grid_m[i, j, k]
                 # 速度加权平均
@@ -498,7 +537,6 @@ class MpmLagSim:
                 self.grid_v[i, j, k].y -= self.dt * self.GRAVITY
                 # 猜的
                 if self.compress_force[None] != 0:
-                    grid_x = ti.Vector([i, j, k]) * self.dx
                     # 最终目标是有折叠性（没有什么延展性，类似于折叠门！）
                     compress_dir = (center_x - grid_x).normalized() * \
                         self.compress_force[None]
@@ -519,9 +557,28 @@ class MpmLagSim:
                 if k > self.n_grids - self.BOUND and self.grid_v[i, j, k].z > 0:
                     self.grid_v[i, j, k].z *= -0.5
 
+                for ball in range(self.balls_cnt):
+                    arrow = grid_x - self.balls_x[ball]
+                    di = arrow.normalized()
+                    dis = arrow.norm()
+                    if dis < self.ball_radius:
+                        hit_normal = di
+                        rel_v = self.grid_v[i, j, k] - self.balls_v[ball]
+                        v_ni = rel_v.dot(hit_normal) * hit_normal
+                        v_ti = rel_v - v_ni
+                        if v_ni.dot(hit_normal) < 0:
+                            a = max(0, 1 - self.FLOOR_RESTI * (1 + self.FLOOR_RESTI) *
+                                    (v_ni.norm() ** 2) / (v_ti.norm() ** 2))
+                            v_ni_new = -min(1, self.FLOOR_RESTI) * v_ni
+                            v_ti_new = a * v_ti
+                            # 之前这里没加 balls_v
+                            self.grid_v[i, j, k] = self.balls_v[ball] + \
+                                v_ni_new + v_ti_new
+
     @ti.kernel
     def g2p(self):
         # 以粒子为主体
+
         for p in self.x_soft:
             # 每一个粒子把周围节点上的速度收集一下
             base = ti.cast(self.x_soft[p] * self.inv_dx - 0.5, ti.i32)
@@ -541,11 +598,35 @@ class MpmLagSim:
                 new_C += 4 * self.inv_dx * weight * g_v.outer_product(dpos)
 
             self.v_soft[p], self.C_soft[p] = new_v, new_C
-            self.x_soft[p] += self.dt * self.v_soft[p]  # advection
 
             # J[p] *= 1 + dt * new_C.trace()
+        # for p in self.x_soft:
+        #     for ball in range(self.balls_cnt):
+        #         arrow = self.x_soft[p] - self.balls_x[ball]
+        #         di = arrow.normalized()
+        #         dis = arrow.norm()
+        #         if dis < self.ball_radius:
+        #             print(3, arrow, dis)
+        #             hit_normal = di
+        #             rel_v = self.v_soft[p] - self.balls_v[ball]
+        #             v_ni = rel_v.dot(hit_normal) * hit_normal
+        #             v_ti = rel_v - v_ni
+        #             if v_ni.dot(hit_normal) < 0:
+        #                 self.v_soft[p] = v_ti + v_ni * (-0.5)
+            # a = max(0, 1 - self.FLOOR_RESTI * (1 + self.FLOOR_RESTI) *
+            #         (v_ni.norm() ** 2) / (v_ti.norm() ** 2))
+            # v_ni_new = -min(1, self.FLOOR_RESTI) * v_ni
+            # v_ti_new = a * v_ti
+            # self.x_soft[p] = self.x_soft[p] + \
+            #     (self.ball_radius - dis) * hit_normal
+            # self.v_soft[p] = v_ni_new + v_ti_new
+
+        for p in self.x_soft:
+            self.x_soft[p] += self.dt * self.v_soft[p]  # advection
+
         for p in self.balls_x:
-            self.balls_x[p] += self.dt * self.balls_v[p]
+            if self.balls_x[p][0] - self.ball_radius > (self.BOUND - 1) * self.dx + 0.01:
+                self.balls_x[p] += self.dt * self.balls_v[p]
 
         if self.lift_up_is_on[None] == 1:
             lift_up = ti.Vector([0.0, 1.3, 0.0])
@@ -713,7 +794,10 @@ class MpmLagSim:
         self.scene.particles(
             self.axis_particles, per_vertex_color=self.axis_particles_color, radius=0.05)
         self.scene.particles(self.balls_x, color=(
-            0.68, 0.26, 0.19), radius=self.ball_radius)
+            0.68, 0.26, 0.19), radius=self.ball_radius * 1)
+        self.ball2_particles[0] = self.ball2.pos
+        self.scene.particles(self.ball2_particles, color=(
+            1, 0, 0) if self.ball2.selected else (0, 0, 1), radius=self.ball2.radius)
         # self.scene.particles(self.x_soft, color=(
         #     0.68, 0.26, 0.19), radius=0.0005)
         # self.scene.particles(self.x_rigid, color=(
@@ -730,6 +814,7 @@ class MpmLagSim:
             w.text(
                 text=f'Highlight vertex: {self.frame_cnt % self.n_soft_verts}')
             w.text(text=f'Theta cnt: {self.theta_cnt[None]}')
+            w.text(text=f'Time: {self.time_elapsed}')
         # per_vertex_color=self.plane_vertices_color)
 
     def show(self):

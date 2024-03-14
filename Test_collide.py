@@ -7,7 +7,7 @@ from utils import read_tet
 
 
 def test_lag_mpm():
-    ti.init(arch=ti.cuda)
+    ti.init(arch=ti.cuda, debug=False)
     sim = MpmLagSim()
     plastic_mesh = trimesh.load_mesh('./data/bag-5e3.obj')
     # sim = MpmTetLagSim(origin=np.asarray([-0.5,-0.4,-0.5]), dt=dt)
@@ -19,7 +19,7 @@ def test_lag_mpm():
         # if sim.window.is_pressed("w"):
         #     sim.camera.position
         # 老规矩 y 轴正方向朝上
-        sim.camera.track_user_inputs(sim.window, 0.01 / 2, hold_key="h")
+        sim.camera.track_user_inputs(sim.window, 0.01 / 2, hold_key=ti.ui.LMB)
 
         sim.substep()
         if sim.window.is_pressed("r"):
