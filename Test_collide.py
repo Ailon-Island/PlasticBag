@@ -2,7 +2,7 @@ import taichi as ti
 import numpy as np
 import trimesh
 import pyvista as pv
-from sim2 import MpmLagSim
+from sim2A import MpmLagSim
 from utils import read_tet
 
 
@@ -13,6 +13,8 @@ def test_lag_mpm():
     # sim = MpmTetLagSim(origin=np.asarray([-0.5,-0.4,-0.5]), dt=dt)
     # plastic_mesh = read_tet('./data/object_meshes/dumpling1_.vtk')
     sim.set_soft(plastic_mesh)
+    sim.set_air(100000, 1e-4, 1e-5, 1e-1, 0.1)
+    # sim.set_air(100000, 1e-4, 1e-5, 1e-1, 0.1)
     sim.init_sim()
 
     while not sim.window.is_pressed(ti.GUI.ESCAPE):
@@ -25,7 +27,7 @@ def test_lag_mpm():
         if sim.window.is_pressed("r"):
             sim.camera.position(-0.7, 0.7, 0.3)
             sim.camera.lookat(0.5, 0.5, 0.5)
-        sim.update_scene()
+        sim.update_scene(True)
 
         if sim.window.is_pressed(ti.GUI.SPACE):
             pl = pv.Plotter()
