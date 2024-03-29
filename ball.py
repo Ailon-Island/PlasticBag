@@ -1,5 +1,6 @@
 import taichi as ti
 import taichi.math as tm
+import numpy as np
 
 
 @ti.data_oriented
@@ -12,26 +13,32 @@ class Ball:
         self.last_mouse_pressed = False
 
     def ray_dis(self, ray_origin, ray_dir) -> ti.f32:
-        proj = (self.pos - ray_origin).dot(ray_dir)
-        proj_pos = ray_origin + proj * ray_dir
-        distance = (self.pos - proj_pos).norm()
-        return distance
+        v = self.pos - ray_origin
+        # print(f"v dir: {v.normalized()}")
+        perp = v - v.dot(ray_dir) * ray_dir
+        return perp.norm()
 
     def ray_hit(self, ray_origin, ray_dir) -> bool:
-        return self.ray_dis(ray_origin, ray_dir) <= self.radius
+        dis = self.ray_dis(ray_origin, ray_dir)
+        # print(f"ray_dis: {dis}")
+        return dis <= self.radius
 
     def mouse_ray(self, win: ti.ui.Window, cam: ti.ui.Camera) -> tuple[ti.Vector, ti.Vector]:
         ...
         # calculate ray from mouse
-        mouse_pos = win.get_cursor_pos()
-        ndc_pos = tm.vec2(2 * mouse_pos - 1, 1 - 2 * mouse_pos)
-        inv_view_proj = tm.inverse(
-            cam.get_view_matrix() * cam.get_projection_matrix)
-        ray_ndc = tm.vec4(ndc_pos, -1, 1)
-        ray_world = inv_view_proj @ ray_ndc
-        ray_world /= ray_world.w
-        ray_origin = cam.position
-        ray_dir = tm.normalize(ray_world.xyz - ray_origin)
+        ndc_pos = np.array(win.get_cursor_pos()) * 2 - 1
+        # ndc_pos = tm.vec2(2 * mouse_pos - 1, 1 - 2 * mouse_pos)
+        res = win.get_window_shape()
+        inv_cam_mat = np.linalg.inv(
+            cam.get_view_matrix() @ cam.get_projection_matrix(res[0] / res[1]))
+        ray_ndc = np.array([ndc_pos[0], ndc_pos[1], -1, 1])
+        ray_world = ray_ndc @ inv_cam_mat
+        ray_world /= ray_world[-1]
+        ray_origin = cam.curr_position.to_numpy()
+        ray_dir = ray_world[:-1] - ray_origin
+        ray_dir /= np.linalg.norm(ray_dir)
+        ray_origin = ti.Vector(ray_origin)
+        ray_dir = ti.Vector(ray_dir)
         return ray_origin, ray_dir
 
     def mouse_ray_hit(self, win: ti.ui.Window, cam: ti.ui.Camera) -> bool:
