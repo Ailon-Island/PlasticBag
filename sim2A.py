@@ -173,6 +173,7 @@ class MpmLagSim:
         self.rp_mass = self.p_vol * self.rp_rho
 
         self.ball2_particles = vecs(3, T, 1)
+        self.ball2_v = vecs(3, T, 1)
 
         # self.p_vol_air = 1 / self.n_air_particles
         if self.n_air_particles:
@@ -214,7 +215,7 @@ class MpmLagSim:
         self.balls_v = vecs(3, T, self.balls_cnt)
         self.balls_v.from_numpy(np.array(
             [
-                [-2.0, 0.0, 0.0],
+                [0.0, 0.0, 0.0],
                 [0.0, 0.0, 0.0],
             ]
         )
@@ -222,6 +223,7 @@ class MpmLagSim:
         self.ball_radius = 0.03
         self.balls_selected = scalars(ti.i32, shape=(self.balls_cnt))
         self.object_selected = scalars(ti.i32, shape=())
+        self.object_selected.fill(0)
 
         if self.n_air_particles:
             self.x_air = vecs(3, T, self.n_air_particles)
@@ -457,23 +459,6 @@ class MpmLagSim:
     # 粒子传输信息到网格
     @ti.kernel
     def p2g(self):
-        # cnt = 0
-        # for p in self.x_soft:
-        #     for ball in range(self.balls_cnt):
-        #         arrow = self.x_soft[p] - self.balls_x[ball]
-        #         di = arrow.normalized()
-        #         dis = arrow.norm()
-        #         if dis < self.ball_radius:
-        #             hit_normal = di
-        #             rel_v = self.grid_v[i, j, k] - self.balls_v[ball]
-        #             v_ni = rel_v.dot(hit_normal) * hit_normal
-        #             v_ti = rel_v - v_ni
-        #             a = max(0, 1 - self.FLOOR_RESTI * (1 + self.FLOOR_RESTI) *
-        #                     (v_ni.norm() ** 0.5) / (v_ti.norm() ** 0.5))
-        #             v_ni_new = -min(1, self.FLOOR_RESTI) * v_ni
-        #             v_ti_new = a * v_ti
-        #             self.grid_v[i, j, k] = v_ni_new + v_ti_new
-        #         pass
         for p in self.x_soft:
             # p 是一个下标...
             # ref: games 201 lec 7 19:01
@@ -629,6 +614,23 @@ class MpmLagSim:
                             # 之前这里没加 balls_v
                             self.grid_v[i, j, k] = self.balls_v[ball] + \
                                 v_ni_new + v_ti_new
+                
+                arrow = grid_x - self.ball2_particles[0]
+                di = arrow.normalized()
+                dis = arrow.norm()
+                if dis < self.ball_radius:
+                    hit_normal = di
+                    rel_v = self.grid_v[i, j, k] - self.ball2_v[0]
+                    v_ni = rel_v.dot(hit_normal) * hit_normal
+                    v_ti = rel_v - v_ni
+                    if v_ni.dot(hit_normal) < 0:
+                        a = max(0, 1 - self.FLOOR_RESTI * (1 + self.FLOOR_RESTI) *
+                                (v_ni.norm() ** 2) / (v_ti.norm() ** 2))
+                        v_ni_new = -min(1, self.FLOOR_RESTI) * v_ni
+                        v_ti_new = a * v_ti
+                        # 之前这里没加 balls_v
+                        self.grid_v[i, j, k] = self.ball2_v[0] + \
+                            v_ni_new + v_ti_new
 
     @ti.kernel
     def g2p(self):
@@ -884,6 +886,7 @@ class MpmLagSim:
         self.scene.particles(self.balls_x, color=(
             0.68, 0.26, 0.19), radius=self.ball_radius * 1)
         self.ball2_particles[0] = self.ball2.pos
+        self.ball2_v[0] = self.ball2.vel
         self.scene.particles(self.ball2_particles, color=(
             1, 0, 0) if self.ball2.selected else (0, 0, 1), radius=self.ball2.radius)
         
@@ -908,6 +911,7 @@ class MpmLagSim:
                 text=f'Highlight vertex: {self.frame_cnt % self.n_soft_verts}')
             w.text(text=f'Theta cnt: {self.theta_cnt[None]}')
             w.text(text=f'Time: {self.time_elapsed}')
+            w.text(text=f'Ball velocity: {self.ball2.vel}')
         # per_vertex_color=self.plane_vertices_color)
 
     def show(self):

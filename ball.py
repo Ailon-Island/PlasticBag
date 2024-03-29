@@ -9,6 +9,7 @@ class Ball:
         ...
         self.radius = radius
         self.pos = ti.Vector([0.4, 0.4, 0.4])
+        self.vel = ti.Vector([0.0, 0.0, 0.0])
         self.selected = False
         self.drag_offset = ti.Vector([0.0, 0.0, 0.0])
         self.drag_depth = 0
@@ -65,11 +66,14 @@ class Ball:
             elif self.selected:
                 origin, dir = self.mouse_ray(win, cam)
                 drag_tgt = origin + dir * self.drag_depth
-                self.pos = drag_tgt - self.drag_offset
+                new_pos = drag_tgt - self.drag_offset
+                self.vel = (new_pos - self.pos) / sim.dt
+                self.pos = new_pos
         else:
             if self.selected:
                 self.selected = False
                 sim.object_selected = 0
+                self.vel = ti.Vector([0.0, 0.0, 0.0])
                 print('Unselected')
         self.last_mouse_pressed = mouse_pressed
         # next, calculate a ray(position and direction) from mouse
