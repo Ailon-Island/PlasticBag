@@ -130,6 +130,8 @@ class MpmLagSim:
             nu / ((1 + nu) * (1 - 2 * nu))
         self.eps = 1e-6
 
+        self.n_air_particles = 0
+
         self.window = ti.ui.Window("cpic-plastic", (900, 1200))
         self.canvas = self.window.get_canvas()
         self.gui = self.window.get_gui()
@@ -173,7 +175,8 @@ class MpmLagSim:
         self.ball2_particles = vecs(3, T, 1)
 
         # self.p_vol_air = 1 / self.n_air_particles
-        self.p_mass_air = self.p_vol_air * self.p_rho_air
+        if self.n_air_particles:
+            self.p_mass_air = self.p_vol_air * self.p_rho_air
 
 
         self.axis_particles = vecs(3, T, 4)
@@ -218,12 +221,13 @@ class MpmLagSim:
         )
         self.ball_radius = 0.03
         self.balls_selected = scalars(ti.i32, shape=(self.balls_cnt))
+        self.object_selected = scalars(ti.i32, shape=())
 
-
-        self.x_air = vecs(3, T, self.n_air_particles)
-        self.v_air = vecs(3, T, self.n_air_particles)
-        self.C_air = mats(3, 3, T, self.n_air_particles)
-        self.F_air = mats(3, 3, T, self.n_air_particles)
+        if self.n_air_particles:
+            self.x_air = vecs(3, T, self.n_air_particles)
+            self.v_air = vecs(3, T, self.n_air_particles)
+            self.C_air = mats(3, 3, T, self.n_air_particles)
+            self.F_air = mats(3, 3, T, self.n_air_particles)
 
 
         self.x_soft = vecs(3, T, self.n_soft_verts, needs_grad=True)
@@ -246,9 +250,9 @@ class MpmLagSim:
         self.x_soft.from_numpy(np.asarray(
             self.soft_mesh.vertices) - self.origin)  # 这里是减 origin
         
-
-        air_particles_positions = np.random.rand(self.n_air_particles, 3)
-        self.x_air.from_numpy(air_particles_positions)
+        if self.n_air_particles:
+            air_particles_positions = np.random.rand(self.n_air_particles, 3)
+            self.x_air.from_numpy(air_particles_positions)
 
         self.init_center_x = ti.Vector.field(3, ti.f32, ())
 
@@ -380,11 +384,11 @@ class MpmLagSim:
             self.C_soft[i] = ti.Matrix.zero(T, 3, 3)
 
 
-        
-        for i in ti.ndrange(self.n_air_particles):
-            self.v_air[i] = ti.Vector([0, 0, 0], T)
-            self.C_air[i] = ti.Matrix.zero(T, 3, 3)
-            self.F_air[i] = ti.Matrix([[1, 0, 0], [0, 1, 0], [0, 0, 1]])
+        if ti.static(self.n_air_particles):
+            for i in ti.ndrange(self.n_air_particles):
+                self.v_air[i] = ti.Vector([0, 0, 0], T)
+                self.C_air[i] = ti.Matrix.zero(T, 3, 3)
+                self.F_air[i] = ti.Matrix([[1, 0, 0], [0, 1, 0], [0, 0, 1]])
 
         for i in range(self.n_soft_tris):
             ds = self.compute_T_soft(i)  # i 号三角形的各条边
@@ -438,7 +442,7 @@ class MpmLagSim:
         self.soft_energy[None] = 0
         self.soft_verts_color.fill(0.5)
         self.ui_check()
-        self.ball2.update(self.window, self.camera)
+        self.ball2.update(self.window, self.camera, self)
         with ti.ad.Tape(self.soft_energy):
             # 这玩意为什么执行了两次
             self.compute_tris_energy()
@@ -514,30 +518,30 @@ class MpmLagSim:
                     # 权重的和
                     self.grid_m[base + offset] += weight * self.p_mass
 
+        if ti.static(self.n_air_particles):
+            for p in self.x_air:
+                base = ti.cast(self.x_air[p] * self.inv_dx - 0.5, ti.i32)
+                fx = self.x_air[p] * self.inv_dx - ti.cast(base, float)
+                w = [0.5 * (1.5 - fx) ** 2, 0.75 - (fx - 1)
+                    ** 2, 0.5 * (fx - 0.5) ** 2]
+                
+                J = self.F_air[p].determinant()
+                self.F_air[p] = ti.Matrix.identity(T, 3) * ti.sqrt(J)
 
-        for p in self.x_air:
-            base = ti.cast(self.x_air[p] * self.inv_dx - 0.5, ti.i32)
-            fx = self.x_air[p] * self.inv_dx - ti.cast(base, float)
-            w = [0.5 * (1.5 - fx) ** 2, 0.75 - (fx - 1)
-                 ** 2, 0.5 * (fx - 0.5) ** 2]
-            
-            J = self.F_air[p].determinant()
-            self.F_air[p] = ti.Matrix.identity(T, 3) * ti.sqrt(J)
+                stress = self.mu_air * (self.F_air[p] - self.F_air[p].transpose().inverse()) + \
+                    ti.Matrix.identity(T, 3) * (self.la_air * ti.log(J) - self.mu_air)
 
-            stress = self.mu_air * (self.F_air[p] - self.F_air[p].transpose().inverse()) + \
-                ti.Matrix.identity(T, 3) * (self.la_air * ti.log(J) - self.mu_air)
-
-            stress = (-self.dt * self.p_vol_air * 4 * self.inv_dx * self.inv_dx) * stress
-            affine = self.p_mass_air * self.C_air[p] + stress
-            for i, j, k in ti.static(ti.ndrange(3, 3, 3)):
-                offset = ti.Vector([i, j, k])
-                dpos = (offset.cast(float) - fx) * \
-                    self.dx  
-                weight = w[i][0] * w[j][1] * w[k][2]
-                if not ti.math.isnan(self.x_soft.grad[p]).sum():
-                    self.grid_v[base + offset] += weight * (
-                        self.p_mass_air * self.v_air[p] + affine @ dpos)
-                    self.grid_m[base + offset] += weight * self.p_mass_air
+                stress = (-self.dt * self.p_vol_air * 4 * self.inv_dx * self.inv_dx) * stress
+                affine = self.p_mass_air * self.C_air[p] + stress
+                for i, j, k in ti.static(ti.ndrange(3, 3, 3)):
+                    offset = ti.Vector([i, j, k])
+                    dpos = (offset.cast(float) - fx) * \
+                        self.dx  
+                    weight = w[i][0] * w[j][1] * w[k][2]
+                    if not ti.math.isnan(self.x_soft.grad[p]).sum():
+                        self.grid_v[base + offset] += weight * (
+                            self.p_mass_air * self.v_air[p] + affine @ dpos)
+                        self.grid_m[base + offset] += weight * self.p_mass_air
 
 
 
@@ -651,25 +655,25 @@ class MpmLagSim:
             self.v_soft[p], self.C_soft[p] = new_v, new_C
 
 
+        if ti.static(self.n_air_particles):
+            for p in self.x_air:
+                # 每一个粒子把周围节点上的速度收集一下
+                base = ti.cast(self.x_air[p] * self.inv_dx - 0.5, ti.i32)
+                fx = self.x_air[p] * self.inv_dx - float(base)
+                w = [0.5 * (1.5 - fx) ** 2, 0.75 - (fx - 1.0)
+                    ** 2, 0.5 * (fx - 0.5) ** 2]
+                new_v = ti.Vector.zero(T, 3)
+                new_C = ti.Matrix.zero(T, 3, 3)
 
-        for p in self.x_air:
-            # 每一个粒子把周围节点上的速度收集一下
-            base = ti.cast(self.x_air[p] * self.inv_dx - 0.5, ti.i32)
-            fx = self.x_air[p] * self.inv_dx - float(base)
-            w = [0.5 * (1.5 - fx) ** 2, 0.75 - (fx - 1.0)
-                 ** 2, 0.5 * (fx - 0.5) ** 2]
-            new_v = ti.Vector.zero(T, 3)
-            new_C = ti.Matrix.zero(T, 3, 3)
+                for i, j, k in ti.static(ti.ndrange(3, 3, 3)):
+                    dpos = ti.Vector([i, j, k]).cast(float) - fx
+                    g_v = self.grid_v[base + ti.Vector([i, j, k])]
+                    weight = w[i][0] * w[j][1] * w[k][2]
+                    new_v += weight * g_v
+                    new_C += 4 * self.inv_dx * weight * g_v.outer_product(dpos)
 
-            for i, j, k in ti.static(ti.ndrange(3, 3, 3)):
-                dpos = ti.Vector([i, j, k]).cast(float) - fx
-                g_v = self.grid_v[base + ti.Vector([i, j, k])]
-                weight = w[i][0] * w[j][1] * w[k][2]
-                new_v += weight * g_v
-                new_C += 4 * self.inv_dx * weight * g_v.outer_product(dpos)
-
-            self.v_air[p], self.C_air[p] = new_v, new_C
-            self.x_air[p] += self.dt * self.v_air[p]
+                self.v_air[p], self.C_air[p] = new_v, new_C
+                self.x_air[p] += self.dt * self.v_air[p]
 
             # J[p] *= 1 + dt * new_C.trace()
         # for p in self.x_soft:
@@ -896,7 +900,7 @@ class MpmLagSim:
         self.scene.mesh(self.x_soft, self.tris_soft_expanded,
                         per_vertex_color=self.soft_verts_color)
         self.scene.mesh(self.plane, self.plane_triangles)
-        if show_air:
+        if self.n_air_particles and show_air:
             self.scene.particles(self.x_air, color=(
                 0, 0, 1), radius=0.0003)
         with self.gui.sub_window("Debug", 0.05, 0.1, 0.2, 0.15) as w:

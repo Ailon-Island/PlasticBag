@@ -13,7 +13,7 @@ def test_lag_mpm():
     # sim = MpmTetLagSim(origin=np.asarray([-0.5,-0.4,-0.5]), dt=dt)
     # plastic_mesh = read_tet('./data/object_meshes/dumpling1_.vtk')
     sim.set_soft(plastic_mesh)
-    sim.set_air(100000, 1e-4, 1e-5, 1e-1, 0.1)
+    # sim.set_air(100000, 1e-4, 1e-5, 1e-1, 0.1)
     # sim.set_air(100000, 1e-4, 1e-5, 1e-1, 0.1)
     sim.init_sim()
 
@@ -21,8 +21,9 @@ def test_lag_mpm():
         # if sim.window.is_pressed("w"):
         #     sim.camera.position
         # 老规矩 y 轴正方向朝上
-        sim.camera.track_user_inputs(sim.window, 0.01 / 2, hold_key=ti.ui.LMB)
-
+        if not sim.object_selected:
+            sim.camera.track_user_inputs(sim.window, 0.01 / 2, hold_key=ti.ui.LMB)
+        
         sim.substep()
         if sim.window.is_pressed("r"):
             sim.camera.position(-0.7, 0.7, 0.3)
