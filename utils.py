@@ -23,6 +23,12 @@ def rad2deg(x):
     return x * 57.29577951308232
 
 
+def get_reduce_min_inplace(keys, values):
+    n = keys.shape[0]
+
+    # return reduce_min_func
+
+
 def trimesh_show(geoms):
     scene = trimesh.Scene()
     for g in geoms:
@@ -48,6 +54,21 @@ left_tf[3, 3] = right_tf[3, 3] = 1.
 def fix_unity_urdf_tf(tf):
     return left_tf @ tf @ right_tf
 
+def get_mouse_ray(win: ti.ui.Window, cam: ti.ui.Camera):
+    # calculate ray from mouse
+    ndc_pos = np.array(win.get_cursor_pos()) * 2 - 1
+    res = win.get_window_shape()
+    inv_cam_mat = np.linalg.inv(
+        cam.get_view_matrix() @ cam.get_projection_matrix(res[0] / res[1]))
+    ray_ndc = np.array([ndc_pos[0], ndc_pos[1], 1, 1]) # z = -1 or 1?
+    ray_world = ray_ndc @ inv_cam_mat
+    ray_world /= ray_world[-1]
+    ray_origin = cam.curr_position.to_numpy()
+    ray_dir = ray_world[:-1] - ray_origin
+    ray_dir /= np.linalg.norm(ray_dir)
+    ray_origin = ti.Vector(ray_origin)
+    ray_dir = ti.Vector(ray_dir)
+    return ray_origin, ray_dir
 
 class TetMesh:
     def __init__(self, verts: np.ndarray,

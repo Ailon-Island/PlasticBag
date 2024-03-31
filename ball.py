@@ -2,6 +2,7 @@ import taichi as ti
 import taichi.math as tm
 import numpy as np
 
+from utils import get_mouse_ray
 
 @ti.data_oriented
 class Ball:
@@ -27,25 +28,8 @@ class Ball:
             return -1, False
         return line.norm() - ti.sqrt(self.radius ** 2 - dist ** 2), True
 
-    def mouse_ray(self, win: ti.ui.Window, cam: ti.ui.Camera) -> tuple[ti.Vector, ti.Vector]:
-        ...
-        # calculate ray from mouse
-        ndc_pos = np.array(win.get_cursor_pos()) * 2 - 1
-        res = win.get_window_shape()
-        inv_cam_mat = np.linalg.inv(
-            cam.get_view_matrix() @ cam.get_projection_matrix(res[0] / res[1]))
-        ray_ndc = np.array([ndc_pos[0], ndc_pos[1], 1, 1]) # z = -1 or 1?
-        ray_world = ray_ndc @ inv_cam_mat
-        ray_world /= ray_world[-1]
-        ray_origin = cam.curr_position.to_numpy()
-        ray_dir = ray_world[:-1] - ray_origin
-        ray_dir /= np.linalg.norm(ray_dir)
-        ray_origin = ti.Vector(ray_origin)
-        ray_dir = ti.Vector(ray_dir)
-        return ray_origin, ray_dir
-
     def mouse_ray_hit(self, win: ti.ui.Window, cam: ti.ui.Camera) -> tuple[ti.f32, bool]:
-        return self.ray_hit(*self.mouse_ray(win, cam))
+        return self.ray_hit(*get_mouse_ray(win, cam))
 
     def update(self, win: ti.ui.Window, cam: ti.ui.Camera, sim: 'MpmLagSim'):
         ...
@@ -53,8 +37,8 @@ class Ball:
         # 需要检查在至少一个 ball 选中的情况下，不移动镜头
         mouse_pressed = win.is_pressed(ti.ui.LMB)
         if mouse_pressed:
+            origin, dir = get_mouse_ray(win, cam)
             if not self.last_mouse_pressed:
-                origin, dir = self.mouse_ray(win, cam)
                 hit_depth, hit = self.ray_hit(origin, dir)
                 if hit:
                     if not self.selected:
@@ -64,7 +48,6 @@ class Ball:
                         self.drag_depth = hit_depth
                         self.drag_offset = origin + dir * hit_depth - self.pos
             elif self.selected:
-                origin, dir = self.mouse_ray(win, cam)
                 drag_tgt = origin + dir * self.drag_depth
                 new_pos = drag_tgt - self.drag_offset
                 self.vel = (new_pos - self.pos) / sim.dt
