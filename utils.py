@@ -25,8 +25,21 @@ def rad2deg(x):
 
 def get_reduce_min_inplace(keys, values):
     n = keys.shape[0]
-
-    # return reduce_min_func
+    count = int(2 ** np.ceil(np.log2(n)))
+    @ti.func 
+    def reduce_min_func(i):
+        s = count // 2
+        while s > 0:
+            # if i == 0:
+                # print(s)
+            # print(i, keys[i], values[i])
+            if i < s and i + s < n:
+                i_small = keys[i] < keys[i + s]
+                keys[i] = keys[i] if i_small else keys[i + s]
+                values[i] = values[i] if i_small else values[i + s]
+            ti.sync()
+            s >>= 1
+    return reduce_min_func, count
 
 
 def trimesh_show(geoms):
