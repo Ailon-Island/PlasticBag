@@ -21,7 +21,7 @@ def test_lag_mpm():
         # if sim.window.is_pressed("w"):
         #     sim.camera.position
         # 老规矩 y 轴正方向朝上
-        if not sim.object_selected[None]:
+        if not sim.object_selected[None] and not sim.soft_selected:
             sim.camera.track_user_inputs(sim.window, 0.01 / 2, hold_key=ti.ui.LMB)
         
         sim.substep()
