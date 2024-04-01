@@ -43,7 +43,7 @@ class Ball:
                 if hit:
                     if not self.selected:
                         self.selected = True
-                        sim.object_selected = 1
+                        sim.object_selected[None] = 1
                         print('Selected')
                         self.drag_depth = hit_depth
                         self.drag_offset = origin + dir * hit_depth - self.pos
@@ -55,7 +55,7 @@ class Ball:
         else:
             if self.selected:
                 self.selected = False
-                sim.object_selected = 0
+                sim.object_selected[None] = 0
                 self.vel = ti.Vector([0.0, 0.0, 0.0])
                 print('Unselected')
         self.last_mouse_pressed = mouse_pressed
