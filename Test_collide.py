@@ -14,7 +14,7 @@ def test_lag_mpm():
     # plastic_mesh = read_tet('./data/object_meshes/dumpling1_.vtk')
     sim.set_soft(plastic_mesh)
     # sim.set_air(100000, 1e-4, 1e-5, 1e-1, 0.1)
-    # sim.set_air(100000, 1e-4, 1e-5, 1e-1, 0.1)
+    sim.set_air(100000, 1e-4, 1e-5, 1e-1, 0.1)
     sim.init_sim()
 
     while not sim.window.is_pressed(ti.GUI.ESCAPE):

@@ -87,7 +87,7 @@ class DraggableBall:
 class MpmLagSim:
     def __init__(self, dt: float = 8e-5,
                  origin: np.ndarray = np.asarray([-0.5, -0.4, -0.5]),
-                 n_grids: int = 180,
+                 n_grids: int = 160,
                  scale: float = 0.3) -> None:
         # 压缩按键
         self.compress_force = scalars(ti.i32, shape=())
@@ -577,7 +577,7 @@ class MpmLagSim:
                     ** 2, 0.5 * (fx - 0.5) ** 2]
                 
                 J = self.F_air[p].determinant()
-                self.F_air[p] = ti.Matrix.identity(T, 3) * ti.sqrt(J)
+                self.F_air[p] = ti.Matrix.identity(T, 3) * ti.pow(J, 1/3)
 
                 stress = self.mu_air * (self.F_air[p] - self.F_air[p].transpose().inverse()) + \
                     ti.Matrix.identity(T, 3) * (self.la_air * ti.log(J) - self.mu_air)
