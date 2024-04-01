@@ -224,11 +224,21 @@ class MpmLagSim:
         self.balls_selected = scalars(ti.i32, shape=(self.balls_cnt))
         self.object_selected = scalars(ti.i32, shape=())
         self.object_selected.fill(0)
+
         self.ray_soft_intersect_depth = scalars(T, shape=(self.n_soft_tris))
         self.ray_soft_intersect_barycentric = vecs(3, T, shape=(self.n_soft_tris))
         self.ray_soft_intersect_tri = scalars(ti.i32, shape=(self.n_soft_tris))
-        self.soft_selected = False
+
+        self.max_drag_vel = 100
+        self.soft_selecting = False
+        self.soft_dragging = False
+        self.soft_selected_tri = scalars(ti.i32, shape=(2))
+        self.soft_selected_tri.fill(-1)
+        self.soft_selected_pos_ = vecs(3, T, shape=(2))
+        self.soft_selected_barycentric = vecs(3, T, shape=(2))
+
         self.last_mouse_pressed = False
+        self.last_mouse_right_pressed = False
 
         if self.n_air_particles:
             self.x_air = vecs(3, T, self.n_air_particles)
@@ -499,7 +509,8 @@ class MpmLagSim:
         self.soft_energy[None] = 0
         self.soft_verts_color.fill(0.5)
         self.ui_check()
-        self.ball2.update(self.window, self.camera, self)
+        if not self.soft_dragging:
+            self.ball2.drag(self.window, self.camera, self)
         with ti.ad.Tape(self.soft_energy):
             # 这玩意为什么执行了两次
             self.compute_tris_energy()
@@ -613,44 +624,151 @@ class MpmLagSim:
         self.soft_drag()
 
     def soft_drag(self):
+        self.update_and_show_selected()
         mouse_pressed = self.window.is_pressed(ti.ui.LMB)
         if mouse_pressed:
             origin, dir = get_mouse_ray(self.window, self.camera)
-            if not self.last_mouse_pressed:
-                depth, tri, bary = self.ray_soft_intersect(origin, dir)
-                if depth < ti.math.inf:
-                    a, b, c = self.tris_soft[tri, 0], self.tris_soft[tri, 1], self.tris_soft[tri, 2]
-                    # self.soft_verts_color[a] = ti.Vector([1, 0, 0])
-                    # self.soft_verts_color[b] = ti.Vector([1, 0, 0])
-                    # self.soft_verts_color[c] = ti.Vector([1, 0, 0])
-                    if not self.soft_selected:
-                        self.soft_selected = 1
-                        # print('Selected')
-                        self.soft_drag_depth = depth
-                        self.soft_drag_tri = tri
-                        self.soft_drag_barycentric = bary
-            elif self.soft_selected:
+            # select dragging point
+            if self.window.is_pressed("o"):
+                self.soft_selecting = 1
+                self.select_soft_drag_point(0, origin, dir)
+            elif self.window.is_pressed("p"):
+                self.soft_selecting = 1
+                self.select_soft_drag_point(1, origin, dir)
+            # start drag
+            elif not self.last_mouse_pressed:
+                # drag selected
+                if self.window.is_pressed(ti.ui.CTRL) and self.soft_selected():
+                    ref_pos = self.soft_drag_ref_pos()
+                    self.soft_drag_depth = (ref_pos - origin).dot(dir)
+                    self.soft_drag_src = origin + dir * self.soft_drag_depth
+                    self.soft_dragging = 1
+                    cnt = 0
+                    for i in range(2):
+                        cnt += self.soft_selected_tri[i] != -1
+                    if cnt == 2:
+                        self.soft_drag_dist = (self.soft_selected_pos_[0] - self.soft_selected_pos_[1]).norm()
+
+                # drag immediately
+                else:
+                    depth, tri, bary = self.ray_soft_intersect(origin, dir)
+                    if depth < ti.math.inf:
+                        a, b, c = self.tris_soft[tri, 0], self.tris_soft[tri, 1], self.tris_soft[tri, 2]
+                        # self.soft_verts_color[a] = ti.Vector([1, 0, 0])
+                        # self.soft_verts_color[b] = ti.Vector([1, 0, 0])
+                        # self.soft_verts_color[c] = ti.Vector([1, 0, 0])
+                        if not self.soft_dragging:
+                            self.soft_dragging = 1
+                            # print('Selected')
+                            self.soft_drag_depth = depth
+                            self.soft_drag_tri = tri
+                            self.soft_drag_barycentric = bary
+            # continue dragging
+            elif self.soft_dragging:
                 drag_tgt = origin + dir * self.soft_drag_depth
-                a, b, c = \
-                    self.tris_soft[self.soft_drag_tri, 0], self.tris_soft[self.soft_drag_tri, 1], self.tris_soft[self.soft_drag_tri, 2]
-                drag_src = self.x_soft[a] * self.soft_drag_barycentric[0] + \
-                    self.x_soft[b] * self.soft_drag_barycentric[1] + \
-                    self.x_soft[c] * self.soft_drag_barycentric[2]
-                drag_vel = (drag_tgt - drag_src) / self.dt
-                self.v_soft[a] += drag_vel * self.soft_drag_barycentric[0]
-                self.v_soft[b] += drag_vel * self.soft_drag_barycentric[1]
-                self.v_soft[c] += drag_vel * self.soft_drag_barycentric[2]
+                if self.soft_selected():
+                    if self.window.is_pressed(ti.ui.CTRL):
+                        ref_pos = self.soft_drag_ref_pos()
+                        drag_vel = (drag_tgt - ref_pos) / self.dt
+                        # drag_vel = (drag_tgt - self.soft_drag_src) / self.dt
+                        if (drag_vel.norm() > self.max_drag_vel):
+                            drag_vel = drag_vel.normalized() * self.max_drag_vel
+                        self.soft_drag_src = drag_tgt
+                        cnt = 0
+                        for i in range(2):
+                            if self.soft_selected_tri[i] != -1:
+                                a, b, c = \
+                                    self.tris_soft[self.soft_selected_tri[i], 0], self.tris_soft[self.soft_selected_tri[i], 1], self.tris_soft[self.soft_selected_tri[i], 2]
+                                self.v_soft[a] += drag_vel * self.soft_selected_barycentric[i][0]
+                                self.v_soft[b] += drag_vel * self.soft_selected_barycentric[i][1]
+                                self.v_soft[c] += drag_vel * self.soft_selected_barycentric[i][2]
+                                cnt += 1
+                        if cnt == 2:
+                            selected_dir = (self.soft_selected_pos_[0] - self.soft_selected_pos_[1]).normalized()
+                            dist_keep_tgt = ref_pos + selected_dir * self.soft_drag_dist / 2
+                            dist_keep_vel = (dist_keep_tgt - self.soft_selected_pos_[0]) / self.dt
+                            dist_keep_vels = [dist_keep_vel, -dist_keep_vel]
+                            for i in range(2):
+                                if self.soft_selected_tri[i] != -1:
+                                    a, b, c = \
+                                        self.tris_soft[self.soft_selected_tri[i], 0], self.tris_soft[self.soft_selected_tri[i], 1], self.tris_soft[self.soft_selected_tri[i], 2]
+                                    self.v_soft[a] += dist_keep_vels[i] * self.soft_selected_barycentric[i][0]
+                                    self.v_soft[b] += dist_keep_vels[i] * self.soft_selected_barycentric[i][1]
+                                    self.v_soft[c] += dist_keep_vels[i] * self.soft_selected_barycentric[i][2]
+                else:
+                    a, b, c = \
+                        self.tris_soft[self.soft_drag_tri, 0], self.tris_soft[self.soft_drag_tri, 1], self.tris_soft[self.soft_drag_tri, 2]
+                    drag_src = self.x_soft[a] * self.soft_drag_barycentric[0] + \
+                        self.x_soft[b] * self.soft_drag_barycentric[1] + \
+                        self.x_soft[c] * self.soft_drag_barycentric[2]
+                    drag_vel = (drag_tgt - drag_src) / self.dt
+                    if (drag_vel.norm() > self.max_drag_vel):
+                        drag_vel = drag_vel.normalized() * self.max_drag_vel
+                    self.v_soft[a] += drag_vel * self.soft_drag_barycentric[0]
+                    self.v_soft[b] += drag_vel * self.soft_drag_barycentric[1]
+                    self.v_soft[c] += drag_vel * self.soft_drag_barycentric[2]
             # elif self.selected:
             #     drag_tgt = origin + dir * self.drag_depth
             #     new_pos = drag_tgt - self.drag_offset
             #     self.vel = (new_pos - self.pos) / self.dt
             #     self.pos = new_pos
         else:
-            if self.soft_selected:
-                self.soft_selected = 0
-                # self.vel = ti.Vector([0.0, 0.0, 0.0])
-                # print('Unselected')
+            if self.soft_dragging:
+                self.soft_dragging = 0
+            if self.soft_selecting:
+                self.soft_selecting = 0
         self.last_mouse_pressed = mouse_pressed
+
+        mouse_right_pressed = self.window.is_pressed(ti.ui.RMB)
+        if self.last_mouse_right_pressed == True and mouse_right_pressed == False:
+            # deselect
+            if self.window.is_pressed("o"):
+                self.soft_selected_tri[0] = -1
+            elif self.window.is_pressed("p"):
+                self.soft_selected_tri[1] = -1
+        self.last_mouse_right_pressed = mouse_right_pressed
+    
+    def update_and_show_selected(self):
+        n = 0
+        for i in range(2):
+            if self.soft_selected_tri[i] != -1:
+                tri, bary = self.soft_selected_tri[i], self.soft_selected_barycentric[i]
+                a, b, c = \
+                    self.tris_soft[tri, 0], self.tris_soft[tri, 1], self.tris_soft[tri, 2]
+                self.soft_selected_pos_[i] = self.x_soft[a] * bary[0] + \
+                    self.x_soft[b] * bary[1] + \
+                    self.x_soft[c] * bary[2]
+
+                self.scene.particles(self.soft_selected_pos_, radius=0.01, color=(1, 0, 1), index_offset=i, index_count=1)
+                n += 1
+        if n == 2:
+            self.scene.lines(self.soft_selected_pos_, width=0.005, color=(0, 1, 0))
+        
+    def select_soft_drag_point(self, id, origin, dir):
+        depth, tri, bary = self.ray_soft_intersect(origin, dir)
+        if depth < ti.math.inf:
+            self.soft_selected_tri[id] = tri
+            self.soft_selected_barycentric[id] = bary
+
+    def soft_selected(self):
+        return self.soft_selected_tri[0] != -1 or self.soft_selected_tri[1] != -1
+    
+    def soft_selected_pos(self, i):
+        if self.soft_selected_tri[i] != -1:
+            return self.soft_selected_pos_[i]
+        return None
+
+    def soft_drag_ref_pos(self):
+        x = ti.Vector([0.0, 0.0, 0.0])
+        n = 0
+        for i in range(2):
+            pos = self.soft_selected_pos(i)
+            if pos is not None:
+                x += pos
+                n += 1
+        if n:
+            x /= n
+        return x
 
     # grid normalization
     @ti.kernel

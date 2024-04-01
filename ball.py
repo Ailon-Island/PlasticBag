@@ -31,8 +31,7 @@ class Ball:
     def mouse_ray_hit(self, win: ti.ui.Window, cam: ti.ui.Camera) -> tuple[ti.f32, bool]:
         return self.ray_hit(*get_mouse_ray(win, cam))
 
-    def update(self, win: ti.ui.Window, cam: ti.ui.Camera, sim: 'MpmLagSim'):
-        ...
+    def drag(self, win: ti.ui.Window, cam: ti.ui.Camera, sim: 'MpmLagSim'):
         # check if mouse is clicked
         # 需要检查在至少一个 ball 选中的情况下，不移动镜头
         mouse_pressed = win.is_pressed(ti.ui.LMB)
