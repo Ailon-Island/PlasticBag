@@ -225,7 +225,9 @@ class MpmLagSim:
         self.object_selected = scalars(ti.i32, shape=())
         self.object_selected.fill(0)
         self.ray_soft_intersect_depth = scalars(T, shape=(self.n_soft_tris))
+        self.ray_soft_intersect_barycentric = vecs(3, T, shape=(self.n_soft_tris))
         self.ray_soft_intersect_tri = scalars(ti.i32, shape=(self.n_soft_tris))
+        self.soft_selected = False
         self.last_mouse_pressed = False
 
         if self.n_air_particles:
@@ -376,6 +378,7 @@ class MpmLagSim:
         xac = self.x_soft[c] - self.x_soft[a]
         return xab.cross(xac).normalized()
     
+    # reference: Moller-Trumbore algorithm, https://en.wikipedia.org/wiki/M%C3%B6ller%E2%80%93Trumbore_intersection_algorithm
     @ti.func
     def ray_soft_tri_intersect(self, i, orig, dir, eps = 1e-6):
         a, b, c = \
@@ -386,38 +389,45 @@ class MpmLagSim:
         det = xab.dot(P)
         if (-eps < det < eps):
             self.ray_soft_intersect_depth[i] = ti.math.inf
-            return 
+        else:
         
-        inv_det = 1.0 / det
-        s = orig - self.x_soft[a]
-        u = inv_det * s.dot(P)
-        if u < 0 or u > 1:
-            self.ray_soft_intersect_depth[i] = ti.math.inf
-            return 
+            inv_det = 1.0 / det
+            s = orig - self.x_soft[a]
+            u = inv_det * s.dot(P)
+            if u < 0 or u > 1:
+                self.ray_soft_intersect_depth[i] = ti.math.inf
+            else:
 
-        Q = s.cross(xab)
-        v = inv_det * dir.dot(Q)
-        if v < 0 or u + v > 1:
-            self.ray_soft_intersect_depth[i] = ti.math.inf
-            return
-        
-        t = inv_det * xac.dot(Q)
-        if t < eps: # wrong direction
-            self.ray_soft_intersect_depth[i] = ti.math.inf
-            return
-        
-        self.ray_soft_intersect_depth[i] = t
+                Q = s.cross(xab)
+                v = inv_det * dir.dot(Q)
+                if v < 0 or u + v > 1:
+                    self.ray_soft_intersect_depth[i] = ti.math.inf
+                else:
+                
+                    t = inv_det * xac.dot(Q)
+                    if t < eps: # wrong direction
+                        self.ray_soft_intersect_depth[i] = ti.math.inf
+                    else:
+                        self.ray_soft_intersect_depth[i] = t
+                        w = 1 - u - v
+                        self.ray_soft_intersect_barycentric[i] = ti.Vector([w, u, v])
 
     @ti.kernel 
-    def ray_soft_intersect(self, orig: ti.types.vector(3, ti.f32), dir: ti.types.vector(3, ti.f32)):
-        self.ray_soft_intersect_depth.fill(ti.math.inf)
-        self.ray_soft_intersect_tri.copy_from(self.tris_soft)
-        reduce, reduce_cnt = get_reduce_min_inplace(self.ray_soft_intersect_depth, self.ray_soft_intersect_tri)
+    def ray_soft_intersect_kernel(self, orig: ti.types.vector(3, T), dir: ti.types.vector(3, T), reduce: ti.template(), reduce_cnt: ti.i32):
         for i in ti.ndrange(self.n_soft_tris):
             self.ray_soft_tri_intersect(i, orig, dir)
         for i in ti.ndrange(reduce_cnt):
             reduce(i)
-        return self.ray_soft_intersect_depth[0], self.ray_soft_intersect_tri[0]
+    
+    def ray_soft_intersect(self, orig: ti.types.vector(3, T), dir: ti.types.vector(3, T)):
+        self.ray_soft_intersect_depth.fill(ti.math.inf)
+        self.ray_soft_intersect_tri.from_numpy(np.arange(self.n_soft_tris))
+        reduce, reduce_cnt = get_reduce_min_inplace(self.ray_soft_intersect_depth, self.ray_soft_intersect_tri)
+        self.ray_soft_intersect_kernel(orig, dir, reduce, reduce_cnt)
+        # if self.ray_soft_intersect_depth[0] < ti.math.inf:
+        #     print(self.ray_soft_intersect_depth[0], self.ray_soft_intersect_tri[0])
+        tri_id = self.ray_soft_intersect_tri[0]
+        return self.ray_soft_intersect_depth[0], tri_id, self.ray_soft_intersect_barycentric[tri_id]
 
     @ti.kernel
     def init_field(self):
@@ -606,31 +616,41 @@ class MpmLagSim:
         mouse_pressed = self.window.is_pressed(ti.ui.LMB)
         if mouse_pressed:
             origin, dir = get_mouse_ray(self.window, self.camera)
-            depth, tri = self.ray_soft_intersect(origin, dir)
-            if depth < ti.math.inf:
-                a, b, c = self.tris_soft[tri]
-                self.soft_verts_color[a] = ti.Vector([1, 0, 0])
-                self.soft_verts_color[b] = ti.Vector([1, 0, 0])
-                self.soft_verts_color[c] = ti.Vector([1, 0, 0])
-        #     if not self.last_mouse_pressed:
-        #         self.ray_soft_intersect(origin, dir)
-        #         depth = self.ray_soft_intersect_depth[None]
-        #         if depth < ti.math.inf:
-        #             if not self.selected:
-        #                 self.soft_selected = 1
-        #                 # print('Selected')
-        #                 self.drag_depth = depth
-        #     # elif self.selected:
-        #     #     drag_tgt = origin + dir * self.drag_depth
-        #     #     new_pos = drag_tgt - self.drag_offset
-        #     #     self.vel = (new_pos - self.pos) / self.dt
-        #     #     self.pos = new_pos
-        # else:
-        #     if self.selected:
-        #         self.soft_selected = 0
-        #         # self.vel = ti.Vector([0.0, 0.0, 0.0])
-        #         # print('Unselected')
-        # self.last_mouse_pressed = mouse_pressed
+            if not self.last_mouse_pressed:
+                depth, tri, bary = self.ray_soft_intersect(origin, dir)
+                if depth < ti.math.inf:
+                    a, b, c = self.tris_soft[tri, 0], self.tris_soft[tri, 1], self.tris_soft[tri, 2]
+                    # self.soft_verts_color[a] = ti.Vector([1, 0, 0])
+                    # self.soft_verts_color[b] = ti.Vector([1, 0, 0])
+                    # self.soft_verts_color[c] = ti.Vector([1, 0, 0])
+                    if not self.soft_selected:
+                        self.soft_selected = 1
+                        # print('Selected')
+                        self.soft_drag_depth = depth
+                        self.soft_drag_tri = tri
+                        self.soft_drag_barycentric = bary
+            elif self.soft_selected:
+                drag_tgt = origin + dir * self.soft_drag_depth
+                a, b, c = \
+                    self.tris_soft[self.soft_drag_tri, 0], self.tris_soft[self.soft_drag_tri, 1], self.tris_soft[self.soft_drag_tri, 2]
+                drag_src = self.x_soft[a] * self.soft_drag_barycentric[0] + \
+                    self.x_soft[b] * self.soft_drag_barycentric[1] + \
+                    self.x_soft[c] * self.soft_drag_barycentric[2]
+                drag_vel = (drag_tgt - drag_src) / self.dt
+                self.v_soft[a] += drag_vel * self.soft_drag_barycentric[0]
+                self.v_soft[b] += drag_vel * self.soft_drag_barycentric[1]
+                self.v_soft[c] += drag_vel * self.soft_drag_barycentric[2]
+            # elif self.selected:
+            #     drag_tgt = origin + dir * self.drag_depth
+            #     new_pos = drag_tgt - self.drag_offset
+            #     self.vel = (new_pos - self.pos) / self.dt
+            #     self.pos = new_pos
+        else:
+            if self.soft_selected:
+                self.soft_selected = 0
+                # self.vel = ti.Vector([0.0, 0.0, 0.0])
+                # print('Unselected')
+        self.last_mouse_pressed = mouse_pressed
 
     # grid normalization
     @ti.kernel

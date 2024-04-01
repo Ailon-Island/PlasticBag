@@ -79,8 +79,8 @@ def get_mouse_ray(win: ti.ui.Window, cam: ti.ui.Camera):
     ray_origin = cam.curr_position.to_numpy()
     ray_dir = ray_world[:-1] - ray_origin
     ray_dir /= np.linalg.norm(ray_dir)
-    ray_origin = ti.Vector(ray_origin)
-    ray_dir = ti.Vector(ray_dir)
+    ray_origin = ti.Vector(ray_origin, dt=T)
+    ray_dir = ti.Vector(ray_dir, dt=T)
     return ray_origin, ray_dir
 
 class TetMesh:
