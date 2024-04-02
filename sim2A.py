@@ -514,7 +514,7 @@ class MpmLagSim:
         with ti.ad.Tape(self.soft_energy):
             # 这玩意为什么执行了两次
             self.compute_tris_energy()
-            self.compute_bending_energy()
+            self.compute_bending_energy1()
         self.compute_color()
         # 物质点
         self.p2g()
@@ -978,7 +978,8 @@ class MpmLagSim:
                                        ) ** 2 * area * 0.3 * self.mu * self.BENDING_P * self.rest_bending_sheared[bi]
             # if abs(edge_inds[0] - edge_inds[1]) == 1 and abs(theta) > abs(self.rest_bending_soft[bi]) and abs(theta) < deg2rad(160):
             # todo 实验中 参数调整
-            if abs(theta) > abs(self.rest_bending_soft[bi]) and abs(theta) < utils.deg2rad(self.MAX_FOLD_ANGLE):
+
+            if abs(theta) > abs(self.rest_bending_soft[bi]) and abs(theta) <= utils.deg2rad(self.MAX_FOLD_ANGLE):
                 # 降低相邻折痕难度（向量方向相近者更可能）
                 # 对于 edge_inds[0] [1] 的相邻边...
                 # for i in range(2):
@@ -995,12 +996,13 @@ class MpmLagSim:
                     self.rest_bending_soft[bi] / utils.deg2rad(60)
                 self.theta_cnt[None] += 1
 
-            if abs(theta) < abs(self.rest_bending_soft[bi]) and abs(theta) < utils.deg2rad(self.MAX_FOLD_ANGLE):
+            if abs(theta) < abs(self.rest_bending_soft[bi]) and abs(theta) <= utils.deg2rad(self.MAX_FOLD_ANGLE):
                 self.rest_bending_soft[bi] += (theta -
                                                self.rest_bending_soft[bi]) * 0.1
                 self.rest_bending_sheared[bi] = 1 + \
                     self.rest_bending_soft[bi] / utils.deg2rad(60)
                 self.theta_cnt[None] += 1
+
 
             # if 2000 <= edge_inds[0] <= 2500 and abs(edge_inds[0] - edge_inds[1]) == 1:
             #     self.rest_bending_soft[bi] = deg2rad(45)
@@ -1019,6 +1021,34 @@ class MpmLagSim:
             #
             # self.energy_soft[None] += (theta - self.rest_bending_soft[bi]
             #                            ) ** 2 * area * 0.3 * self.mu
+
+
+    @ti.kernel
+    def compute_bending_energy1(self):  
+        for bi in range(self.n_soft_bends):
+            face_inds = self.bending_faces[bi]
+            n0 = self.compute_normal_soft(face_inds[0])
+            n1 = self.compute_normal_soft(face_inds[1])
+            theta = ti.acos(n0.dot(n1))
+            theta = ti.max(theta, ti.abs(self.eps))
+            edge_inds = self.bending_edges[bi]
+            edge = (self.x_soft[edge_inds[1]] -
+                    self.x_soft[edge_inds[0]]).normalized()
+            sin_theta = n0.cross(n1).dot(edge)
+            if sin_theta < 0:
+                theta = - theta
+            area = 0.5 * \
+                (self.tris_area_soft[face_inds[0]] +
+                 self.tris_area_soft[face_inds[1]])
+            self.soft_energy[None] += (theta - self.rest_bending_soft[bi]
+                                       ) ** 2 * area * 0.3 * self.mu * self.BENDING_P * self.rest_bending_sheared[bi]
+
+            kappa =  ti.math.pi * 0.003
+            if theta > self.rest_bending_soft[bi]:
+                self.rest_bending_soft[bi] += (theta - self.rest_bending_soft[bi] - kappa)
+            elif theta < self.rest_bending_soft[bi]:
+                self.rest_bending_soft[bi] += (theta - self.rest_bending_soft[bi] + kappa)
+        
 
     @ti.kernel
     def compute_color(self):
